@@ -1,0 +1,50 @@
+//TODO : login form
+
+<section>
+    <form
+     novalidate
+     [formGroup]="loginForm"
+     (ngSubmit)="login()" 
+    >
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input 
+        matInput
+        id="email"
+        type="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Votre email"
+        autocorrect="off"
+        autocomplete="off"
+        >
+      </mat-form-field>
+    </p>
+    <p>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input 
+        matInput
+        id="password"
+        type="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Votre mot de passe"
+        autocorrect="off"
+        autocomplete="off"
+        >
+      </mat-form-field>
+    </p>
+    
+      <button mat-button color="primary" >Se connecter</button>
+    
+    </form>
+    
+        
+    </section>
+    
+    
+    
+    
