@@ -7,6 +7,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [],
@@ -17,7 +18,8 @@ import { MatCardModule } from '@angular/material/card';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule
   ],
   exports : [
     MatButtonModule,
@@ -26,7 +28,8 @@ import { MatCardModule } from '@angular/material/card';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule
   ]
 })
 export class StyleModule { }
