@@ -1,8 +1,9 @@
 export class Restaurant{
-    
+
     private _id:number;
     private _name:string;
-    private _address:string;
+    private _address?:string;
+    private _photosUrls?:Array<string>;
 
     constructor(id, name, address) {
         this._id = id;
@@ -61,5 +62,34 @@ export class Restaurant{
 	public set address(value: string) {
 		this._address = value;
 	}
+
+      /**
+     * Getter photos_url
+     * @return {Array<string>}
+     */
+	public get photosUrls(): Array<string> {
+		return this._photosUrls;
+	}
+
+      /**
+     * Setter photos_url
+     * @param {Array<string>} value
+     */
+	public set photosUrls(value: Array<string>) {
+		this._photosUrls = value;
+	}
+
+  public addPhotoUrl(photoUrl : string) : void {
+    this._photosUrls.push(photoUrl);
+  }
+
+  public deletePhotoUrl(photoUrl : string) {
+    let index = this._photosUrls.indexOf(photoUrl);
+    if (index > -1) {
+      this._photosUrls.splice(index, 1);
+    }
+  }
+
+
 
 }

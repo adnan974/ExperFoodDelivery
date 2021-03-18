@@ -1,13 +1,15 @@
-<p>
-    <mat-toolbar color="primary">
 
-      <span>Exper Food Delivery</span>
+    <mat-toolbar color="primary">
+      <span class="navbar-title" (click)="navigate('home')">
+        <img src="../../../assets/images/logo_efd_white.png" class="navbar-title-logo">
+        <span class="navbar-title-text">
+          <span class="brand-exper">Exper </span> <span class="brand-food-delivery"> Food Delivery </span>
+        </span>
+      </span>
 
       <span class="spacer"></span>
 
       <button mat-button (click)="navigate('login')"><mat-icon>login</mat-icon> Connexion</button>
       <button mat-button (click)="navigate('register')"><mat-icon>wysiwyg</mat-icon> Inscription</button>
-
-
     </mat-toolbar>
-  </p>
+
