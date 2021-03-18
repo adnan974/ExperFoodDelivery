@@ -1,11 +1,21 @@
 export class User {
-  private _lastName: string;
-  private _firstName: string;
-  private _password: string;
-  private _email: string;
-  private _address: string;
-  private _CP: string;
-  private _city: string;
+
+  private _id? : number;
+  private _lastName?: string;
+  private _firstName?: string;
+  private _password?: string;
+  private _email?: string;
+  private _address?: string;
+  private _CP?: string;
+  private _city?: string;
+
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
+    }
+
     public get lastName(): string {
         return this._lastName;
     }

@@ -8,8 +8,8 @@ import { User } from '../../shared/models/user';
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  // firstFormGroup: FormGroup;
+  // secondFormGroup: FormGroup;
   registerLoginForm: FormGroup;
   registerInfoGroup: FormGroup;
   isEditable = true;

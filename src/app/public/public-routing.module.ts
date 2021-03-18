@@ -11,7 +11,8 @@ const routes: Routes = [
   {path:'restaurants',component: RestaurantPageComponent},
   {path:'restaurants/menu',component: MenuPageComponent},
   {path:'login',component: LoginPageComponent},
-  {path:'register',component: RegisterPageComponent}  
+  {path:'register',component: RegisterPageComponent},
+  {path:'login',component: LoginPageComponent},  
 ];
 
 @NgModule({

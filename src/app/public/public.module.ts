@@ -14,6 +14,7 @@ import { MenuPageComponent } from './menu-page/menu-page.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuShowComponent } from './menu-show/menu-show.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { AuthService } from '../core/services/auth.service';
 
 
 
@@ -35,6 +36,6 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     SharedModule,
     StyleModule,
     PublicRoutingModule,
-  ]
+  ],  
 })
 export class PublicModule { }

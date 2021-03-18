@@ -7,6 +7,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StyleModule } from '../style/style.module';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -17,10 +20,12 @@ import { StyleModule } from '../style/style.module';
     PublicModule,
     RestorerModule,
     CustomerModule,
-    StyleModule
+    StyleModule,
+    HttpClientModule
   ],
   exports : [
     NavbarComponent, FooterComponent, PageNotFoundComponent
-  ]
+  ], 
+  providers : [AuthService]
 })
 export class CoreModule { }
