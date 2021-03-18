@@ -5,13 +5,18 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeCustomerComponent } from './home-customer/home-customer.component';
 import { CustomerTemplateComponent } from './customer-template/customer-template.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CustomerProfilShowComponent } from './customer-profil-show/customer-profil-show.component';
+import { CustomerProfilFormComponent } from './customer-profil-form/customer-profil-form.component';
+import { CustomerProfilPageComponent } from './customer-profil-page/customer-profil-page.component';
 
 
 @NgModule({
-  declarations: [HomeCustomerComponent, CustomerTemplateComponent, CustomerPageComponent],
+  declarations: [HomeCustomerComponent, CustomerTemplateComponent, CustomerPageComponent, CustomerProfilShowComponent, CustomerProfilFormComponent, CustomerProfilPageComponent ],
   imports: [
     SharedModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    MatIconModule
   ]
 })
 export class CustomerModule { }
