@@ -10,10 +10,13 @@
         </div>
         <mat-form-field>
           <mat-label>Mot de passe</mat-label>
-          <input matInput formControlName="passwordCtrl" placeholder="Mot de passe" required>
+          <input matInput formControlName="passwordCtrl" [type]="hide ? 'password' : 'text'">
+          <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Suivant</button>
+          <button mat-button matStepperNext type="submit">Suivant</button>
         </div>
       </form>
     </mat-step>
@@ -54,7 +57,7 @@
           
           <div>
             <button mat-button matStepperPrevious>Retour</button>
-            <button mat-button matStepperNext>Suivant</button>
+            <button mat-button matStepperNext type="submit">Suivant</button>
           </div>
       </form>
     </mat-step>
@@ -67,5 +70,4 @@
       </div>
     </mat-step>
   </mat-horizontal-stepper>
-  
   
