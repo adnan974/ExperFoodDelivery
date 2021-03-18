@@ -26,6 +26,6 @@ import { HttpClientModule } from '@angular/common/http';
   exports : [
     NavbarComponent, FooterComponent, PageNotFoundComponent
   ], 
-  providers : [AuthService]
+  //providers : [AuthService]
 })
 export class CoreModule { }

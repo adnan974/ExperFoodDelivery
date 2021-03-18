@@ -2,7 +2,15 @@ export class Restaurant{
     
     private _id:number;
     private _name:string;
-    private _adress:string;
+    private _address:string;
+
+    constructor(id, name, address) {
+        this._id = id;
+        this._name = name;
+        this._address = address;
+    }
+
+
     //Todo à compléter...
 
 
@@ -23,11 +31,11 @@ export class Restaurant{
 	}
 
     /**
-     * Getter adress
+     * Getter address
      * @return {string}
      */
-	public get adress(): string {
-		return this._adress;
+	public get address(): string {
+		return this._address;
 	}
 
     /**
@@ -47,11 +55,11 @@ export class Restaurant{
 	}
 
     /**
-     * Setter adress
+     * Setter address
      * @param {string} value
      */
-	public set adress(value: string) {
-		this._adress = value;
+	public set address(value: string) {
+		this._address = value;
 	}
 
 }
