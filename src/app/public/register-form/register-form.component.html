@@ -1,5 +1,5 @@
 <mat-horizontal-stepper linear #stepper>
-    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+    <mat-step [stepControl]="registerLoginForm" [editable]="isEditable">
       <form [formGroup]="registerLoginForm" (ngSubmit)="registerLogin()">
         <ng-template matStepLabel>Remplissez les informations de connexion</ng-template>
         <div>
@@ -20,7 +20,7 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+    <mat-step [stepControl]="registerInfoGroup" [editable]="isEditable">
       <form [formGroup]="registerInfoGroup" (ngSubmit)="register()">
         <ng-template matStepLabel>Remplissez vos informations personnelles</ng-template>
         <div>
