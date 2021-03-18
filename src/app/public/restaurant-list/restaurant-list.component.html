@@ -1,6 +1,9 @@
 <h2>Liste des restaurants disponibles!</h2>
 
-//TODO : restaurant list
-<div *ngFor="let restaurant of restaurantList"><efd-restaurant [restaurant]="restaurant"></efd-restaurant></div>
+<mat-grid-list cols="2" >
+    <mat-grid-tile  *ngFor="let restaurant of restaurantList">
+        <efd-restaurant-show [restaurant]="restaurant"></efd-restaurant-show>
+    </mat-grid-tile>
+</mat-grid-list>
 
 

@@ -9,6 +9,8 @@ import { Restaurant } from '../../shared/models/restaurant';
 export class RestaurantListComponent implements OnInit {
 
   public restaurantList: Array<Restaurant>;
+
+  // TODO: à supprimer lorsqu'on aura une api
   public restaurant: Restaurant;
 
   constructor() { }
