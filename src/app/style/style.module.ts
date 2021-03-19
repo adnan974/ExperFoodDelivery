@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 const AngularMaterialModules = [
   MatButtonModule,
@@ -18,7 +20,8 @@ const AngularMaterialModules = [
   MatInputModule,
   MatCardModule,
   MatStepperModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  FlexLayoutModule
 ]
 
 
