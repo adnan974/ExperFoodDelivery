@@ -1,13 +1,26 @@
-<div>
-  <div>Nom de famille : {{user.lastName}}</div>
-  <div>Prénom : {{user.firstName}}</div>
-  <div>Adresse : {{user.address}}</div>
-  <div>Code Postal : {{user.CP}}</div>
-  <div>Ville : {{user.city}}</div>
+<div class="container-form">
+  <div class="block-align">
+    <img id="img-profil" />
+    <div> <span>{{user.lastName}}</span> <span>  {{user.firstName}}</span></div>
+    <button mat-icon-button color="primary" aria-label="update profil" (click)="navigate('customer/updateProfil')">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" aria-label="update profil" (click)="delete(user.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div><br />
+  <mat-card class="block">
+    <h3>Vos information de login</h3>
+    <p>Email : {{user.email}}</p>
+    <p>Password : *****</p>
+  </mat-card><br/>
+  <mat-card class="block">
+    <h3>Vos information personnelles</h3>
+    <p>Adresse : {{user.address}}</p>
+    <p>Code Postal : {{user.CP}}</p>
+    <p>Ville : {{user.city}}</p>
+  </mat-card>
+
+  
+
 </div>
-<button mat-icon-button color="primary" aria-label="update profil" (click)="navigate('customer/updateProfil')">
-  <mat-icon>edit</mat-icon>
-</button>
-<button mat-icon-button color="primary" aria-label="update profil" (click)="delete(user.id)">
-  <mat-icon>delete</mat-icon>
-</button>
