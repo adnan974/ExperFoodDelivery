@@ -11,19 +11,10 @@ export class RestaurantListComponent implements OnInit {
 
   public restaurantList: Array<Restaurant>;
 
-  // TODO: à supprimer lorsqu'on aura une api
-  public restaurant: Restaurant;
-
   constructor(private restaurantService : RestaurantService) { }
 
   ngOnInit(): void {
-    //TODO récupère les infor d'un api
     this.restaurantList = this.restaurantService.getRestaurants();
-
-    // for (let i = 1; i < 5; i++) {
-    //   this.restaurant = new Restaurant(i, "Restaurant " + i, "Adress " + i );
-    //   this.restaurantList.push(this.restaurant);
-    // }
     console.log(this.restaurantList)
   }
 

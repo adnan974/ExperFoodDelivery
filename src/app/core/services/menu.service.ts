@@ -11,7 +11,7 @@ export class MenuService {
   constructor(){
       this.menus = new Array<Menu>();
 
-      for(let i =0;i<5;i++){
+      for(let i =1;i<6;i++){
         let menu = new Menu();
         menu.id = i;
         menu.name = "Menu "+i;

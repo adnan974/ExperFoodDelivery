@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    FlexLayoutModule
   ],
   exports : [
     MatButtonModule,
@@ -30,7 +33,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    FlexLayoutModule
   ]
 })
 export class StyleModule { }
