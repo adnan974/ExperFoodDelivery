@@ -2,12 +2,14 @@ export class Restaurant{
 
     private _id:number;
     private _name:string;
+    private _description:string;
     private _address?:string;
     private _photosUrls?:Array<string>;
 
-    constructor(id, name, address) {
+    constructor(id, name,description, address) {
         this._id = id;
         this._name = name;
+        this.description = description;
         this._address = address;
     }
 
@@ -30,6 +32,17 @@ export class Restaurant{
 	public get name(): string {
 		return this._name;
 	}
+
+
+  /**
+   * Getter description
+   * @return {string}
+   */
+  public get description(): string {
+    return this._description;
+  }
+
+ 
 
     /**
      * Getter address
@@ -54,6 +67,14 @@ export class Restaurant{
 	public set name(value: string) {
 		this._name = value;
 	}
+
+  /**
+  * Setter description
+  * @param {string} value
+  */
+  public set description(value: string) {
+    this._description = value;
+  }
 
     /**
      * Setter address

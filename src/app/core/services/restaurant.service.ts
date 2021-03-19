@@ -10,11 +10,11 @@ export class RestaurantService {
 
   private restaurants : Array<Restaurant> = 
   [
-    new Restaurant(1,"Restaurant 1",  "12 allée des cocos"),
-    new Restaurant(2,"Restaurant 2",  "13 allée des cocos"),
-    new Restaurant(3,"Restaurant 3",  "14 allée des cocos"),
-    new Restaurant(4,"Restaurant 4",  "15 allée des cocos"),
-    new Restaurant(5,"Restaurant 5",  "16 allée des cocos"),  
+    new Restaurant(1,"Restaurant 1", "Cuisine indienne", "12 allée des cocos"),
+    new Restaurant(2,"Restaurant 2", "Cuisine chinoise", "13 allée des cocos"),
+    new Restaurant(3,"Restaurant 3", "Cuisine  kreol", "14 allée des cocos"),
+    new Restaurant(4,"Restaurant 4", "Cuisine malgache","15 allée des cocos"),
+    new Restaurant(5,"Restaurant 5", "Cuisine francaise", "16 allée des cocos"),  
   ]
 
   constructor(private http: HttpClient) 

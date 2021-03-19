@@ -1,9 +1,9 @@
-<h2>Liste des restaurants disponibles!</h2>
+<h2>Liste des restaurants disponibles: </h2>
 
-<mat-grid-list cols="2" >
-    <mat-grid-tile  *ngFor="let restaurant of restaurantList">
+<div fxLayout="row wrap"  fxLayoutGap="30px grid">
+    <div fxFlex="25%"   *ngFor="let restaurant of restaurantList">
         <efd-restaurant-show [restaurant]="restaurant"></efd-restaurant-show>
-    </mat-grid-tile>
-</mat-grid-list>
+    </div>
+</div>
 
 

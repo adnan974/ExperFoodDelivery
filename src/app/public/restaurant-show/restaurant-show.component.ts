@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Restaurant } from '../../shared/models/restaurant';
 
 @Component({
@@ -10,7 +11,7 @@ export class RestaurantShowComponent implements OnInit {
 
   @Input() restaurant:Restaurant;
   
-  constructor() { 
+  constructor(private router:Router) { 
     
 
   }
@@ -18,6 +19,11 @@ export class RestaurantShowComponent implements OnInit {
   ngOnInit(): void {
     
 
+  }
+
+  navigateToMenu(link){
+    console.log("je suis dans le navigate");
+      this.router.navigate([link]);
   }
 
 }
