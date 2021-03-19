@@ -9,7 +9,7 @@ import { MenuPageComponent } from './menu-page/menu-page.component';
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path:'restaurants',component: RestaurantPageComponent},
-  {path:'restaurant/:restaurantsId/menu',component: MenuPageComponent},
+  {path:'restaurants/:id/menu',component: MenuPageComponent},
   {path:'login',component: LoginPageComponent},
   {path:'register',component: RegisterPageComponent},
 ];

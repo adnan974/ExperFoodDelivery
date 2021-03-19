@@ -21,8 +21,9 @@ export class RestaurantShowComponent implements OnInit {
 
   }
 
-  navigateToMenu(link){
-    console.log("je suis dans le navigate");
+  navigateToMenu(){
+    
+    let link= "/restaurants/"+this.restaurant.id+"/menu"
       this.router.navigate([link]);
   }
 
