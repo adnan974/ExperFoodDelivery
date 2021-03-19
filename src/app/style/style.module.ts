@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-//import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -8,33 +7,29 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+const AngularMaterialModules = [
+  MatButtonModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCardModule,
+  MatStepperModule,
+  MatSnackBarModule
+]
 
 
 @NgModule({
   declarations: [],
-  imports: [    
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatStepperModule,
-    FlexLayoutModule
+  imports: [
+    ...AngularMaterialModules
+
   ],
   exports : [
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatStepperModule,
-    FlexLayoutModule
+    ...AngularMaterialModules
   ]
 })
 export class StyleModule { }

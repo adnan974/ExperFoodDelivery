@@ -9,38 +9,6 @@ export class User {
   private _CP?: string;
   private _city?: string;
 
-  
-  //constructor(id,lastname, firstname, password, email, address, cp, city) {
-    //this._id = id;
-   // this._lastName = lastname;
-    //this._firstName = firstname;
-   // this._password = password;
-   // this._email = email;
-   // this._address = address;
-   // this._CP = cp;
-   // this._city = city;
-
- // }
-  //constructor(options: {
-   // id?: number,
-   // lastName?: string,
-   // firstName?: string,
-   // password?: string,
-   // email?: string,
-   // address?: string,
-   // CP?: string,
-   // city?: string,
-
-  //} = {}) {
-   // this._id = options.id || undefined;
-   // this._lastName = options.lastName || undefined;
-   // this._firstName = options.firstName || undefined;
-   // this._password = options.password || undefined;
-   // this._email = options.email || undefined;
-   // this._address = options.address || undefined;
-   // this._CP = options.CP || undefined;
-  //  this._city = options.city || undefined;
- // }
 
     public get id(): number {
         return this._id;

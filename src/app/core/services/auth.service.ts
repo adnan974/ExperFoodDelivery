@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
 import { User } from 'src/app/shared/models/user';
 
 @Injectable({
@@ -11,10 +13,12 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  redirectUrl: string = '/home';
-
-
+  redirectUrl: string = '/customer/home';
   $userConnected = new BehaviorSubject<Partial<User>>(null);
+
+  private log(log: string) {
+    console.info(log);
+  }
 
   isLoggedIn() {
     return !!localStorage.getItem('jwt');
@@ -38,12 +42,25 @@ export class AuthService {
 
   }
 
-  login(userCredentials: Partial<User>) : void { 
-      // TODO
-      localStorage.setItem('jwt', JSON.stringify(userCredentials));
-      this.updateUserInfos();
-      this.router.navigate([this.redirectUrl]);
+
+  login(credentials: Partial<User>): Observable<any> {
+    console.log('on est dans le auth service login')
+    return this.http.post('http://localhost:5000/auth/login', credentials).pipe(
+      tap(response => {
+        this.log(`try to login : ${credentials}`);
+        if (response.success) {
+          localStorage.setItem('jwt', JSON.stringify(response.token));
+          this.router.navigate([this.redirectUrl]);
+        }else {
+          localStorage.removeItem('jwt');
+        }
+
+        this.updateUserInfos();
+      })
+    );
+
   }
+
 
   logout(): void {
     localStorage.removeItem('jwt');
