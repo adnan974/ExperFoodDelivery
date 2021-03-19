@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  redirectUrl: string = '/customer/home';
+  redirectUrl: string = '/home';
 
 
   $userConnected = new BehaviorSubject<Partial<User>>(null);

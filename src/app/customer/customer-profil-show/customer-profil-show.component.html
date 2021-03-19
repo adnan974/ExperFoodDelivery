@@ -1,10 +1,13 @@
 <div>
   <div>Nom de famille : {{user.lastName}}</div>
-  <div>Prénom : {{user.firstName}}</div>
+  <div>PrÃ©nom : {{user.firstName}}</div>
   <div>Adresse : {{user.address}}</div>
   <div>Code Postal : {{user.CP}}</div>
   <div>Ville : {{user.city}}</div>
 </div>
 <button mat-icon-button color="primary" aria-label="update profil" (click)="navigate('customer/updateProfil')">
   <mat-icon>edit</mat-icon>
+</button>
+<button mat-icon-button color="primary" aria-label="update profil" (click)="delete(user.id)">
+  <mat-icon>delete</mat-icon>
 </button>

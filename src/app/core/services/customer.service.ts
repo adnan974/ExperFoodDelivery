@@ -16,6 +16,8 @@ export class CustomerService {
     this.user.city = "Saint-Joseph";
     this.user.address = "rue des alouettes";
     this.user.CP = "97480";
+    this.user.email = "tes@email.fr";
+    this.user.password = "1245";
 
     return this.user;
   }

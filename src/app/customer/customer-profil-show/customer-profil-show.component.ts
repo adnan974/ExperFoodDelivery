@@ -19,4 +19,8 @@ export class CustomerProfilShowComponent implements OnInit {
   navigate(link : string) {
     this.route.navigate([link]);
   }
+
+  delete(id: number) {
+
+  }
 }

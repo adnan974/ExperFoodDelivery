@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CustomerProfilShowComponent } from './customer-profil-show/customer-profil-show.component';
 import { CustomerProfilFormComponent } from './customer-profil-form/customer-profil-form.component';
 import { CustomerProfilPageComponent } from './customer-profil-page/customer-profil-page.component';
+import { StyleModule } from '../style/style.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CustomerProfilPageComponent } from './customer-profil-page/customer-pro
   imports: [
     SharedModule,
     CustomerRoutingModule,
-    MatIconModule
+    MatIconModule,
+    StyleModule
   ]
 })
 export class CustomerModule { }
