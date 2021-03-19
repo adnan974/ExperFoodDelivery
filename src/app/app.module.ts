@@ -19,7 +19,6 @@ import { AuthService } from './core/services/auth.service';
     CoreModule,
     AppRoutingModule,
   ],
-  // providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

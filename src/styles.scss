@@ -2,3 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fjalla+One&display=swap');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.efd-snackbar {
+  widh: 100%!important;
+  text-align: center;
+  margin-top: 6em!important;
+}
+
+.efd-snackbar .mat-snack-bar-container {
+  text-align: center;
+}
+
+.efd-snackbar .mat-simple-snackbar {
+  display: inline-block !important;
+  font-family: 'Poppins', sans-serif!important;
+  font-size: 1.1em!important;
+}
