@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 const AngularMaterialModules = [
@@ -21,7 +22,8 @@ const AngularMaterialModules = [
   MatCardModule,
   MatStepperModule,
   MatSnackBarModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  MatMenuModule
 ]
 
 

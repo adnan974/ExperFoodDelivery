@@ -11,8 +11,8 @@ export class CustomerService {
 
   public getCustomer(id: number): User {
     this.user.id = 1;
-    this.user.lastName = "Julie";
-    this.user.firstName = "Murielle";
+    this.user.lastname = "Julie";
+    this.user.firstname = "Murielle";
     this.user.city = "Saint-Joseph";
     this.user.address = "rue des alouettes";
     this.user.CP = "97480";

@@ -25,8 +25,8 @@ export class CustomerProfilFormComponent implements OnInit {
       passwordCtrl: [this.user.password, Validators.required]
     });
     this.updateInfoGroup = this.fb.group({
-      lastNameCtrl: [this.user.lastName, Validators.required],
-      firstNameCtrl: [this.user.firstName, Validators.required],
+      lastnameCtrl: [this.user.lastname, Validators.required],
+      firstnameCtrl: [this.user.firstname, Validators.required],
       addressCtrl: [this.user.address, Validators.required],
       cityCtrl: [this.user.city, Validators.required],
       cpCtrl: [this.user.CP, Validators.required]
@@ -42,8 +42,8 @@ export class CustomerProfilFormComponent implements OnInit {
 
   updateProfil() {
     console.log(this.updateInfoGroup.value);
-    this.user.lastName = this.updateInfoGroup.value['lastNameCtrl'];
-    this.user.firstName = this.updateInfoGroup.value['firstNameCtrl'];
+    this.user.lastname = this.updateInfoGroup.value['lastnameCtrl'];
+    this.user.firstname = this.updateInfoGroup.value['firstnameCtrl'];
     this.user.address = this.updateInfoGroup.value['addressCtrl'];
     this.user.city = this.updateInfoGroup.value['cityCtrl'];
     this.user.CP = this.updateInfoGroup.value['cpCtrl'];

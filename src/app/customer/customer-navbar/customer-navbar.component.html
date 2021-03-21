@@ -1,0 +1,35 @@
+
+    <mat-toolbar color="primary" class="efd-customer-navbar">
+      <span class="customer-navbar-title" (click)="navigate('home')">
+        <img src="../../../assets/images/logo_efd_white.png" class="customer-navbar-title-logo">
+        <span class="customer-navbar-title-text">
+          <span class="brand-exper">Exper </span> <span class="brand-food-delivery"> Food Delivery </span>
+        </span>
+      </span>
+
+      <span class="spacer"></span>
+
+      <button mat-button (click)="navigate('customer/restaurants')"><mat-icon>storefront</mat-icon> Restaurants</button>
+      <button mat-button (click)="navigate('customer/menus')"><mat-icon>fastfood</mat-icon> Menus</button>
+      <button mat-button (click)="navigate('customer/profil')"><mat-icon>person</mat-icon> Profil</button>
+
+      <span class="spacer"></span>
+
+      <div class="user-infos">
+        <div class=" user-icon-container">
+            <mat-icon [matMenuTriggerFor]="beforeMenu" class="user-icon">person_pin</mat-icon>
+            <mat-menu #beforeMenu="matMenu" xPosition="before">
+                <div>
+                    <span class="name">{{userConnected.firstname ? userConnected.firstname: 'Firsname'}} {{userConnected.lastname ? userConnected.lastname : 'LASTNAME' | uppercase}}</span><br> <span class="email">{{userConnected.email}}</span>
+                </div>
+                <button mat-button color="primary" (click)="logout()">
+                <mat-icon class="menu-logout">exit_to_app</mat-icon><span class="spacer"></span> <span>Deconnexion
+              </span></button>
+
+            </mat-menu>
+        </div>
+        <div class="user-text-infos-container">
+            <span class="name">{{userConnected.firstname ? userConnected.firstname: 'Firsname'}} {{userConnected.lastname ? userConnected.lastname : 'LASTNAME' | uppercase}}</span><br> <span class="email">{{userConnected.email ? userConnected.email : 'email@email.com'}}</span>
+        </div>
+    </div>
+    </mat-toolbar>

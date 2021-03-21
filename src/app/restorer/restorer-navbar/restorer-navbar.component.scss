@@ -1,4 +1,4 @@
-.efd-navbar {
+.efd-restorer-navbar {
   position: fixed;
   z-index: 100;
 }
@@ -8,12 +8,12 @@
     flex: 1 1 auto;
   }
 
-.navbar-title {
+.restorer-navbar-title {
   cursor: pointer;
   display: flex;
   align-items:center;
 }
-.navbar-title-logo{
+.restorer-navbar-title-logo{
   width: 3em;
   margin: 0 0.5em;
 
