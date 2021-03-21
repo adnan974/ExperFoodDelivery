@@ -23,8 +23,8 @@ export class RegisterFormComponent implements OnInit {
       passwordCtrl: ['', Validators.required]
     });
     this.registerInfoGroup = this.fb.group({
-      lastNameCtrl: ['', Validators.required],
-      firstNameCtrl: ['', Validators.required],
+      lastnameCtrl: ['', Validators.required],
+      firstnameCtrl: ['', Validators.required],
       addressCtrl: ['', Validators.required],
       cityCtrl: ['', Validators.required],
       cpCtrl: ['', Validators.required]
@@ -41,8 +41,8 @@ export class RegisterFormComponent implements OnInit {
 
   register() {
     console.log(this.registerInfoGroup.value);
-    this.user.lastName = this.registerInfoGroup.value['lastNameCtrl'];
-    this.user.firstName = this.registerInfoGroup.value['firstNameCtrl'];
+    this.user.lastname = this.registerInfoGroup.value['lastnameCtrl'];
+    this.user.firstname = this.registerInfoGroup.value['firstnameCtrl'];
     this.user.address = this.registerInfoGroup.value['addressCtrl'];
     this.user.city = this.registerInfoGroup.value['cityCtrl'];
     this.user.CP = this.registerInfoGroup.value['cpCtrl'];

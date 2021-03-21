@@ -1,8 +1,8 @@
 export class User {
 
   private _id? : number;
-  private _lastName?: string;
-  private _firstName?: string;
+  private _lastname?: string;
+  private _firstname?: string;
   private _password?: string;
   private _email?: string;
   private _address?: string;
@@ -17,17 +17,17 @@ export class User {
         this._id = value;
     }
 
-    public get lastName(): string {
-        return this._lastName;
+    public get lastname(): string {
+        return this._lastname;
     }
-    public set lastName(value: string) {
-        this._lastName = value;
+    public set lastname(value: string) {
+        this._lastname = value;
     }
-    public get firstName(): string {
-        return this._firstName;
+    public get firstname(): string {
+        return this._firstname;
     }
-    public set firstName(value: string) {
-        this._firstName = value;
+    public set firstname(value: string) {
+        this._firstname = value;
     }
     public get password(): string {
         return this._password;

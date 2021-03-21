@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeRestorerComponent } from './home-restorer/home-restorer.component';
-import { RestorerComponent } from './restorer/restorer.component';
+import { RestorerTemplateComponent } from './restorer-template/restorer-template.component';
 
 const routes: Routes = [
   {
     path: 'restorer',
-    component: RestorerComponent, 
+    component: RestorerTemplateComponent,
     children: [
       { path: 'home', component : HomeRestorerComponent },
     ]

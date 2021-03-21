@@ -28,11 +28,15 @@ export class AuthService {
   updateUserInfos() {
 
     if (this.isLoggedIn()) {
-      const connexionUserObject = JSON.parse(localStorage.getItem('jwt'));
+      const connexionUserObject = JSON.parse(localStorage.getItem('user'));
+
+      console.log('autm module  objet recu :', connexionUserObject);
+
+
       const userConnected : Partial<User>  = {
-        //id: connexionUserObject.user.id,
-        //firstName: connexionUserObject.user.firstname,
-        //lastName: connexionUserObject.user.lastname,
+        id: connexionUserObject.id,
+        firstname: connexionUserObject.firstname,
+        lastname: connexionUserObject.lastname,
         email: connexionUserObject.email,
       }
       this.$userConnected.next(userConnected);
@@ -50,6 +54,7 @@ export class AuthService {
         this.log(`try to login : ${credentials}`);
         if (response.success) {
           localStorage.setItem('jwt', JSON.stringify(response.token));
+          localStorage.setItem('user', JSON.stringify(response.data));
           this.router.navigate([this.redirectUrl]);
         }else {
           localStorage.removeItem('jwt');

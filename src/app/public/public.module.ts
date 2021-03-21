@@ -15,6 +15,8 @@ import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuShowComponent } from './menu-show/menu-show.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { AuthService } from '../core/services/auth.service';
+import { PublicTemplateComponent } from './public-template/public-template.component';
+import { PublicNavbarComponent } from './public-navbar/public-navbar.component';
 
 
 
@@ -30,7 +32,9 @@ import { AuthService } from '../core/services/auth.service';
     MenuPageComponent,
     MenuListComponent,
     MenuShowComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    PublicTemplateComponent,
+    PublicNavbarComponent
   ],
   imports: [
     SharedModule,
