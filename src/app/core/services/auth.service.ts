@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { User } from 'src/app/shared/models/user';
+import { User, UserRole } from 'src/app/shared/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -28,16 +28,14 @@ export class AuthService {
   updateUserInfos() {
 
     if (this.isLoggedIn()) {
+
       const connexionUserObject = JSON.parse(localStorage.getItem('user'));
-
-      console.log('autm module  objet recu :', connexionUserObject);
-
-
       const userConnected : Partial<User>  = {
         id: connexionUserObject.id,
         firstname: connexionUserObject.firstname,
         lastname: connexionUserObject.lastname,
         email: connexionUserObject.email,
+        role : UserRole.Customer
       }
       this.$userConnected.next(userConnected);
     } else {
@@ -48,7 +46,6 @@ export class AuthService {
 
 
   login(credentials: Partial<User>): Observable<any> {
-    console.log('on est dans le auth service login')
     return this.http.post('http://localhost:5000/auth/login', credentials).pipe(
       tap(response => {
         this.log(`try to login : ${credentials}`);

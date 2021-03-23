@@ -10,12 +10,19 @@ import { CustomerProfilShowComponent } from './customer-profil-show/customer-pro
 import { CustomerProfilFormComponent } from './customer-profil-form/customer-profil-form.component';
 import { CustomerProfilPageComponent } from './customer-profil-page/customer-profil-page.component';
 import { StyleModule } from '../style/style.module';
-import { CustomerNavbarComponent } from './customer-navbar/customer-navbar.component';
 import { CustomerUptdateProfilPageComponent } from './customer-uptdate-profil-page/customer-uptdate-profil-page.component';
 
 
 @NgModule({
-  declarations: [HomeCustomerComponent, CustomerTemplateComponent, CustomerPageComponent, CustomerProfilShowComponent, CustomerProfilFormComponent, CustomerProfilPageComponent, CustomerNavbarComponent, CustomerUptdateProfilPageComponent ],
+  declarations: [
+    HomeCustomerComponent,
+    CustomerTemplateComponent,
+    CustomerPageComponent,
+    CustomerProfilShowComponent,
+    CustomerProfilFormComponent,
+    CustomerProfilPageComponent,
+    CustomerUptdateProfilPageComponent
+  ],
   imports: [
     SharedModule,
     CustomerRoutingModule,

@@ -52,10 +52,13 @@
 }
 
 .efd-customer-navbar .user-infos .user-icon {
-  font-size: 3em;
+  font-size: 2.5em;
+}
+.efd-customer-navbar .shop-cart-icon {
+  font-size: 1.5em;
 }
 
-.efd-customer-navbar .user-infos .user-icon-container {
+.efd-customer-navbar .user-infos .user-icon-container, .efd-customer-navbar .user-shop-cart .shop-cart-icon-container {
   margin: 0 1.5em;
   cursor: pointer;
   display:inline-block;

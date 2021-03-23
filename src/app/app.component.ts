@@ -1,6 +1,8 @@
+import { AuthService } from './core/services/auth.service';
 import { CommonService } from './core/services/common.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { User, UserRole } from './shared/models/user';
 
 @Component({
   selector: 'efd-root',
@@ -9,23 +11,37 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 })
 export class AppComponent implements OnInit {
   title = 'exper-food-delivery';
+  userConnected: Partial<User>;
+  get userRole(): typeof UserRole {
+    return UserRole;
+  }
 
   constructor(
-
+    private authService:AuthService,
     private commonService: CommonService,
-    private _snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar) {
   }
   ngOnInit(): void {
 
+
+
+    this.authService.$userConnected.subscribe((response) => {
+
+      this.userConnected = response;
+    })
+    this.authService.updateUserInfos(); //TODO
+
+
+
     this.commonService.snackBardata$.subscribe((data) => {
       if (data !== null) {
-        this._snackBar.open(data, null, {
+        this.snackBar.open(data, null, {
           duration: 2000,
           horizontalPosition: 'center',
           verticalPosition: 'top',
           panelClass: 'efd-snackbar'
         });
       }
-    })
+    });
   }
 }

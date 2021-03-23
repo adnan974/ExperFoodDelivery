@@ -9,16 +9,16 @@
 
       <span class="spacer"></span>
 
-      <button mat-button (click)="navigate('customer/restaurants')"><mat-icon>storefront</mat-icon> Restaurants</button>
-      <button mat-button (click)="navigate('customer/menus')"><mat-icon>fastfood</mat-icon> Menus</button>
+      <button mat-button (click)="navigate('restaurants')"><mat-icon>storefront</mat-icon> Restaurants</button>
+      <button mat-button (click)="navigate('menus')"><mat-icon>fastfood</mat-icon> Menus</button>
       <button mat-button (click)="navigate('customer/profil')"><mat-icon>person</mat-icon> Profil</button>
 
       <span class="spacer"></span>
 
       <div class="user-infos">
         <div class=" user-icon-container">
-            <mat-icon [matMenuTriggerFor]="beforeMenu" class="user-icon">person_pin</mat-icon>
-            <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <mat-icon [matMenuTriggerFor]="userInfosMenu" class="user-icon">person_pin</mat-icon>
+            <mat-menu #userInfosMenu="matMenu" xPosition="before">
                 <div>
                     <span class="name">{{userConnected.firstname ? userConnected.firstname: 'Firsname'}} {{userConnected.lastname ? userConnected.lastname : 'LASTNAME' | uppercase}}</span><br> <span class="email">{{userConnected.email}}</span>
                 </div>
@@ -28,8 +28,19 @@
 
             </mat-menu>
         </div>
-        <div class="user-text-infos-container">
+        <!-- <div class="user-text-infos-container">
             <span class="name">{{userConnected.firstname ? userConnected.firstname: 'Firsname'}} {{userConnected.lastname ? userConnected.lastname : 'LASTNAME' | uppercase}}</span><br> <span class="email">{{userConnected.email ? userConnected.email : 'email@email.com'}}</span>
-        </div>
+        </div> -->
     </div>
+    <div class="user-shop-cart">
+      <div class=" shop-cart-icon-container">
+          <mat-icon [matMenuTriggerFor]="shopCartMenu" class="shop-cart-icon">shopping_cart</mat-icon>
+          <mat-menu #shopCartMenu="matMenu" xPosition="before">
+            //TODO : menu panier
+          </mat-menu>
+      </div>
+      <!-- <div class="user-text-infos-container">
+          <span class="name">{{userConnected.firstname ? userConnected.firstname: 'Firsname'}} {{userConnected.lastname ? userConnected.lastname : 'LASTNAME' | uppercase}}</span><br> <span class="email">{{userConnected.email ? userConnected.email : 'email@email.com'}}</span>
+      </div> -->
+  </div>
     </mat-toolbar>

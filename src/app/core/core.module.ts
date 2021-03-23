@@ -5,16 +5,25 @@ import { RestorerModule } from '../restorer/restorer.module';
 import { CustomerModule } from '../customer/customer.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/navbars/navbar/navbar.component';
 import { StyleModule } from '../style/style.module';
-import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PublicNavbarComponent } from './components/navbars/public-navbar/public-navbar.component';
+import { CustomerNavbarComponent } from './components/navbars/customer-navbar/customer-navbar.component';
+import { RestorerNavbarComponent } from './components/navbars/restorer-navbar/restorer-navbar.component';
 
 
 
 
 @NgModule({
-  declarations: [PageNotFoundComponent, FooterComponent, NavbarComponent],
+  declarations: [
+    NavbarComponent,
+    PublicNavbarComponent,
+    CustomerNavbarComponent,
+    RestorerNavbarComponent,
+    FooterComponent,
+    PageNotFoundComponent,
+  ],
   imports: [
     CommonModule,
     PublicModule,
@@ -24,8 +33,13 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   exports : [
-    NavbarComponent, FooterComponent, PageNotFoundComponent
-  ], 
-  //providers : [AuthService]
+    NavbarComponent,
+    PublicNavbarComponent,
+    CustomerNavbarComponent,
+    RestorerNavbarComponent,
+    FooterComponent,
+    PageNotFoundComponent,
+
+  ],
 })
 export class CoreModule { }

@@ -21,7 +21,6 @@ export class CustomerNavbarComponent implements OnInit{
     })
     this.authService.updateUserInfos(); //TODO
 
-    console.log(this.userConnected);
   }
 
   navigate(link:string){
