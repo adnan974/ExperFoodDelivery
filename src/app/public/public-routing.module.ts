@@ -1,11 +1,8 @@
 import { PublicTemplateComponent } from './public-template/public-template.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
-import { MenuPageComponent } from './menu-page/menu-page.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
+
 
 const routes: Routes = [
 
@@ -13,17 +10,15 @@ const routes: Routes = [
     path:'',
     component:PublicTemplateComponent,
     children: [
-      {path: 'home', component: HomePageComponent},
-      {path:'restaurants',component: RestaurantPageComponent},
-      {path:'restaurants/:id/menu',component: MenuPageComponent},
-      {path:'login',component: LoginPageComponent},
-      {path:'register',component: RegisterPageComponent},
+      { path: '', redirectTo: '/home', pathMatch: 'full'},
+      { path: 'home', component: HomePageComponent },
+      { path: 'login',loadChildren : ()=> import('./login/login.module').then(m => m.LoginModule) },
+      { path: 'register',loadChildren : ()=> import('./register/register.module').then(m => m.RegisterModule) },
+      { path: 'restaurants',loadChildren : ()=> import('./restaurant/restaurant.module').then(m => m.RestaurantModule) },
+      { path: 'restaurants/:id/menu',loadChildren : ()=> import('./menu/menu.module').then(m => m.MenuModule) },
     ]
   }
-
 ];
-
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

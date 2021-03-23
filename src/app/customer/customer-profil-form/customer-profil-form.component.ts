@@ -19,7 +19,6 @@ export class CustomerProfilFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.us.getCustomer(1);
-    console.log(this.us.getCustomer(1).email);
     this.updateLoginForm = this.fb.group({
       emailCtrl: [this.user.email, Validators.required],
       passwordCtrl: [this.user.password, Validators.required]

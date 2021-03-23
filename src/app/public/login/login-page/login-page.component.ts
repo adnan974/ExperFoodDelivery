@@ -22,7 +22,6 @@ export class LoginPageComponent implements OnInit {
   login(userCredentials : Partial<User>) {
     this.authService.login(userCredentials).toPromise()
     .then((response)=> {
-      console.log(response);
       if (response.success) {
         this.commonService.changeSnackBarMessage("Vous êtes connecté !");
       }else {
