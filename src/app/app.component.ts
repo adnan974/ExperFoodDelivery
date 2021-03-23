@@ -1,6 +1,6 @@
 import { AuthService } from './core/services/auth.service';
 import { CommonService } from './core/services/common.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { User, UserRole } from './shared/models/user';
 
@@ -21,17 +21,14 @@ export class AppComponent implements OnInit {
     private commonService: CommonService,
     private snackBar: MatSnackBar) {
   }
+
   ngOnInit(): void {
-
-
 
     this.authService.$userConnected.subscribe((response) => {
 
       this.userConnected = response;
     })
-    this.authService.updateUserInfos(); //TODO
-
-
+    this.authService.updateUserInfos();
 
     this.commonService.snackBardata$.subscribe((data) => {
       if (data !== null) {

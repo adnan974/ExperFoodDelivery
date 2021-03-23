@@ -1,20 +1,26 @@
 
-    <mat-toolbar color="primary" class="efd-public-navbar">
-      <span class="public-navbar-title" (click)="navigate('home')">
+    <mat-toolbar color="primary" class="efd-navbar efd-public-navbar" fxLayout="row" fxLayoutAlign="space-between center">
+
+      <section class="public-navbar-title" (click)="navigate('home')">
         <img src="../../../assets/images/logo_efd_white.png" class="public-navbar-title-logo">
         <span class="public-navbar-title-text">
           <span class="brand-exper">Exper </span> <span class="brand-food-delivery"> Food Delivery </span>
         </span>
-      </span>
+      </section>
 
-      <span class="spacer"></span>
+      <section class="nav-items-group">
+        <button mat-button (click)="navigate('restaurants')">
+          <mat-icon>storefront</mat-icon> Restaurants
+        </button>
+        <button mat-button (click)="navigate('menus')">
+          <mat-icon>fastfood</mat-icon> Menus
+        </button>
+      </section>
 
-      <button mat-button (click)="navigate('restaurants')"><mat-icon>storefront</mat-icon> Restaurants</button>
-      <button mat-button (click)="navigate('menus')"><mat-icon>fastfood</mat-icon> Menus</button>
+      <section class="right-items-group">
 
-      <span class="spacer"></span>
+        <button mat-button (click)="navigate('login')"><mat-icon>login</mat-icon> Connexion</button>
+        <button mat-button (click)="navigate('register')"><mat-icon>wysiwyg</mat-icon> Inscription</button>
 
-      <button mat-button (click)="navigate('login')"><mat-icon>login</mat-icon> Connexion</button>
-      <button mat-button (click)="navigate('register')"><mat-icon>wysiwyg</mat-icon> Inscription</button>
-
-    </mat-toolbar>
+      </section>
+  </mat-toolbar>

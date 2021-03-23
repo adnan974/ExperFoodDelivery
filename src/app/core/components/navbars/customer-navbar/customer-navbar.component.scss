@@ -1,8 +1,20 @@
 .efd-customer-navbar {
+  background: rgb(0, 120, 245);
   position: fixed;
   z-index: 100;
+  transition: height 0.3s ease-in, background-color 0.25s ease-in;
 }
 
+.efd-navbar-transparent {
+  background-color: transparent;
+  transition: height 0.3s ease-in, background-color 0.5s ease-in;
+}
+
+.efd-navbar-scroll-down {
+  background: rgb(0, 120, 245);
+  background-color: radial-gradient(circle, rgba(0, 120, 245, 1) 0%, rgba(66, 136, 255, 1) 41%, rgba(0, 212, 255, 1) 100%);
+  transition: height 0.3s ease-in, background-color 0.5s ease-in;
+}
 
 .spacer {
     flex: 1 1 auto;
@@ -13,6 +25,7 @@
   display: flex;
   align-items:center;
 }
+
 .customer-navbar-title-logo{
   width: 3em;
   margin: 0 0.5em;
@@ -23,49 +36,37 @@
 .brand-exper {
   font-family: 'Fjalla One', sans-serif;
   font-size : 1.5em;
-
-
 }
 
 .brand-food-delivery {
   font-family: 'Dancing Script', cursive;
   font-size:2em;
+}
 
+.customer-navbar-title, .nav-items-group, .right-items-group{
+  width: calc(100% / 3);
+}
+
+.nav-items-group{
+  text-align: center;
+}
+
+.right-items-group{
+  text-align: right;
+  align-items: center;
+  line-height: 0.5;
 }
 
 
-.nav-item {
-  font-size : 0.75em;
-  margin : 0 1em;
-
-}
-
-.efd-customer-navbar .user-infos-container {
-  //float: right;
-}
-
-.efd-customer-navbar .user-infos {
-  line-height: 1.3;
-  font-size: 0.75em;
-  display: flex;
-  align-items:center;
-}
-
-.efd-customer-navbar .user-infos .user-icon {
-  font-size: 2.5em;
-}
-.efd-customer-navbar .shop-cart-icon {
-  font-size: 1.5em;
-}
-
-.efd-customer-navbar .user-infos .user-icon-container, .efd-customer-navbar .user-shop-cart .shop-cart-icon-container {
-  margin: 0 1.5em;
+.user-icon, .shop-cart-icon {
+  margin: 0 0.5em;
   cursor: pointer;
-  display:inline-block;
 }
-.user-text-infos-container {
-  display:inline-block;
+
+.user-icon {
+  font-size: 2em;
 }
-.efd-customer-navbar .user-infos .name {
-  font-size: 1.25em;
+
+.shop-cart-icon {
+  font-size: 1.8em;
 }
