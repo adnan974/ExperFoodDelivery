@@ -1,5 +1,7 @@
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'efd-restorer-navbar',
@@ -8,15 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestorerNavbarComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  userConnected: Partial<User>;
+
+  constructor(private router : Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.$userConnected.subscribe((response) => {
+
+      this.userConnected = response;
+    })
+    this.authService.updateUserInfos(); //TODO
+
   }
 
   navigate(link:string){
 
     this.router.navigate([link]);
 
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
 }
