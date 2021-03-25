@@ -5,6 +5,7 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { User, UserRole } from 'src/app/shared/models/user';
+import { environment } from 'src/environments/environment';
 
 class  ServerAuthResponse {
   success?: boolean;
@@ -17,6 +18,8 @@ class  ServerAuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
+
+  BASE_URL = environment.experFoodDeliveryApi;
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -53,7 +56,7 @@ export class AuthService {
 
 
   login(credentials: User): Observable<ServerAuthResponse> {
-    return this.http.post('http://localhost:5000/api/login', credentials).pipe(
+    return this.http.post(`${this.BASE_URL}/api/login`, credentials).pipe(
       tap((response) => {
         this.log(`try to login : ${credentials}`);
         if (response && response.success) {
@@ -70,7 +73,7 @@ export class AuthService {
   }
 
   register(user: Partial<User>): Observable<ServerAuthResponse> {
-    return this.http.post('http://localhost:5000/api/register', user).pipe(
+    return this.http.post(`${this.BASE_URL}/api/register`, user).pipe(
       tap(response => {
         this.log(`try to register : ${user}`);
         if (response.success) {

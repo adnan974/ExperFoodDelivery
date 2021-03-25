@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  experFoodDeliveryApi : "https://api.exper-food-delivery.borris-dev.re"
 };
