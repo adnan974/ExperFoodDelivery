@@ -10,7 +10,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class RestorerNavbarComponent implements OnInit {
 
-  userConnected: Partial<User>;
+  userConnected?: User | null;
 
   constructor(private router : Router, private authService: AuthService) { }
 

@@ -11,7 +11,7 @@ import { User, UserRole } from './shared/models/user';
 })
 export class AppComponent implements OnInit {
   title = 'exper-food-delivery';
-  userConnected: Partial<User>;
+  userConnected?: User | null;
   get userRole(): typeof UserRole {
     return UserRole;
   }
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 
     this.commonService.snackBardata$.subscribe((data) => {
       if (data !== null) {
-        this.snackBar.open(data, null, {
+        this.snackBar.open(data, undefined, {
           duration: 2000,
           horizontalPosition: 'center',
           verticalPosition: 'top',

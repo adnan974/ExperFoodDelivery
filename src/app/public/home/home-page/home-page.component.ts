@@ -13,11 +13,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(private authService : AuthService) { }
 
   @HostListener('window:scroll', ['$event'])
-  track(event) {
+  track(event : any) {
 
     const position = event.path[1].scrollY;
 
-    if (toolbar) {
+    if (this.toolbar) {
       if (position > 50) {
         this.toolbar.classList.add('efd-navbar-scroll-down');
         this.toolbar.classList.remove('efd-navbar-transparent');
@@ -30,12 +30,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     window.scroll(0,0);
-    this.toolbar.classList.add('efd-navbar-transparent');
+    this.toolbar && this.toolbar.classList.add('efd-navbar-transparent');
   }
 
   ngOnDestroy(): void {
+    if (this.toolbar) {
     this.toolbar.classList.remove('efd-navbar-scroll-down');
     this.toolbar.classList.remove('efd-navbar-transparent');
   }
+}
 
 }

@@ -10,13 +10,12 @@ import { User } from 'src/app/shared/models/user';
 })
 export class CustomerNavbarComponent implements OnInit{
 
-  userConnected: Partial<User>;
+  userConnected?: User | null;
 
   constructor(private router : Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.$userConnected.subscribe((response) => {
-
       this.userConnected = response;
     })
     this.authService.updateUserInfos(); //TODO

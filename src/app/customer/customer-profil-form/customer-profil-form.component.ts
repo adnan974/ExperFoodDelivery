@@ -10,10 +10,10 @@ import { User } from '../../shared/models/user';
   styleUrls: ['./customer-profil-form.component.scss']
 })
 export class CustomerProfilFormComponent implements OnInit {
-  updateLoginForm: FormGroup;
-  updateInfoGroup: FormGroup;
+  updateLoginForm?: FormGroup;
+  updateInfoGroup?: FormGroup;
   isEditable = true;
-  user: User;
+  user?: User;
   hide = true;
   constructor(private route: Router, private fb: FormBuilder, private us: CustomerService) { }
 
@@ -33,19 +33,18 @@ export class CustomerProfilFormComponent implements OnInit {
     });
   }
   updateLogin() {
-    console.log(this.updateLoginForm.value);
-    this.user.email = this.updateLoginForm.value['emailCtrl'];
-    this.user.password = this.updateLoginForm.value['passwordCtrl'];
-    console.log(this.user);
+    this.user && this.updateLoginForm &&
+    (this.user.email = this.updateLoginForm.value['emailCtrl']) &&
+    (this.user.password = this.updateLoginForm.value['passwordCtrl']);
+
   }
 
   updateProfil() {
-    console.log(this.updateInfoGroup.value);
-    this.user.lastname = this.updateInfoGroup.value['lastnameCtrl'];
-    this.user.firstname = this.updateInfoGroup.value['firstnameCtrl'];
-    this.user.address = this.updateInfoGroup.value['addressCtrl'];
-    this.user.city = this.updateInfoGroup.value['cityCtrl'];
-    this.user.CP = this.updateInfoGroup.value['cpCtrl'];
-    console.log(this.user);
+    this.user && this.updateInfoGroup &&
+    (this.user.lastname = this.updateInfoGroup.value['lastnameCtrl'])&&
+    (this.user.firstname = this.updateInfoGroup.value['firstnameCtrl'])&&
+    (this.user.address = this.updateInfoGroup.value['addressCtrl'])&&
+    (this.user.city = this.updateInfoGroup.value['cityCtrl'])&&
+    (this.user.CP = this.updateInfoGroup.value['cpCtrl'])
   }
 }

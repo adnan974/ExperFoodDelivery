@@ -1,7 +1,10 @@
 <div class="container-form">
+  <div *ngIf="user">
+
+
   <div class="block-align">
     <img id="img-profil" />
-    <div> <span>{{user.lastname}}</span> <span>  {{user.firstname}}</span></div>
+    <div> <span>{{user.lastname}}</span> <span> {{user.firstname}}</span></div>
     <button mat-icon-button color="primary" aria-label="update profil" (click)="navigate('customer/update-profil')">
       <mat-icon>edit</mat-icon>
     </button>
@@ -13,14 +16,14 @@
     <h3>Vos information de login</h3>
     <p>Email : {{user.email}}</p>
     <p>Password : *****</p>
-  </mat-card><br/>
+  </mat-card><br />
   <mat-card class="block">
     <h3>Vos information personnelles</h3>
     <p>Adresse : {{user.address}}</p>
     <p>Code Postal : {{user.CP}}</p>
     <p>Ville : {{user.city}}</p>
   </mat-card>
-
+</div>
 
 
 </div>

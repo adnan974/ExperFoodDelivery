@@ -1,116 +1,116 @@
-export class Restaurant{
+export class Restaurant {
+  private _id?: number;
+  private _name?: string;
+  private _description?: string;
+  private _address?: string;
+  private _photosUrls?: Array<string>;
 
-    private _id:number;
-    private _name:string;
-    private _description:string;
-    private _address?:string;
-    private _photosUrls?:Array<string>;
+  constructor(
+    params: {
+      id?: number;
+      name?: string;
+      description?: string;
+      address?: string;
+      photosUrls?: Array<string>;
+    } = {}
+  ) {
+    this._id = params.id;
+    this._name = params.name;
+    this._description = params.description;
+    this._address = params.address;
+    this._photosUrls = params.photosUrls;
+  }
 
-    constructor(id, name,description, address) {
-        this._id = id;
-        this._name = name;
-        this.description = description;
-        this._address = address;
-    }
+  //Todo à compléter...
 
+  /**
+   * Getter id
+   * @return {number}
+   */
+  public get id(): number | undefined {
+    return this._id;
+  }
 
-    //Todo à compléter...
+  /**
+   * Setter id
+   * @param {number} value
+   */
+  public set id(value: number | undefined) {
+    this._id = value;
+  }
 
+  /**
+   * Getter name
+   * @return {string}
+   */
+  public get name(): string | undefined {
+    return this._name;
+  }
 
-    /**
-     * Getter id
-     * @return {number}
-     */
-	public get id(): number {
-		return this._id;
-	}
-
-    /**
-     * Getter name
-     * @return {string}
-     */
-	public get name(): string {
-		return this._name;
-	}
-
+  /**
+   * Setter name
+   * @param {string} value
+   */
+  public set name(value: string | undefined) {
+    this._name = value;
+  }
 
   /**
    * Getter description
    * @return {string}
    */
-  public get description(): string {
+  public get description(): string | undefined {
     return this._description;
   }
 
- 
-
-    /**
-     * Getter address
-     * @return {string}
-     */
-	public get address(): string {
-		return this._address;
-	}
-
-    /**
-     * Setter id
-     * @param {number} value
-     */
-	public set id(value: number) {
-		this._id = value;
-	}
-
-    /**
-     * Setter name
-     * @param {string} value
-     */
-	public set name(value: string) {
-		this._name = value;
-	}
-
   /**
-  * Setter description
-  * @param {string} value
-  */
-  public set description(value: string) {
+   * Setter description
+   * @param {string} value
+   */
+  public set description(value: string | undefined) {
     this._description = value;
   }
 
-    /**
-     * Setter address
-     * @param {string} value
-     */
-	public set address(value: string) {
-		this._address = value;
-	}
-
-      /**
-     * Getter photos_url
-     * @return {Array<string>}
-     */
-	public get photosUrls(): Array<string> {
-		return this._photosUrls;
-	}
-
-      /**
-     * Setter photos_url
-     * @param {Array<string>} value
-     */
-	public set photosUrls(value: Array<string>) {
-		this._photosUrls = value;
-	}
-
-  public addPhotoUrl(photoUrl : string) : void {
-    this._photosUrls.push(photoUrl);
+  /**
+   * Getter address
+   * @return {string}
+   */
+  public get address(): string | undefined {
+    return this._address;
   }
 
-  public deletePhotoUrl(photoUrl : string) {
-    let index = this._photosUrls.indexOf(photoUrl);
-    if (index > -1) {
-      this._photosUrls.splice(index, 1);
+  /**
+   * Setter address
+   * @param {string} value
+   */
+  public set address(value: string | undefined) {
+    this._address = value;
+  }
+
+  /**
+   * Getter photos_url
+   * @return {Array<string>}
+   */
+  public get photosUrls(): Array<string> | undefined {
+    return this._photosUrls;
+  }
+
+  /**
+   * Setter photos_url
+   * @param {Array<string>} value
+   */
+  public set photosUrls(value: Array<string> | undefined) {
+    this._photosUrls = value;
+  }
+
+  public addPhotoUrl(photoUrl: string): void {
+    this._photosUrls && this._photosUrls.push(photoUrl);
+  }
+
+  public deletePhotoUrl(photoUrl: string) {
+    if (this._photosUrls) {
+      let index = this._photosUrls.indexOf(photoUrl);
+      index > -1 && this._photosUrls.splice(index, 1);
     }
   }
-
-
-
 }
