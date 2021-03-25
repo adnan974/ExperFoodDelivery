@@ -9,13 +9,12 @@ import { Restaurant } from '../../../shared/models/restaurant';
 })
 export class RestaurantListComponent implements OnInit {
 
-  public restaurantList: Array<Restaurant>;
+  public restaurantList: Array<Restaurant> = new Array<Restaurant>();
 
   constructor(private restaurantService : RestaurantService) { }
 
   ngOnInit(): void {
     this.restaurantList = this.restaurantService.getRestaurants();
-    console.log(this.restaurantList)
   }
 
 }

@@ -18,8 +18,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  login(userCredentials : Partial<User>) {
+  login(userCredentials : User) {
     this.authService.login(userCredentials).toPromise()
     .then((response)=> {
       if (response.success) {

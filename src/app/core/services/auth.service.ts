@@ -6,6 +6,13 @@ import { map, tap } from 'rxjs/operators';
 
 import { User, UserRole } from 'src/app/shared/models/user';
 
+class  ServerAuthResponse {
+  success?: boolean;
+  message?: string;
+  data?: unknown;
+  token? : string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +21,7 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) { }
 
   redirectUrl: string = '/home';
-  $userConnected = new BehaviorSubject<Partial<User>>(null);
+  $userConnected = new BehaviorSubject<User | null>(null);
 
   private log(log: string) {
     console.info(log);
@@ -28,15 +35,15 @@ export class AuthService {
   updateUserInfos() {
 
     if (this.isLoggedIn()) {
-
-      const connexionUserObject = JSON.parse(localStorage.getItem('user'));
-      const userConnected : Partial<User>  = {
-        id: connexionUserObject.id,
-        firstname: connexionUserObject.firstname,
-        lastname: connexionUserObject.lastname,
-        email: connexionUserObject.email,
+      const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? "");
+      const userConnected : User  = new User({
+        id: connexionUserObject._id,
+        firstname: connexionUserObject._firstname,
+        lastname: connexionUserObject._lastname,
+        email: connexionUserObject._email,
         role : UserRole.Customer
-      }
+      })
+
       this.$userConnected.next(userConnected);
     } else {
       this.$userConnected.next(null);
@@ -45,19 +52,31 @@ export class AuthService {
   }
 
 
-  login(credentials: Partial<User>): Observable<any> {
-    return this.http.post('http://localhost:5000/auth/login', credentials).pipe(
-      tap(response => {
+  login(credentials: User): Observable<ServerAuthResponse> {
+    return this.http.post('http://localhost:5000/api/login', credentials).pipe(
+      tap((response) => {
         this.log(`try to login : ${credentials}`);
-        if (response.success) {
+        if (response && response.success) {
           localStorage.setItem('jwt', JSON.stringify(response.token));
           localStorage.setItem('user', JSON.stringify(response.data));
           this.router.navigate([this.redirectUrl]);
         }else {
           localStorage.removeItem('jwt');
         }
-
         this.updateUserInfos();
+      })
+    );
+
+  }
+
+  register(user: Partial<User>): Observable<ServerAuthResponse> {
+    return this.http.post('http://localhost:5000/api/register', user).pipe(
+      tap(response => {
+        this.log(`try to register : ${user}`);
+        if (response.success) {
+        }else {
+
+        }
       })
     );
 
@@ -66,6 +85,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('user');
     this.router.navigate(['login']);
     this.updateUserInfos();
   }

@@ -9,21 +9,13 @@ import { Menu } from 'src/app/shared/models/menu';
 })
 export class MenuListComponent implements OnInit {
 
-  public menuList:Array<Menu>;
+  public menuList?:Array<Menu>;
 
 
   constructor(private menuService:MenuService) { }
 
   ngOnInit(): void {
     this.menuList= this.menuService.getMenus();
-
-    // for (let i = 1; i < 5; i++) {
-    //   let menu = new Menu();
-    //   menu.id = i;
-    //   menu.name = "Menu " + i;
-    //   menu.price = i+i;
-    //   this.menuList.push(menu);
-    // }
   }
 
 }

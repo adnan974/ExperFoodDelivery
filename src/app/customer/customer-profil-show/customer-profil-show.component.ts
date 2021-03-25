@@ -9,7 +9,7 @@ import { User } from '../../shared/models/user';
   styleUrls: ['./customer-profil-show.component.scss']
 })
 export class CustomerProfilShowComponent implements OnInit {
-  public user: User;
+  public user?: User;
   constructor(private userservice: CustomerService, private route : Router) { }
 
   ngOnInit(): void {

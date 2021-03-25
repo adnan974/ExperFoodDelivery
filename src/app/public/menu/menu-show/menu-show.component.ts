@@ -7,7 +7,7 @@ import { Menu } from 'src/app/shared/models/menu';
   styleUrls: ['./menu-show.component.scss']
 })
 export class MenuShowComponent implements OnInit {
-  @Input() menu:Menu;
+  @Input() menu?:Menu;
   constructor() { }
 
   ngOnInit(): void {

@@ -9,22 +9,14 @@ import { Restaurant } from '../../../shared/models/restaurant';
 })
 export class RestaurantShowComponent implements OnInit {
 
-  @Input() restaurant:Restaurant;
+  @Input() restaurant?:Restaurant;
 
-  constructor(private router:Router) {
+  constructor(private router:Router) {}
 
-
-  }
-
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   navigateToMenu(){
-
-    let link= "/restaurants/"+this.restaurant.id+"/menu"
-      this.router.navigate([link]);
+     this.restaurant && this.router.navigate([`/restaurants/${this.restaurant.id}/menu`]);
   }
 
 }

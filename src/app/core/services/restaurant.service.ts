@@ -8,17 +8,18 @@ import { Restaurant } from 'src/app/shared/models/restaurant';
 export class RestaurantService {
 
 
-  private restaurants : Array<Restaurant> = 
+  private restaurants : Array<Restaurant> =
   [
-    new Restaurant(1,"Restaurant 1", "Cuisine indienne", "12 allée des cocos"),
-    new Restaurant(2,"Restaurant 2", "Cuisine chinoise", "13 allée des cocos"),
-    new Restaurant(3,"Restaurant 3", "Cuisine  kreol", "14 allée des cocos"),
-    new Restaurant(4,"Restaurant 4", "Cuisine malgache","15 allée des cocos"),
-    new Restaurant(5,"Restaurant 5", "Cuisine francaise", "16 allée des cocos"),  
+    new Restaurant({id:1, name:"Restaurant 1", description:"Cuisine indienne", address:"12 allée des cocos"}),
+    new Restaurant({id:1, name:"Restaurant 2", description:"Cuisine chinoise", address:"13 allée des cocos"}),
+    new Restaurant({id:1, name:"Restaurant 3", description:"Cuisine kreol", address:"14 allée des cocos"}),
+    new Restaurant({id:1, name:"Restaurant 4", description:"Cuisine malgache", address:"15 allée des cocos"}),
+    new Restaurant({id:1, name:"Restaurant 5", description:"Cuisine francaise", address:"16 allée des cocos"}),
+
   ]
 
-  constructor(private http: HttpClient) 
-  { 
+  constructor(private http: HttpClient)
+  {
   }
 
   public getRestaurants(): Array<Restaurant> {
@@ -26,7 +27,7 @@ export class RestaurantService {
       return this.restaurants;
   }
 
-  public getRestaurant(id:number): Restaurant {    
+  public getRestaurant(id:number): Restaurant {
 
 
     const resto = this.restaurants.filter((item)=>item.id = id);
@@ -34,14 +35,14 @@ export class RestaurantService {
   }
 
   public postRestaurant(restaurant : Restaurant): Restaurant {
-    
+
     this.restaurants.push(restaurant);
 
     return restaurant;
   }
 
   public deleteRestaurant(id : number): any {
-    
+
     // TODO : delete
     return 'delteted';
   }

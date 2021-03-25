@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../../shared/models/user';
 
@@ -8,12 +8,13 @@ import { User } from '../../../shared/models/user';
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
-  // firstFormGroup: FormGroup;
-  // secondFormGroup: FormGroup;
-  registerLoginForm: FormGroup;
-  registerInfoGroup: FormGroup;
+
+  @Output() register : EventEmitter<any> = new EventEmitter<any>();
+
+  registerLoginForm?: FormGroup;
+  registerInfoGroup?: FormGroup;
   isEditable = true;
-  user: User;
+  user: User = new User();
   hide = true;
   constructor(private fb: FormBuilder) { }
 
@@ -30,23 +31,24 @@ export class RegisterFormComponent implements OnInit {
       cpCtrl: ['', Validators.required]
 
     });
-    this.user = new User();
   }
-  registerLogin() {
-    console.log(this.registerLoginForm.value);
-    this.user.email = this.registerLoginForm.value['emailCtrl'];
-    this.user.password = this.registerLoginForm.value['passwordCtrl'];
-    console.log(this.user);
+  registerLogin() : void {
+    this.registerLoginForm &&
+    (this.user.email = this.registerLoginForm.value['emailCtrl']) &&
+    (this.user.password = this.registerLoginForm.value['passwordCtrl']);
   }
 
-  register() {
-    console.log(this.registerInfoGroup.value);
-    this.user.lastname = this.registerInfoGroup.value['lastnameCtrl'];
-    this.user.firstname = this.registerInfoGroup.value['firstnameCtrl'];
-    this.user.address = this.registerInfoGroup.value['addressCtrl'];
-    this.user.city = this.registerInfoGroup.value['cityCtrl'];
-    this.user.CP = this.registerInfoGroup.value['cpCtrl'];
-    console.log(this.user);
+  submit() {
+    this.registerInfoGroup &&
+    (this.user.lastname = this.registerInfoGroup.value['lastnameCtrl'])&&
+    (this.user.firstname = this.registerInfoGroup.value['firstnameCtrl'])&&
+    (this.user.address = this.registerInfoGroup.value['addressCtrl'])&&
+    (this.user.city = this.registerInfoGroup.value['cityCtrl'])&&
+    (this.user.CP = this.registerInfoGroup.value['cpCtrl'])
+
+    this.register.emit(this.user);
   }
+
+
 
 }

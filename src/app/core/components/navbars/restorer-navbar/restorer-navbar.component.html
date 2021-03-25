@@ -16,7 +16,7 @@
     </button>
   </section>
 
-  <section class="right-items-group">
+  <section class="right-items-group" *ngIf="userConnected">
 
     <mat-icon [matMenuTriggerFor]="userInfosMenu" class="user-icon">person_pin</mat-icon>
     <mat-menu #userInfosMenu="matMenu" xPosition="before">

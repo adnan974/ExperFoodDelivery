@@ -13,11 +13,12 @@ export class LoginFormComponent implements OnInit {
   @Output() connect : EventEmitter<any> = new EventEmitter<any>();
 
   user : User = new User();
-  loginForm : FormGroup;
+  loginForm: FormGroup | undefined;
 
-  constructor(private fb : FormBuilder, private router: Router) {     
+  constructor(private fb : FormBuilder, private router: Router) {}
 
-  }
+  get email() { return this.loginForm && this.loginForm.get('email')?.value }
+  get password() { return this.loginForm && this.loginForm.get('password')?.value }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -26,15 +27,14 @@ export class LoginFormComponent implements OnInit {
     })
   }
 
-   get email() { return this.loginForm.get('email').value }
-   get password() { return this.loginForm.get('password').value }
 
-  login() { 
+
+  login() {
     const user = {
-      password : this.loginForm.get('password').value,
-      email : this.loginForm.get('email').value,
-    }    
-    this.connect.emit(user);    
+      _email : this.email,
+      _password : this.password,
+    }
+    this.connect.emit(user);
 
   }
 }
