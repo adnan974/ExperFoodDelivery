@@ -1,3 +1,4 @@
+import { ShopCartService } from './../../../core/services/shop-cart.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Menu } from 'src/app/shared/models/menu';
 
@@ -8,9 +9,13 @@ import { Menu } from 'src/app/shared/models/menu';
 })
 export class MenuShowComponent implements OnInit {
   @Input() menu?:Menu;
-  constructor() { }
+  constructor(private shopCartService: ShopCartService) { }
 
   ngOnInit(): void {
+  }
+
+  addToShopCart(menu : Menu){
+    this.shopCartService.addItem(menu);
   }
 
 }

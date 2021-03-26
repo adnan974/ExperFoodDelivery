@@ -10,6 +10,9 @@ import { User, UserRole } from './shared/models/user';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  openSideNav : boolean = false;
+
   title = 'exper-food-delivery';
   userConnected?: User | null;
   get userRole(): typeof UserRole {
@@ -41,4 +44,10 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+  closeSidenav() {
+    this.openSideNav = false;
+  }
+
+
 }

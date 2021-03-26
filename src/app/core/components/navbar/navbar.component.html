@@ -1,0 +1,101 @@
+<!-- Top Nav-->
+
+<mat-toolbar color="primary" class="efd-navbar" fxLayout="row" fxLayoutAlign="space-between center">
+
+  <section class="left-section">
+    <button *ngIf="innerWidth < 992" mat-icon-button aria-label="Icone menu" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <section class="brand-wrap" (click)="navigate('home')" fxLayout="row" fxLayoutAlign="space-between center">
+      <img src="../../../assets/images/logo_efd_white.png" class="navbar-title-logo">
+      <span class="navbar-title-text" *ngIf="innerWidth > 992">
+        <span class="brand-exper">Exper </span> <span class="brand-food-delivery"> Food Delivery </span>
+      </span>
+
+    </section>
+
+  </section>
+
+  <section class="middle-section" *ngIf="innerWidth > 992">
+
+    <button *ngFor="let navItem of navItems" mat-button (click)="navigate(navItem.link)">
+      <mat-icon>{{navItem.icon}}</mat-icon> {{navItem.name}}
+    </button>
+  </section>
+  <section class="right-section" fxLayout="row" fxLayoutAlign="end center">
+
+    <section class="sign-items-group" *ngIf="!userConnected && innerWidth > 992">
+      <button mat-button (click)="navigate('login')">
+        <mat-icon>login</mat-icon> Connexion
+      </button>
+      <button mat-button (click)="navigate('register')">
+        <mat-icon>wysiwyg</mat-icon> Inscription
+      </button>
+    </section>
+
+    <section class="user-infos-group" fxLayout="row" fxLayoutAlign="end center">
+
+      <section class="user-infos-wrap" *ngIf="userConnected">
+        <mat-icon [matMenuTriggerFor]="userInfosMenu" class="user-icon">person_pin</mat-icon>
+        <mat-menu #userInfosMenu="matMenu" xPosition="before">
+          <div>
+            <span class="name">{{userConnected.firstname ? userConnected.firstname: 'Firsname'}}
+              {{userConnected.lastname
+              ? userConnected.lastname : 'LASTNAME' | uppercase}}</span><br> <span
+              class="email">{{userConnected.email}}</span>
+          </div>
+          <button mat-button color="primary" (click)="logout()">
+            <mat-icon class="menu-logout">exit_to_app</mat-icon><span class="spacer"></span> <span>Deconnexion
+            </span>
+          </button>
+        </mat-menu>
+      </section>
+
+      <section class="shop-cart-wrap">
+        <mat-icon [matMenuTriggerFor]="shopCartMenu" class="shop-cart-icon" [matBadge]="shopCartCount" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-menu #shopCartMenu="matMenu" xPosition="before">
+          //TODO : menu panier
+        </mat-menu>
+      </section>
+
+    </section>
+
+  </section>
+
+</mat-toolbar>
+
+<!-- Side Nav-->
+
+  <mat-sidenav-container class="efd-sidenav-container">
+    <mat-sidenav  #sidenav mode="side" [(opened)]="opened" class="efd-sidenav">
+      <div class="efd-button-container">
+
+        <button mat-icon-button color="white" aria-label="Fermer menu" (click)="sidenav.close()"
+          class="efd-close-menu-btn">
+          <mat-icon>clear</mat-icon>
+        </button>
+
+      </div>
+        <mat-list>
+
+          <div mat-subheader>Menu</div>
+          <mat-list-item *ngFor="let navItem of navItems" (click)="navigate(navItem.link)">
+            <mat-icon mat-list-icon>{{navItem.icon}}</mat-icon>
+            <div mat-line>{{navItem.name}}</div>
+          </mat-list-item>
+
+          <mat-divider></mat-divider>
+
+          <mat-list-item (click)="logout()" *ngIf="userConnected">
+            <mat-icon mat-list-icon>exit_to_app</mat-icon>
+            <div mat-line>Se déconnecter</div>
+          </mat-list-item>
+        </mat-list>
+
+
+    </mat-sidenav>
+  </mat-sidenav-container>
+
+
+
+

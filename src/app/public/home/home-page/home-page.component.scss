@@ -1,6 +1,7 @@
 
 .page-container {
   padding-top:10em;
+  background-color: black;
   background-image: url("../../../../assets/images/background.jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -51,4 +52,32 @@
   font-family: "Dancing Script", cursive;
   font-size: 3.5em;
   color: #ffffff;
+}
+
+@media screen and (max-width: 576px) {
+  .lofo-efd{
+    width: 10em;
+  }
+  .brand-exper {
+    font-size: 1.75em;
+  }
+
+  .brand-food-delivery {
+    font-size: 2.75em;
+
+  }
+}
+
+@media screen and (max-width: 456px) {
+  .lofo-efd{
+    width: 8em;
+  }
+  .brand-exper {
+    font-size: 1.5em;
+  }
+
+  .brand-food-delivery {
+    font-size: 2.5em;
+
+  }
 }
