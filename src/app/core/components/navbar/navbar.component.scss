@@ -1,7 +1,7 @@
-.efd-customer-navbar {
+.efd-navbar {
   background: rgb(0, 120, 245);
   position: fixed;
-  z-index: 100;
+  z-index: 40;
   transition: height 0.3s ease-in, background-color 0.25s ease-in;
 }
 
@@ -16,17 +16,16 @@
   transition: height 0.3s ease-in, background-color 0.5s ease-in;
 }
 
-.spacer {
-    flex: 1 1 auto;
-  }
-
-.customer-navbar-title {
-  cursor: pointer;
+.left-section {
   display: flex;
   align-items:center;
 }
 
-.customer-navbar-title-logo{
+.brand-wrap {
+  cursor: pointer;
+}
+
+.navbar-title-logo{
   width: 3em;
   margin: 0 0.5em;
 
@@ -43,22 +42,28 @@
   font-size:2em;
 }
 
-.customer-navbar-title, .nav-items-group, .right-items-group{
+.left-section, .middle-section, .right-section{
   width: calc(100% / 3);
 }
 
-.nav-items-group{
+.middle-section{
   text-align: center;
 }
 
-.right-items-group{
+.right-section{
   text-align: right;
   align-items: center;
-  line-height: 0.5;
+  line-height: 100%;
+}
+
+.sign-items-group{
+  text-align: right;
+  align-items: center;
 }
 
 
 .user-icon, .shop-cart-icon {
+  display: inline-block;
   margin: 0 0.5em;
   cursor: pointer;
 }
@@ -69,4 +74,21 @@
 
 .shop-cart-icon {
   font-size: 1.8em;
+}
+
+
+.efd-sidenav-container {
+  z-index: 100;
+}
+
+.efd-sidenav {
+  width: 20em;
+  height: 100vh;
+  position: fixed;
+  background: rgb(0, 120, 245);
+  //background: radial-gradient(circle, rgba(0, 120, 245, 1) 0%, rgba(66, 136, 255, 1) 41%, rgba(0, 212, 255, 1) 100%);
+  color: white;
+  font-weight: 500;
+  z-index: 100;
+  opacity: 0.98;
 }

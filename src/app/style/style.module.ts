@@ -10,6 +10,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 const AngularMaterialModules = [
@@ -23,7 +26,10 @@ const AngularMaterialModules = [
   MatStepperModule,
   MatSnackBarModule,
   FlexLayoutModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSidenavModule,
+  MatListModule,
+  MatBadgeModule
 ]
 
 

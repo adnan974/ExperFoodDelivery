@@ -1,8 +1,7 @@
-<efd-public-navbar *ngIf="!userConnected"></efd-public-navbar>
-<efd-customer-navbar *ngIf="userConnected && userConnected.role == userRole.Customer"></efd-customer-navbar>
-<efd-restorer-navbar *ngIf="userConnected && userConnected.role == userRole.Restorer"></efd-restorer-navbar>
 
-<div class="main-container">
+<efd-navbar [opened]="openSideNav"></efd-navbar>
+
+<div class="main-container" (click)="closeSidenav()">
   <router-outlet></router-outlet>
 </div>
 
