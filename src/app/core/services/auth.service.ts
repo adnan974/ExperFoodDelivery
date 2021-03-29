@@ -44,7 +44,7 @@ export class AuthService {
         firstname: connexionUserObject._firstname,
         lastname: connexionUserObject._lastname,
         email: connexionUserObject._email,
-        role : UserRole.Customer
+        role : connexionUserObject._role
       })
 
       this.$userConnected.next(userConnected);

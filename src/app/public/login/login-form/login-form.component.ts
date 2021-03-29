@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
@@ -10,6 +10,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class LoginFormComponent implements OnInit {
 
+  @Input() loading: boolean = false;
   @Output() connect : EventEmitter<any> = new EventEmitter<any>();
 
   user : User = new User();

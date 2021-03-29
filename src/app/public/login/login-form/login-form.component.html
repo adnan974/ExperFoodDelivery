@@ -32,9 +32,13 @@
     </p>
 
     <div class="efd-login-btn-row">
-      <button class="efd-login-btn" mat-button color="primary">
+      <button class="efd-login-btn" mat-button color="primary" [disabled]="loading">
         Se connecter
       </button>
+      <div class="loader-wrap" >
+        <img *ngIf="loading" class="loader" src="../../../../assets/images/loading.svg" />
+      </div>
     </div>
+
   </form>
 </section>
