@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Restaurant } from 'src/app/shared/models/restaurant';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,40 +12,46 @@ import { Restaurant } from 'src/app/shared/models/restaurant';
 export class RestaurantService {
 
 
-  private restaurants : Array<Restaurant> =
-  [
-    new Restaurant({id:1, name:"Restaurant 1", description:"Cuisine indienne", address:"12 allée des cocos"}),
-    new Restaurant({id:1, name:"Restaurant 2", description:"Cuisine chinoise", address:"13 allée des cocos"}),
-    new Restaurant({id:1, name:"Restaurant 3", description:"Cuisine kreol", address:"14 allée des cocos"}),
-    new Restaurant({id:1, name:"Restaurant 4", description:"Cuisine malgache", address:"15 allée des cocos"}),
-    new Restaurant({id:1, name:"Restaurant 5", description:"Cuisine francaise", address:"16 allée des cocos"}),
+  private restaurants: Array<Restaurant> = [];
 
-  ]
-
-  constructor(private http: HttpClient)
-  {
+  constructor(private http: HttpClient) {
   }
 
-  public getRestaurants(): Array<Restaurant> {
+  public getRestaurants(): Observable<any> {
 
-      return this.restaurants;
+    const BASE_URL = environment.experFoodDeliveryApi;
+
+    return this.http.get(BASE_URL + '/api/restaurants')
+      .pipe(
+        map((items: any) => {
+          let itemMapped = items.data.map((element: any) => {
+            return new Restaurant({
+              id: element._id,
+              name: element._name,
+              description: element._description
+            })
+          })
+          return itemMapped;
+
+        })
+      )
   }
 
-  public getRestaurant(id:number): Restaurant {
+  public getRestaurant(id: string): Restaurant {
 
 
-    const resto = this.restaurants.filter((item)=>item.id = id);
+    const resto = this.restaurants.filter((item) => item.id = id);
     return resto[0];
   }
 
-  public postRestaurant(restaurant : Restaurant): Restaurant {
+  public postRestaurant(restaurant: Restaurant): Restaurant {
 
     this.restaurants.push(restaurant);
 
     return restaurant;
   }
 
-  public deleteRestaurant(id : number): any {
+  public deleteRestaurant(id: number): any {
 
     // TODO : delete
     return 'delteted';

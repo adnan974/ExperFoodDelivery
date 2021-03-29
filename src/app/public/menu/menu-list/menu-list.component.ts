@@ -15,7 +15,10 @@ export class MenuListComponent implements OnInit {
   constructor(private menuService:MenuService) { }
 
   ngOnInit(): void {
-    this.menuList= this.menuService.getMenus();
+    this.menuService.getMenus()
+    .subscribe((menus)=>{
+      this.menuList = menus;
+    });
   }
 
 }
