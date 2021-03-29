@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -6,18 +6,22 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   toolbar = document.querySelector('.efd-navbar');
+  loadingPage: boolean = true;
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService: AuthService) { }
 
   @HostListener('window:scroll', ['$event'])
-  track(event : any) {
+  track(event: any) {
 
     const position = event.path[1].scrollY;
 
-    if (this.toolbar) {
+    if (this.loadingPage && this.toolbar) {
+      this.toolbar.classList.remove('efd-navbar-scroll-down');
+      this.toolbar.classList.remove('efd-navbar-transparent');
+    }else if (!this.loadingPage && this.toolbar) {
       if (position > 50) {
         this.toolbar.classList.add('efd-navbar-scroll-down');
         this.toolbar.classList.remove('efd-navbar-transparent');
@@ -29,15 +33,19 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     this.toolbar && this.toolbar.classList.add('efd-navbar-transparent');
+  }
+
+  ngAfterViewChecked(): void {
+    this.loadingPage = false;
   }
 
   ngOnDestroy(): void {
     if (this.toolbar) {
-    this.toolbar.classList.remove('efd-navbar-scroll-down');
-    this.toolbar.classList.remove('efd-navbar-transparent');
+      this.toolbar.classList.remove('efd-navbar-scroll-down');
+      this.toolbar.classList.remove('efd-navbar-transparent');
+    }
   }
-}
 
 }
