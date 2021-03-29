@@ -1,5 +1,5 @@
 export class Restaurant {
-  private _id?: number;
+  private _id?: string;
   private _name?: string;
   private _description?: string;
   private _address?: string;
@@ -7,7 +7,7 @@ export class Restaurant {
 
   constructor(
     params: {
-      id?: number;
+      id?: string;
       name?: string;
       description?: string;
       address?: string;
@@ -25,17 +25,17 @@ export class Restaurant {
 
   /**
    * Getter id
-   * @return {number}
+   * @return {string}
    */
-  public get id(): number | undefined {
+  public get id(): string | undefined {
     return this._id;
   }
 
   /**
    * Setter id
-   * @param {number} value
+   * @param {string} value
    */
-  public set id(value: number | undefined) {
+  public set id(value: string | undefined) {
     this._id = value;
   }
 

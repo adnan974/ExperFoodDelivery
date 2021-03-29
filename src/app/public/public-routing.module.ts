@@ -15,6 +15,7 @@ const routes: Routes = [
       { path: 'login',loadChildren : ()=> import('./login/login.module').then(m => m.LoginModule) },
       { path: 'register',loadChildren : ()=> import('./register/register.module').then(m => m.RegisterModule) },
       { path: 'restaurants',loadChildren : ()=> import('./restaurant/restaurant.module').then(m => m.RestaurantModule) },
+      { path: 'menus', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
       { path: 'restaurants/:id/menu',loadChildren : ()=> import('./menu/menu.module').then(m => m.MenuModule) },
     ]
   }

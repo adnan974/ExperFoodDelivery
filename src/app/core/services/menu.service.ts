@@ -1,28 +1,48 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Menu } from 'src/app/shared/models/menu';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-  private menus:Array<Menu>;
+  readonly BASE_URL = environment.experFoodDeliveryApi;
 
-  constructor(){
-      this.menus = new Array<Menu>();
+  private menus:Array<Menu>=[];
 
-      for(let i =1;i<6;i++){
-        let menu = new Menu();
-        menu.id = i;
-        menu.name = "Menu "+i;
-        menu.price = i*5;
-        this.menus.push(menu);
-      }
+  constructor(private http: HttpClient){
+      // this.menus = new Array<Menu>();
+
+      // for(let i =1;i<6;i++){
+      //   let menu = new Menu();
+      //   menu.id = i;
+      //   menu.name = "Menu "+i;
+      //   menu.price = i*5;
+      //   this.menus.push(menu);
+      // }
    }
 
 
-  public getMenus():Array<Menu>{
-    return this.menus;
+  public getMenus():Observable<any>{
+    return (
+      this.http.get(this.BASE_URL+'/api/menus')
+      .pipe(
+        map((menus:any)=>{
+          console.log(menus)
+          return menus.map((menu:any)=>{
+            return new Menu({
+              id:menu._id,
+              name:menu._name,
+              price:menu._price
+            })
+          })
+        })
+      )
+    )
   }
 
   public getMenu(id:number):Menu{
