@@ -1,14 +1,16 @@
-import { AfterViewChecked, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+
 
 @Component({
   selector: 'efd-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit, OnDestroy, AfterViewChecked {
+export class HomePageComponent implements OnInit, OnDestroy {
 
   toolbar = document.querySelector('.efd-navbar');
+  pageContainer = document.querySelector('.page-container');
   loadingPage: boolean = true;
 
   constructor(private authService: AuthService) { }
@@ -32,20 +34,24 @@ export class HomePageComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
   }
 
+
   ngOnInit(): void {
     window.scroll(0, 0);
     this.toolbar && this.toolbar.classList.add('efd-navbar-transparent');
   }
 
-  ngAfterViewChecked(): void {
-    this.loadingPage = false;
-  }
 
   ngOnDestroy(): void {
     if (this.toolbar) {
       this.toolbar.classList.remove('efd-navbar-scroll-down');
       this.toolbar.classList.remove('efd-navbar-transparent');
     }
+  }
+
+  onload() {
+    this.pageContainer = document.querySelector('.page-container');
+    this.pageContainer && this.pageContainer.classList.add('page-container-loaded');
+    this.loadingPage = false;
   }
 
 }
