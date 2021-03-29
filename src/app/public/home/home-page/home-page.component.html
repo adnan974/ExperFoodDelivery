@@ -1,5 +1,5 @@
 
-<div class="page-container">
+<div class="page-container" *ngIf="!loadingPage else loaderPage">
 
   <section class="home-page-title">
     <img src="../../../assets/images/logo_efd_white.png" class="lofo-efd"/>
@@ -25,6 +25,12 @@
     //TODO
   </section>
 
+</div >
+
+<div #loaderPage>
+  <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile><img src="../../../../assets/images/loading.svg" /></mat-grid-tile>
+  </mat-grid-list>
 </div>
 
 
