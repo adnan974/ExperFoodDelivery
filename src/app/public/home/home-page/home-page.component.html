@@ -1,36 +1,44 @@
 
-<div class="page-container" *ngIf="!loadingPage else loaderPage">
+<div class="page-container" >
 
-  <section class="home-page-title">
-    <img src="../../../assets/images/logo_efd_white.png" class="lofo-efd"/>
-    <h1>
-      <span class="brand-exper">Exper</span>
-      <span class="brand-food-delivery"> Food Delivery </span>
-    </h1>
-    <div class="home-text">
-      Vous êtes dévelopeur et avez la flemme de cuisiner ? Exper Food Delivery est la solution.<br>
-      Des restaurants, des plats, une livraison chez vous.
-    </div>
-  </section>
+  <div *ngIf="!loadingPage">
+    <section class="home-page-title">
+      <img src="../../../assets/images/logo_efd_white.png" class="lofo-efd"/>
+      <h1>
+        <span class="brand-exper">Exper</span>
+        <span class="brand-food-delivery"> Food Delivery </span>
+      </h1>
+      <div class="home-text">
+        Vous êtes dévelopeur et avez la flemme de cuisiner ? Exper Food Delivery est la solution.<br>
+        Des restaurants, des plats, une livraison chez vous.
+      </div>
+    </section>
 
-  <section class="section1">
-    //TODO
-  </section>
+    <section class="section1">
+      //TODO
+    </section>
 
-  <section class="section2">
-    //TODO
-  </section>
+    <section class="section2">
+      //TODO
+    </section>
 
-  <section class="section3">
-    //TODO
-  </section>
+    <section class="section3">
+      //TODO
+    </section>
+
+  </div>
 
 </div >
 
-<div #loaderPage>
+<div *ngIf="loadingPage" class="page-loader">
   <mat-grid-list cols="1" rowHeight="2:1">
     <mat-grid-tile><img src="../../../../assets/images/loading.svg" /></mat-grid-tile>
+
   </mat-grid-list>
 </div>
+<img src="../../../../assets/images/background.jpg" hidden="true" (load)="onload()"/>
+
+
+
 
 
