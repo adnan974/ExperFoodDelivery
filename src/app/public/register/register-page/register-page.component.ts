@@ -15,7 +15,7 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  register(userCredentials : Partial<User>) {
+  register(userCredentials : User) {
     this.authService.register(userCredentials).toPromise()
     .then((response)=> {
       if (response.success) {

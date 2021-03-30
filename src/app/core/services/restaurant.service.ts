@@ -26,9 +26,9 @@ export class RestaurantService {
         map((items: any) => {
           let itemMapped = items.data.map((element: any) => {
             return new Restaurant({
-              id: element._id,
-              name: element._name,
-              description: element._description
+              id: element.id,
+              name: element.name,
+              description: element.description
             })
           })
           return itemMapped;

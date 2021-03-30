@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
         console.error(error);
         this.commonService.changeSnackBarMessage(`Erreur : ${error.error ? error.error.message : error.message ? error.message : error}`)
       }).finally(() => {
-        //this.loading = false;
+        this.loading = false;
       })
   }
 
