@@ -32,8 +32,8 @@ export class LoginFormComponent implements OnInit {
 
   login() {
     const user = {
-      _email : this.email,
-      _password : this.password,
+      email : this.email,
+      password : this.password,
     }
     this.connect.emit(user);
 
