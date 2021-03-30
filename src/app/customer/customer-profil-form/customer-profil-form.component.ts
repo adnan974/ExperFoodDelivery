@@ -18,8 +18,10 @@ export class CustomerProfilFormComponent implements OnInit {
   constructor(private route: Router, private fb: FormBuilder, private us: CustomerService) { }
 
   ngOnInit(): void {
-    this.user = this.us.getCustomer(1);
-    this.updateLoginForm = this.fb.group({
+    const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? "");
+    const user = this.us.getCustomer(connexionUserObject._id);
+    console.log('ici ' + user);
+    /*this.updateLoginForm = this.fb.group({
       emailCtrl: [this.user.email, Validators.required],
       passwordCtrl: [this.user.password, Validators.required]
     });
@@ -30,7 +32,7 @@ export class CustomerProfilFormComponent implements OnInit {
       cityCtrl: [this.user.city, Validators.required],
       cpCtrl: [this.user.CP, Validators.required]
 
-    });
+    });*/
   }
   updateLogin() {
     this.user && this.updateLoginForm &&

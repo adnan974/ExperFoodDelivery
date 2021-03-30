@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from '../../core/services/common.service';
 import { CustomerService } from '../../core/services/customer.service';
 import { User } from '../../shared/models/user';
 
@@ -9,11 +10,28 @@ import { User } from '../../shared/models/user';
   styleUrls: ['./customer-profil-show.component.scss']
 })
 export class CustomerProfilShowComponent implements OnInit {
-  public user?: User;
-  constructor(private userservice: CustomerService, private route : Router) { }
+  user: User = new User();
+  constructor(private userservice: CustomerService, private route: Router, private commonService: CommonService) { }
 
   ngOnInit(): void {
-    this.user = this.userservice.getCustomer(1);
+    const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? "");
+    console.log(connexionUserObject._id);
+    this.userservice.getCustomer(connexionUserObject._id).toPromise()
+      .then((response) => {
+        this.user.firstname = response.firstname;
+        this.user.lastname = response.lastname;
+        this.user.email = response.email;
+        this.user.address = response.address;
+        this.user.CP = response.CP;
+        this.user.city = response.city;
+    })
+      .catch((error) => {
+        console.error(error);
+        this.commonService.changeSnackBarMessage(`Erreur : ${error.error ? error.error.message : error.message ? error.message : error}`)
+      }).finally(() => {
+        //this.loading = false;
+      })
+
   }
 
   navigate(link : string) {
