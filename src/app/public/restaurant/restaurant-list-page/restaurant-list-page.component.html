@@ -1,0 +1,10 @@
+<div class="page-container">
+  <h1>Titre page liste restaurants</h1>
+
+  <efd-restaurant-list
+    [restaurants]="restaurantList"
+    (show)="navigateToShow($event)"
+    (showMenus)="navigateToMenus($event)"
+  >
+  </efd-restaurant-list>
+</div>

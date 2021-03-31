@@ -20,19 +20,6 @@ export class CustomerProfilFormComponent implements OnInit {
   ngOnInit(): void {
     const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? "");
     const user = this.us.getCustomer(connexionUserObject._id);
-    console.log('ici ' + user);
-    /*this.updateLoginForm = this.fb.group({
-      emailCtrl: [this.user.email, Validators.required],
-      passwordCtrl: [this.user.password, Validators.required]
-    });
-    this.updateInfoGroup = this.fb.group({
-      lastnameCtrl: [this.user.lastname, Validators.required],
-      firstnameCtrl: [this.user.firstname, Validators.required],
-      addressCtrl: [this.user.address, Validators.required],
-      cityCtrl: [this.user.city, Validators.required],
-      cpCtrl: [this.user.CP, Validators.required]
-
-    });*/
   }
   updateLogin() {
     this.user && this.updateLoginForm &&
