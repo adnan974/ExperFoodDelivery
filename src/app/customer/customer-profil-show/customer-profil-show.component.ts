@@ -15,7 +15,6 @@ export class CustomerProfilShowComponent implements OnInit {
 
   ngOnInit(): void {
     const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? "");
-    console.log(connexionUserObject._id);
     this.userservice.getCustomer(connexionUserObject._id).toPromise()
       .then((response) => {
         this.user.firstname = response.firstname;

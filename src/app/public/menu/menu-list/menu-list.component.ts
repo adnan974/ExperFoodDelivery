@@ -1,3 +1,4 @@
+import { ShopCartService } from './../../../core/services/shop-cart.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { Menu } from 'src/app/shared/models/menu';
@@ -12,7 +13,7 @@ export class MenuListComponent implements OnInit {
   public menuList?:Array<Menu>;
 
 
-  constructor(private menuService:MenuService) { }
+  constructor(private menuService:MenuService, private shopCartService: ShopCartService) { }
 
   ngOnInit(): void {
     this.menuService.getMenus()
@@ -20,5 +21,10 @@ export class MenuListComponent implements OnInit {
       this.menuList = menus;
     });
   }
+
+  addToShopCart(menu : Menu){
+    this.shopCartService.addItem(menu);
+  }
+
 
 }

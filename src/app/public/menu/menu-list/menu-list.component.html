@@ -1,6 +1,17 @@
 <h2>Liste des menu: </h2>
 <div fxLayout="row wrap" fxLayoutGap="30px grid">
     <div fxFlex="25%" *ngFor="let menu of menuList">
-        <efd-menu-show [menu]="menu"></efd-menu-show>
+
+      <mat-card *ngIf="menu">
+        <mat-card-title>{{menu.name}}</mat-card-title>
+        <!-- TODO: remplacer l'url par l'url venant du service Restaurant-->
+        <img mat-card-image src="https://previews.123rf.com/images/goodzone95/goodzone951802/goodzone95180200081/95712967-cuisine-logo-de-la-cuisine-ic%C3%B4ne-et-%C3%A9tiquette-pour-le-restaurant-de-menu-design-ou-un-caf%C3%A9-lettrage-illustr.jpg">
+        <mat-card-content><b>prix: </b>{{menu.price}} €</mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="addToShopCart(menu)">Commander</button>
+        </mat-card-actions>
+    </mat-card>
+
     <div>
 </div>
+

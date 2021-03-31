@@ -14,25 +14,13 @@ export class MenuService {
 
   private menus:Array<Menu>=[];
 
-  constructor(private http: HttpClient){
-      // this.menus = new Array<Menu>();
-
-      // for(let i =1;i<6;i++){
-      //   let menu = new Menu();
-      //   menu.id = i;
-      //   menu.name = "Menu "+i;
-      //   menu.price = i*5;
-      //   this.menus.push(menu);
-      // }
-   }
-
+  constructor(private http: HttpClient){}
 
   public getMenus():Observable<any>{
     return (
       this.http.get(this.BASE_URL+'/api/menus')
       .pipe(
         map((menus:any)=>{
-          console.log(menus)
           return menus.map((menu:any)=>{
             return new Menu({
               id:menu._id,

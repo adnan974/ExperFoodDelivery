@@ -1,10 +1,12 @@
+import { RestaurantShowPageComponent } from './restaurant-show-page/restaurant-show-page.component';
+import { RestaurantListPageComponent } from './restaurant-list-page/restaurant-list-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
-
 
 const routes: Routes = [
- { path: '', component: RestaurantPageComponent }
+ { path: '', component: RestaurantListPageComponent },
+ { path: ':id', component: RestaurantShowPageComponent },
+ { path: ':id/menus',  loadChildren : ()=> import('./menu/menu.module').then(m => m.MenuModule)}
 ];
 
 @NgModule({
@@ -12,3 +14,5 @@ const routes: Routes = [
  exports: [RouterModule]
 })
 export class RestaurantRoutingModule { }
+
+

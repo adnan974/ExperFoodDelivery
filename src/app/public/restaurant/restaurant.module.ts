@@ -1,18 +1,22 @@
+import { RestaurantShowComponent } from './restaurant-show/restaurant-show.component';
+import { RestaurantShowPageComponent } from './restaurant-show-page/restaurant-show-page.component';
+
+import { RestaurantListPageComponent } from './restaurant-list-page/restaurant-list-page.component';
 import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { StyleModule } from './../../style/style.module';
-import { RestaurantShowComponent } from './restaurant-show/restaurant-show.component';
-import { RestaurantPageComponent } from './restaurant-page/restaurant-page.component';
+
 import { NgModule } from '@angular/core';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [RestaurantPageComponent, RestaurantListComponent, RestaurantShowComponent],
+  declarations: [RestaurantListPageComponent, RestaurantListComponent, RestaurantShowPageComponent, RestaurantShowComponent],
   imports: [
     SharedModule,
     StyleModule,
-    RestaurantRoutingModule
+    RestaurantRoutingModule,
+
   ]
 })
 export class RestaurantModule { }

@@ -12,16 +12,15 @@ export class CustomerService {
 
   private BASE_URL = environment.experFoodDeliveryApi;
   private users: Array<User> = [];
-  
+
   constructor(private http: HttpClient) { }
 
   public getCustomers(): Observable<any> {
-    console.log('ici');
+
     return (
       this.http.get(this.BASE_URL + '/api/users')
         .pipe(
           map((users: any) => {
-            console.log(users);
             return users.map((user: any) => {
               return new User({
                 id: user._id,
