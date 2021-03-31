@@ -1,73 +1,133 @@
 <mat-horizontal-stepper linear #stepper>
-    <mat-step [stepControl]="registerLoginForm" [editable]="isEditable">
-      <form [formGroup]="registerLoginForm" (ngSubmit)="registerLogin()">
-        <ng-template matStepLabel>Remplissez les informations de connexion</ng-template>
-        <div>
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="emailCtrl" placeholder="Email" required>
-          </mat-form-field>
-        </div>
-        <mat-form-field>
-          <mat-label>Mot de passe</mat-label>
-          <input matInput formControlName="passwordCtrl" [type]="hide ? 'password' : 'text'">
-          <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext type="submit">Suivant</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="registerInfoGroup" [editable]="isEditable">
-      <form [formGroup]="registerInfoGroup" (ngSubmit)="submit()">
-        <ng-template matStepLabel>Remplissez vos informations personnelles</ng-template>
-        <div>
-          <mat-form-field>
-            <mat-label>Nom</mat-label>
-            <input matInput formControlName="lastnameCtrl" placeholder="Nom" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Prénom</mat-label>
-            <input matInput formControlName="firstnameCtrl" placeholder="Prénom" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Adresse</mat-label>
-            <input matInput formControlName="addressCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Ville</mat-label>
-            <input matInput formControlName="cityCtrl" placeholder="Ville" required>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field class="example-full-width">
-            <mat-label>Code Postal</mat-label>
-            <input matInput formControlName="cpCtrl" #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-          </mat-form-field>
-        </div>
 
-          <div>
-            <button mat-button matStepperPrevious>Retour</button>
-            <button mat-button matStepperNext type="submit">Suivant</button>
-          </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>C'est fini</ng-template>
-      <p>Vous avez terminé.</p>
+
+  <mat-step [stepControl]="registerRoleForm" [editable]="isEditable">
+    <form [formGroup]="registerRoleForm" (ngSubmit)="registerRole()">
+      <ng-template matStepLabel>Type de compte</ng-template>
+      <div>
+        <mat-label>compte</mat-label>
+        <mat-radio-group class="efd-radio-group" formControlName="roleCtrl"
+          aria-label="Selectionez le type de compte que vous souhaitez créer">
+          <mat-radio-button class="efd-radio-button" [value]="userRole.Customer">Client</mat-radio-button>
+          <mat-radio-button class="efd-radio-button" [value]="userRole.Restorer">Restorateur</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div>
+        <button mat-button matStepperNext type="submit">Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="registerLoginForm" [editable]="isEditable">
+    <form [formGroup]="registerLoginForm" (ngSubmit)="registerLogin()">
+      <ng-template matStepLabel>Remplissez les informations de connexion</ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="emailCtrl" placeholder="email@exemple.com" required>
+          <mat-error *ngIf="registerLoginForm?.get('emailCtrl')?.hasError('required')">
+            L'email est requis
+          </mat-error>
+          <mat-error *ngIf="registerLoginForm?.get('emailCtrl')?.hasError('email')">
+            L'email saisi n'est pas valide
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Mot de passe</mat-label>
+        <input matInput formControlName="passwordCtrl" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerLoginForm?.get('passwordCtrl')?.hasError('required')">
+          Le mot de passe est requis
+        </mat-error>
+        <mat-error *ngIf="registerLoginForm?.get('passwordCtrl')?.hasError('minlength')">
+          Le mot de passe doit contenir au moins 8 caractères
+        </mat-error>
+
+      </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Retour</button>
-        <button mat-button (click)="stepper.reset()">Suivant</button>
+        <button mat-button matStepperNext type="submit">Suivant</button>
       </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="registerInfoGroup" [editable]="isEditable">
+    <form [formGroup]="registerInfoGroup" (ngSubmit)="submit()">
+      <ng-template matStepLabel>Remplissez vos informations personnelles</ng-template>
+      <div>
+        <mat-form-field>
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="lastnameCtrl" placeholder="Nom" required>
+          <mat-error *ngIf="registerInfoGroup?.get('lastnameCtrl')?.hasError('required')">
+            Le nom est requis
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Prénom</mat-label>
+          <input matInput formControlName="firstnameCtrl" placeholder="Prénom" required>
+          <mat-error *ngIf="registerInfoGroup?.get('firstnameCtrl')?.hasError('required')">
+            Le prénom est requis
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Adresse</mat-label>
+          <input matInput formControlName="addressCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+          <mat-error *ngIf="registerInfoGroup?.get('addressCtrl')?.hasError('required')">
+            L'adresse est requise
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Ville</mat-label>
+          <input matInput formControlName="cityCtrl" placeholder="Ville" required>
+          <mat-error *ngIf="registerInfoGroup?.get('cityCtrl')?.hasError('required')">
+            La ville est requise
+          </mat-error>
+        </mat-form-field>
+      </div>
 
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Code Postal</mat-label>
+          <input matInput formControlName="cpCtrl" #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+          <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          <mat-error *ngIf="registerInfoGroup?.get('cpCtrl')?.hasError('required')">
+            Le code postal est requis
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Téléphone</mat-label>
+          <input matInput formControlName="phoneCtrl" placeholder="Téléphone" required>
+          <mat-error *ngIf="registerInfoGroup?.get('phoneCtrl')?.hasError('required')">
+            Le téléphone est requis
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext type="submit">Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>C'est fini</ng-template>
+    <p>Vous avez terminé.</p>
+    <div>
+      <button mat-button matStepperPrevious>Retour</button>
+      <button mat-button (click)="stepper.reset()">Suivant</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
