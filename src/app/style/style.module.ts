@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 const AngularMaterialModules = [
@@ -29,7 +30,8 @@ const AngularMaterialModules = [
   MatMenuModule,
   MatSidenavModule,
   MatListModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatRadioModule
 ]
 
 

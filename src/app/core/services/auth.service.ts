@@ -76,7 +76,7 @@ export class AuthService {
     let data = {
       lastname: user.lastname,
       firstname: user.firstname,
-      role: "Customer",
+      role: user.role,
       email: user.email,
       password: user.password,
       address: user.address,
