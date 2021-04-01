@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Restaurant } from 'src/app/shared/models/restaurant';
 import { environment } from 'src/environments/environment';
+import { Menu } from 'src/app/shared/models/menu';
+
 
 
 @Injectable({
@@ -34,6 +36,30 @@ export class RestaurantService {
         })
       )
   }
+
+  public getRestaurantMenus(idRestaurant:string){
+
+    console.log("on est dans le restaurant service")
+    console.log(idRestaurant)
+    let link = `${this.BASE_URL}/api/restaurants/${idRestaurant}/menus`
+    return this.http.get(link)
+      .pipe(
+        map((items:any)=>{
+          let menus = items.menus.map((menu:any)=>{
+            return new Menu({
+              id: menu._id,
+              name: menu.name,
+              description: menu.description,
+              price: menu.price
+
+            })
+          })
+          return menus
+       })
+
+    )
+  }
+
 
 
 
