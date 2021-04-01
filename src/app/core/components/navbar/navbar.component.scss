@@ -12,57 +12,64 @@
 
 .efd-navbar-scroll-down {
   background: rgb(0, 120, 245);
-  background-color: radial-gradient(circle, rgba(0, 120, 245, 1) 0%, rgba(66, 136, 255, 1) 41%, rgba(0, 212, 255, 1) 100%);
+  background-color: radial-gradient(
+    circle,
+    rgba(0, 120, 245, 1) 0%,
+    rgba(66, 136, 255, 1) 41%,
+    rgba(0, 212, 255, 1) 100%
+  );
   transition: height 0.3s ease-in, background-color 0.5s ease-in;
 }
 
 .left-section {
   display: flex;
-  align-items:center;
+  align-items: center;
 }
 
 .brand-wrap {
   cursor: pointer;
 }
 
-.navbar-title-logo{
+.navbar-title-logo {
   width: 3em;
   margin: 0 0.5em;
 
-  margin-top:-0.5em;
+  margin-top: -0.5em;
 }
 
 .brand-exper {
-  font-family: 'Fjalla One', sans-serif;
-  font-size : 1.5em;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1.5em;
 }
 
 .brand-food-delivery {
-  font-family: 'Dancing Script', cursive;
-  font-size:2em;
+  font-family: "Dancing Script", cursive;
+  font-size: 2em;
 }
 
-.left-section, .middle-section, .right-section{
+.left-section,
+.middle-section,
+.right-section {
   width: calc(100% / 3);
 }
 
-.middle-section{
+.middle-section {
   text-align: center;
 }
 
-.right-section{
+.right-section {
   text-align: right;
   align-items: center;
   line-height: 100%;
 }
 
-.sign-items-group{
+.sign-items-group {
   text-align: right;
   align-items: center;
 }
 
-
-.user-icon, .shop-cart-icon {
+.user-icon,
+.shop-cart-icon {
   display: inline-block;
   margin: 0 0.5em;
   cursor: pointer;
@@ -75,7 +82,6 @@
 .shop-cart-icon {
   font-size: 1.8em;
 }
-
 
 .efd-sidenav-container {
   z-index: 100;
@@ -92,3 +98,28 @@
   z-index: 100;
   opacity: 0.98;
 }
+
+.efd-mat-menu-user {
+  padding: 1em;
+}
+
+//.userInfosMenu
+
+// .arrow {
+//   position: relative;
+
+// }
+// .arrow:after {
+//   position: absolute;
+//   content: "";
+//   width: 0;
+//   height: 0;
+//   right: 20px;
+//   border-left: 10px solid transparent;
+//   border-right: 10px solid transparent;
+//   border-bottom: 10px solid #e46e6e;
+//   left: 20px;
+//   top: -15px;
+//   bottom: 110%;
+
+// }

@@ -10,8 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class HomePageComponent implements OnInit, OnDestroy {
 
   toolbar = document.querySelector('.efd-navbar');
-  pageContainer = document.querySelector('.page-container');
-  loadingPage: boolean = true;
+  loadingPage: boolean = false;
 
   constructor(private authService: AuthService) { }
 
@@ -48,10 +47,5 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  onload() {
-    this.pageContainer = document.querySelector('.page-container');
-    this.pageContainer && this.pageContainer.classList.add('page-container-loaded');
-    this.loadingPage = false;
-  }
 
 }

@@ -1,9 +1,11 @@
+import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { ShopCartService } from './../../services/shop-cart.service';
 import { Menu } from './../../../shared/models/menu';
 import { AuthService } from '../../services/auth.service';
 import { User, UserRole } from '../../../shared/models/user';
 import { Router } from '@angular/router';
-import { Component, EventEmitter, OnInit, Output, Input, OnChanges, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'efd-navbar',
@@ -13,7 +15,8 @@ import { Component, EventEmitter, OnInit, Output, Input, OnChanges, HostListener
 export class NavbarComponent implements OnInit {
 
   innerWidth: any;
-  @Input() opened: boolean = false;
+  opened: boolean = false;
+  @Input() opened$?: Observable<boolean>;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -26,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
   userConnected?: User | null;
   shopCart: Array<Menu> | null = new Array<Menu>();
-  shopCartCount : number = this.shopCart ? this.shopCart.length : 0;
+  shopCartCount?: number = this.shopCart?.length ;
 
   publicNavItems: Array<any> = [
     {
@@ -90,6 +93,12 @@ export class NavbarComponent implements OnInit {
       this.shopCartCount = this.shopCart ? this.shopCart.length : 0;
     })
     this.shopCartService.updateShopCartInfos();
+
+    this.opened$?.pipe(
+      debounceTime(300),
+    ).subscribe((value)=>{
+      this.opened = value;
+    })
 
   }
 

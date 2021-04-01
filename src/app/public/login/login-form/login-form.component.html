@@ -12,7 +12,17 @@
           placeholder="Votre email"
           autocorrect="off"
           autocomplete="off"
+          (input)="onTyping()"
         />
+        <mat-error *ngIf="loginForm?.get('email')?.hasError('required')">
+          L'email est requis
+        </mat-error>
+        <mat-error *ngIf="loginForm?.get('email')?.hasError('email')">
+          Veuillez saisir un email valide
+        </mat-error>
+        <mat-error *ngIf="loginForm?.get('email')?.hasError('invalid-credentials')">
+          Identifiants incorrects
+        </mat-error>
       </mat-form-field>
     </p>
     <p>
@@ -27,12 +37,16 @@
           placeholder="Votre mot de passe"
           autocorrect="off"
           autocomplete="off"
+          (input)="onTyping()"
         />
+        <mat-error *ngIf="loginForm?.get('password')?.hasError('required')">
+          Le mot de passe est requis
+        </mat-error>
       </mat-form-field>
     </p>
 
     <div class="efd-login-btn-row">
-      <button class="efd-login-btn" mat-button color="primary" [disabled]="loading">
+      <button class="efd-login-btn" mat-button color="primary" [disabled]="!loginForm?.valid || loading">
         Se connecter
       </button>
       <div class="loader-wrap" >

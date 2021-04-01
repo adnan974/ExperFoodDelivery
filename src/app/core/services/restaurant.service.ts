@@ -12,16 +12,14 @@ import { environment } from 'src/environments/environment';
 export class RestaurantService {
 
 
-  private restaurants: Array<Restaurant> = [];
+  private readonly BASE_URL = environment.experFoodDeliveryApi;
 
   constructor(private http: HttpClient) {
   }
 
   public getRestaurants(): Observable<any> {
 
-    const BASE_URL = environment.experFoodDeliveryApi;
-
-    return this.http.get(BASE_URL + '/api/restaurants')
+    return this.http.get(`${this.BASE_URL}/api/restaurants`)
       .pipe(
         map((items: any) => {
           let itemMapped = items.data.map((element: any) => {
@@ -37,25 +35,6 @@ export class RestaurantService {
       )
   }
 
-  public getRestaurant(id: string): Restaurant {
-
-
-    const resto = this.restaurants.filter((item) => item.id = id);
-    return resto[0];
-  }
-
-  public postRestaurant(restaurant: Restaurant): Restaurant {
-
-    this.restaurants.push(restaurant);
-
-    return restaurant;
-  }
-
-  public deleteRestaurant(id: number): any {
-
-    // TODO : delete
-    return 'delteted';
-  }
 
 
 

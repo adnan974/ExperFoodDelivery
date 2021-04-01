@@ -3,6 +3,7 @@ import { CommonService } from './core/services/common.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { User, UserRole } from './shared/models/user';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'efd-root',
@@ -11,7 +12,10 @@ import { User, UserRole } from './shared/models/user';
 })
 export class AppComponent implements OnInit {
 
-  openSideNav : boolean = false;
+  //openSideNav : boolean = false;
+  openSideNav:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  loadingPage: boolean = true;
+
 
   title = 'exper-food-delivery';
   userConnected?: User | null;
@@ -46,7 +50,12 @@ export class AppComponent implements OnInit {
   }
 
   closeSidenav() {
-    this.openSideNav = false;
+    //this.openSideNav = false;
+    this.openSideNav.next(false);
+  }
+
+  onload() {
+    this.loadingPage = false;
   }
 
 

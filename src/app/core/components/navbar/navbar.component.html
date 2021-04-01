@@ -38,6 +38,8 @@
       <section class="user-infos-wrap" *ngIf="userConnected">
         <mat-icon [matMenuTriggerFor]="userInfosMenu" class="user-icon">person_pin</mat-icon>
         <mat-menu #userInfosMenu="matMenu" xPosition="before">
+          <!-- <div class="arrow"></div> -->
+          <div class="efd-mat-menu-user">
           <div>
             <span class="name">{{userConnected.firstname ? userConnected.firstname: 'Firsname'}}
               {{userConnected.lastname
@@ -48,11 +50,12 @@
             <mat-icon class="menu-logout">exit_to_app</mat-icon><span class="spacer"></span> <span>Deconnexion
             </span>
           </button>
+        </div>
         </mat-menu>
       </section>
 
       <section class="shop-cart-wrap">
-        <mat-icon [matMenuTriggerFor]="shopCartMenu" class="shop-cart-icon" [matBadge]="shopCartCount" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon [matMenuTriggerFor]="shopCartMenu" class="shop-cart-icon" [matBadge]="shopCartCount" [matBadgeHidden]="!shopCartCount || shopCartCount == 0" matBadgeColor="warn">shopping_cart</mat-icon>
         <mat-menu #shopCartMenu="matMenu" xPosition="before">
           //TODO : menu panier
         </mat-menu>

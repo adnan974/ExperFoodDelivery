@@ -1,12 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fjalla+One&display=swap');
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fjalla+One&display=swap");
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .efd-snackbar {
-  widh: 100%!important;
+  widh: 100% !important;
   text-align: center;
-  margin-top: 6em!important;
+  margin-top: 6em !important;
 }
 
 .efd-snackbar .mat-snack-bar-container {
@@ -15,6 +21,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .efd-snackbar .mat-simple-snackbar {
   display: inline-block !important;
-  font-family: 'Poppins', sans-serif!important;
-  font-size: 1.1em!important;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.1em !important;
 }
+
+.mat-menu-panel {
+  margin-top: 1.5em !important;
+  min-height: 0 !important;
+}
+

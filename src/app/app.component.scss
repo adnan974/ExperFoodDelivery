@@ -2,4 +2,14 @@
   min-height: 96vh;
 }
 
+.page-loader {
+  position: absolute;
+  height: 100vh;
+  top:0;
+  left:0;
+  width: 100%;
+  z-index: 9999;
+  background-color: white;
+}
+
 
