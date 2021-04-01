@@ -1,5 +1,5 @@
-import { StyleModule } from './../style/style.module';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
+import { StyleModule } from './../style/style.module';
 import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

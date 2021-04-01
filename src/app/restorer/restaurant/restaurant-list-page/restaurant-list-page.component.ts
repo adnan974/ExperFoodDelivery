@@ -13,6 +13,7 @@ import { User } from 'src/app/shared/models/user';
 export class RestaurantListPageComponent implements OnInit {
 
   userConnected?: User | null;
+  loading: boolean = true;
   public restaurantList: Array<Restaurant> = new Array<Restaurant>();
 
   constructor(private authService : AuthService, private restaurantService : RestaurantService, private router: Router) { }
@@ -23,23 +24,24 @@ export class RestaurantListPageComponent implements OnInit {
       this.userConnected = response;
 
       this.restaurantService.getUserRestaurants(this.userConnected?.id)
-      .subscribe((restaurants)=>{
-        this.restaurantList = restaurants;
-      });
-
+      .subscribe(
+        {
+          next: (restaurants)=>this.restaurantList = restaurants,
+          error: (err)=>console.error(err),
+          complete:()=>this.loading = false
+        }
+      );
     })
-
-
   }
 
-  navigateToShow(id:string){
+  navigateToShow(id: string): void{
     this.router.navigate([`/restaurants/${id}`]);
   }
 
-  navigateToMenus(id:string){
+  navigateToMenus(id: string): void{
     this.router.navigate([`/restaurants/${id}/menus`]);
   }
-  navigateToCreate(){
+  navigateToCreate(): void{
     this.router.navigate([`/restorer/restaurants/add`]);
   }
 

@@ -1,4 +1,4 @@
-import { SharedModule } from './../../../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { MenuPageComponent } from './menu-page/menu-page.component';
 import { MenuRoutingModule } from './menu-routing.module';
