@@ -3,6 +3,7 @@
 
   <efd-restaurant-list
     [restaurants]="restaurantList"
+    [loading]="loading"
     (show)="navigateToShow($event)"
     (showMenus)="navigateToMenus($event)"
   >
