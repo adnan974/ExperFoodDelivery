@@ -1,19 +1,40 @@
-
-<div fxLayout="row wrap"  fxLayoutGap="30px grid">
-    <div fxFlex="25%"  *ngFor="let restaurant of restaurants">
+<section *ngIf="loading">
+  <div fxLayout="row wrap" fxLayoutGap="30px grid">
+    <div fxFlex="25%" *ngFor="let i of loadingArray ">
       <div class="restaurant">
-        <mat-card *ngIf="restaurant">
-            <mat-card-title>{{restaurant.name}}</mat-card-title>
-            <!-- TODO: remplacer l'url par l'url venant du service Restaurant-->
-            <img mat-card-image src="../../../assets/images/depositphotos_77833254-stock-illustration-restaurant-logo.jpg">
-            <mat-card-content><b>Description: </b>{{restaurant.description}} </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button  (click)="onShow(restaurant.id)">Voir détails</button>
-                <button mat-raised-button color="primary" (click)="onShowMenus(restaurant.id)">Voir Menus</button>
-            </mat-card-actions>
+        <div class="ph-item">
+          <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                  <div class="ph-col-8 "></div>
+                  <div class="ph-col-4 empty "></div>
+                  <div class="ph-col-12 empty"></div>
+                  <div class="ph-col-8 big"></div>
+                  <div class="ph-col-4 empty big"></div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="!loading">
+  <div fxLayout="row wrap" fxLayoutGap="30px grid">
+    <div fxFlex="25%" *ngFor="let restaurant of restaurants">
+      <div class="restaurant">
+        <mat-card *ngIf="restaurant" class="restaurant-card">
+          <mat-card-title>{{restaurant.name}}</mat-card-title>
+          <!-- TODO: remplacer l'url par l'url venant du service Restaurant-->
+          <img mat-card-image
+            src="../../../assets/images/depositphotos_77833254-stock-illustration-restaurant-logo.jpg">
+          <mat-card-content><b>Description: </b>{{restaurant.description}} </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button (click)="onShow(restaurant.id)">Voir détails</button>
+            <button mat-raised-button color="primary" (click)="onShowMenus(restaurant.id)">Voir Menus</button>
+          </mat-card-actions>
         </mat-card>
+      </div>
     </div>
-    </div>
-</div>
-
-
+  </div>
+</section>
