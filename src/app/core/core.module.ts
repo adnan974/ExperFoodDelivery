@@ -6,9 +6,10 @@ import { RestorerModule } from '../restorer/restorer.module';
 import { CustomerModule } from '../customer/customer.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { StyleModule } from '../style/style.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -35,5 +36,12 @@ import { HttpClientModule } from '@angular/common/http';
     PageNotFoundComponent,
 
   ],
+  providers: [
+    {
+     provide: HTTP_INTERCEPTORS,
+     useClass: AuthInterceptor,
+     multi: true
+    }
+   ]
 })
 export class CoreModule { }

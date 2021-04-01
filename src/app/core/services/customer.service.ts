@@ -33,16 +33,21 @@ export class CustomerService {
     )
   }
 
-  public getCustomer(id: number): Observable<User> {
+  public getCustomer(id: number | undefined): Observable<User> {
     return (
       this.http.get(this.BASE_URL + '/api/users/'+ id)
         .pipe(
           map((user: any) => {
               const u = new User({
                 id: user.data._id,
-                lastname: user.data._lastname,
-                firstname: user.data._firstname,
-                email: user.data._email
+                lastname: user.data.lastname,
+                firstname: user.data.firstname,
+                email: user.data.email,
+                address: user.data.address,
+                CP: user.data.CP,
+                city: user.data.city,
+                role: user.data.role,
+                phone: user.data.phone,
               })
             return u;
           })
