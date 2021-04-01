@@ -14,7 +14,11 @@
     </p>
   </section>
 
-  <efd-login-form [loading]="loading" (connect)="login($event)"> </efd-login-form>
+  <efd-login-form
+  [loading]="loading"
+  [invalidCredentials]="invalidCredentials.asObservable()"
+  (typing)="onTyping()"
+  (connect)="login($event)"> </efd-login-form>
   <section class="create-account">
     Pas encore de compte ? <span class="create-account-link" (click)="navigateToRegister()">Créez un compte</span>
   </section>

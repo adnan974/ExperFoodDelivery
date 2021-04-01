@@ -1,8 +1,20 @@
+<section *ngIf="!loadingPage">
+  <efd-navbar [opened$]="openSideNav.asObservable()"></efd-navbar>
 
-<efd-navbar [opened]="openSideNav"></efd-navbar>
+  <div class="main-container" (click)="closeSidenav()">
+    <router-outlet></router-outlet>
+  </div>
 
-<div class="main-container" (click)="closeSidenav()">
-  <router-outlet></router-outlet>
+  <efd-footer></efd-footer>
+
+</section>
+
+
+<div *ngIf="loadingPage" class="page-loader">
+  <mat-grid-list cols="1" rowHeight="2:1">
+    <mat-grid-tile><img src="../../../../assets/images/loading.svg" /></mat-grid-tile>
+
+  </mat-grid-list>
+  <img src="../../../../assets/images/background.jpg" hidden="true" (load)="onload()" />
+
 </div>
-
-<efd-footer></efd-footer>
