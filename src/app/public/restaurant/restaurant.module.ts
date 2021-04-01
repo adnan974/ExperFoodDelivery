@@ -6,12 +6,11 @@ import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { StyleModule } from './../../style/style.module';
 
 import { NgModule } from '@angular/core';
-import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [RestaurantListPageComponent, RestaurantListComponent, RestaurantShowPageComponent, RestaurantShowComponent],
+  declarations: [RestaurantListPageComponent, RestaurantShowPageComponent, RestaurantShowComponent],
   imports: [
     SharedModule,
     StyleModule,

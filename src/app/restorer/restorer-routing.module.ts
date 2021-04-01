@@ -14,6 +14,8 @@ const routes: Routes = [
     data: {roles : [UserRole.Restorer]},
     children: [
       { path: 'home', component : HomeRestorerComponent },
+      { path: 'restaurants', loadChildren : ()=> import('./restaurant/restaurant.module').then(r => r.RestaurantModule)},
+      { path: 'menus', loadChildren : ()=> import('./menu/menu.module').then(m => m.MenuModule)},
     ]
    }
 ];
