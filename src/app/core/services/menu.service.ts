@@ -21,11 +21,11 @@ export class MenuService {
       this.http.get(this.BASE_URL+'/api/menus')
       .pipe(
         map((menus:any)=>{
-          return menus.map((menu:any)=>{
+          return menus.data.map((menu:any)=>{
             return new Menu({
               id:menu._id,
-              name:menu._name,
-              price:menu._price
+              name:menu.name,
+              price:menu.price
             })
           })
         })

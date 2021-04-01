@@ -1,17 +1,21 @@
 export class Menu {
   private _id?: number;
   private _name?: string;
+  private _description?: string;
   private _price?: number;
+
 
   constructor(
     params: {
       id?: number;
       name?: string;
+      description?:string;
       price?: number;
     } = {}
   ) {
     this._id = params.id;
     this._name = params.name;
+    this._description = params.description;
     this._price = params.price;
   }
 
@@ -64,4 +68,20 @@ export class Menu {
   public set price(value: number | undefined) {
     this._price = value;
   }
+
+    /**
+   * Getter description
+   * @return {string}
+   */
+     public get description(): string | undefined {
+      return this._description;
+    }
+
+    /**
+     * Setter description
+     * @param {string} value
+     */
+    public set description(value: string | undefined) {
+      this._description = value;
+    }
 }
