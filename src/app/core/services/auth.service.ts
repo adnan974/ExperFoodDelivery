@@ -23,8 +23,12 @@ export class AuthService {
     console.info(log);
   }
 
-  isLoggedIn() {
+  isLoggedIn() : boolean {
     return !!localStorage.getItem('jwt');
+  }
+
+  getToken() : string{
+    return this.isLoggedIn() && JSON.parse(localStorage.getItem('jwt') ?? "");
   }
 
 

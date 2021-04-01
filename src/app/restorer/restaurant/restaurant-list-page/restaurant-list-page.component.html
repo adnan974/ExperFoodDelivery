@@ -1,0 +1,18 @@
+
+<div class="page-container">
+  <h1>Mes restaurants
+
+    <button mat-icon-button aria-label="Ajouter restaurant" (click)="navigateToCreate()">
+      <mat-icon>add</mat-icon>
+    </button >
+
+  </h1>
+
+
+  <efd-restaurant-list
+    [restaurants]="restaurantList"
+    (show)="navigateToShow($event)"
+    (showMenus)="navigateToMenus($event)"
+  >
+  </efd-restaurant-list>
+</div>

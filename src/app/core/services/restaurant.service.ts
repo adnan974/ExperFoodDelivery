@@ -1,10 +1,11 @@
+import { Restaurant } from './../../shared/models/restaurant';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Restaurant } from 'src/app/shared/models/restaurant';
 import { environment } from 'src/environments/environment';
 import { Menu } from 'src/app/shared/models/menu';
+import { ServerResponse } from 'src/app/shared/models/server-response';
 
 
 
@@ -19,7 +20,7 @@ export class RestaurantService {
   constructor(private http: HttpClient) {
   }
 
-  public getRestaurants(): Observable<any> {
+  public getRestaurants(): Observable<Array<Restaurant>> {
 
     return this.http.get(`${this.BASE_URL}/api/restaurants`)
       .pipe(
@@ -37,10 +38,27 @@ export class RestaurantService {
       )
   }
 
+  public getUserRestaurants(userId:number | undefined) :Observable<Array<Restaurant>>{
+
+    return this.http.get(`${this.BASE_URL}/api/restaurants?owner=${userId}`)
+    .pipe(
+      map((items: any) => {
+        let itemMapped = items.data.map((element: any) => {
+          return new Restaurant({
+            id: element._id,
+            name: element.name,
+            description: element.description
+          })
+        })
+        return itemMapped;
+
+      })
+    )
+
+  }
+
   public getRestaurantMenus(idRestaurant:string){
 
-    console.log("on est dans le restaurant service")
-    console.log(idRestaurant)
     let link = `${this.BASE_URL}/api/restaurants/${idRestaurant}/menus`
     return this.http.get(link)
       .pipe(
@@ -58,6 +76,19 @@ export class RestaurantService {
        })
 
     )
+  }
+
+  public createRestaurant(restaurant : Restaurant): Observable<any> {
+
+    const data = {
+      name : restaurant.name,
+      description:restaurant.description,
+      address:restaurant.address,
+      mainPhotoUrl: restaurant.photosUrls ? restaurant.photosUrls[0] : null
+    }
+
+    return this.http.post(`${this.BASE_URL}/api/restaurants`, data);
+
   }
 
 

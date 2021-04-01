@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { RestaurantService } from 'src/app/core/services/restaurant.service';
-import { Restaurant } from '../../../shared/models/restaurant';
+import { Restaurant } from '../../models/restaurant';
 
 @Component({
   selector: 'efd-restaurant-list',

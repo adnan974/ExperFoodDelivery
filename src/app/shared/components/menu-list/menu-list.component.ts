@@ -1,4 +1,4 @@
-import { ShopCartService } from './../../../core/services/shop-cart.service';
+import { ShopCartService } from '../../../core/services/shop-cart.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { Menu } from 'src/app/shared/models/menu';

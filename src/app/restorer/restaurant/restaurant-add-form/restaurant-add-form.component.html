@@ -1,0 +1,67 @@
+<form novalidate [formGroup]="createRestaurantForm" (ngSubmit)="submit()">
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Nom du restaurant</mat-label>
+      <input
+        matInput
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Nom du restaurant"
+        autocorrect="off"
+        autocomplete="off"
+      />
+      <mat-error *ngIf="createRestaurantForm?.get('name')?.hasError('required')">
+        Le nom du restaurant est requis
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Description du restaurant</mat-label>
+      <input
+        matInput
+        id="description"
+        type="text"
+        formControlName="description"
+        placeholder="Description du restaurant"
+        autocorrect="off"
+        autocomplete="off"
+      />
+      <mat-error *ngIf="createRestaurantForm?.get('description')?.hasError('required')">
+        La description du restaurant est requis
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Adresse du restaurant</mat-label>
+      <input
+        matInput
+        id="address"
+        type="text"
+        formControlName="address"
+        placeholder="Adresse du restaurant"
+        autocorrect="off"
+        autocomplete="off"
+      />
+      <mat-error *ngIf="createRestaurantForm?.get('address')?.hasError('required')">
+        L'adresse du restaurant est requise
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+
+  <div class="efd-create-btn-row">
+    <button class="efd-login-btn" mat-button color="primary" [disabled]="!createRestaurantForm?.valid || loading">
+      Créer !
+    </button>
+    <div class="loader-wrap" >
+      <img *ngIf="loading" class="loader" src="../../../../assets/images/loading.svg" />
+    </div>
+  </div>
+
+</form>

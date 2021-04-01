@@ -55,7 +55,16 @@ export class NavbarComponent implements OnInit {
   ];
 
   restorerNavItems: Array<any> = [
-    ...this.publicNavItems,
+    {
+      name: 'Mes restaurants',
+      link: `/restorer/restaurants`,
+      icon: 'storefront'
+    },
+    {
+      name: 'Mes menus',
+      link: 'restorer/menus',
+      icon: 'fastfood'
+    },
   ];
 
   navItems: Array<any> = [];
