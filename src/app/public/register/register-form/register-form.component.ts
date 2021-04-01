@@ -50,8 +50,6 @@ export class RegisterFormComponent implements OnInit {
   registerRole() : void {
     this.registerRoleForm &&
     (this.user.role = this.registerRoleForm.value['roleCtrl']);
-
-    console.log(this.user);
   }
 
 
