@@ -11,14 +11,20 @@ import { Router } from '@angular/router';
 export class RestaurantListPageComponent implements OnInit {
 
   public restaurantList: Array<Restaurant> = new Array<Restaurant>();
+  loading: boolean = true;
+
 
   constructor(private restaurantService : RestaurantService, private router: Router) { }
 
   ngOnInit(): void {
     this.restaurantService.getRestaurants()
-    .subscribe((restaurants)=>{
-      this.restaurantList = restaurants;
-    });
+    .subscribe(
+      {
+        next: (restaurants)=>this.restaurantList = restaurants,
+        error: (err)=>console.error(err),
+        complete:()=>this.loading = false
+      }
+    );
   }
 
   navigateToShow(id:string){
