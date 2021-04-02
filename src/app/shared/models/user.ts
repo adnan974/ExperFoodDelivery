@@ -5,7 +5,7 @@ export enum UserRole {
 }
 
 export class User {
-  private _id?: number;
+  private _id?: string;
   private _lastname?: string;
   private _firstname?: string;
   private _role?: UserRole;
@@ -18,7 +18,7 @@ export class User {
 
   constructor(
     params: {
-      id?: number;
+      id?: string;
       lastname?: string;
       firstname?: string;
       role?: UserRole;
@@ -40,10 +40,10 @@ export class User {
     this._phone = params.phone;
   }
 
-  public get id(): number | undefined {
+  public get id(): string | undefined {
     return this._id;
   }
-  public set id(value: number | undefined) {
+  public set id(value: string | undefined) {
     this._id = value;
   }
 

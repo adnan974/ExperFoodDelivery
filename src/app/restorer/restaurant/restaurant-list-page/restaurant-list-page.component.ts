@@ -22,7 +22,6 @@ export class RestaurantListPageComponent implements OnInit {
 
     this.authService.$userConnected.subscribe((response) => {
       this.userConnected = response;
-
       this.restaurantService.getUserRestaurants(this.userConnected?.id)
       .subscribe(
         {

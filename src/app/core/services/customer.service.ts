@@ -33,7 +33,7 @@ export class CustomerService {
     )
   }
 
-  public getCustomer(id: number | undefined): Observable<User> {
+  public getCustomer(id: string | undefined): Observable<User> {
     return (
       this.http.get(this.BASE_URL + '/api/users/'+ id)
         .pipe(
@@ -55,7 +55,7 @@ export class CustomerService {
     )
   }
 
-  public updateCustomer(id: number): User {
+  public updateCustomer(id: string): User {
     const user = this.users.filter((item) => item.id = id);
     return user[0];
   }
