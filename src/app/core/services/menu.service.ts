@@ -16,7 +16,7 @@ export class MenuService {
 
   constructor(private http: HttpClient){}
 
-  public getMenus():Observable<any>{
+  public getAllMenus():Observable<any>{
     return (
       this.http.get(this.BASE_URL+'/api/menus')
       .pipe(
