@@ -1,7 +1,8 @@
 import { ShopCartService } from '../../../core/services/shop-cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { Menu } from 'src/app/shared/models/menu';
+import { RestaurantService } from 'src/app/core/services/restaurant.service';
 
 @Component({
   selector: 'efd-menu-list',
@@ -10,16 +11,23 @@ import { Menu } from 'src/app/shared/models/menu';
 })
 export class MenuListComponent implements OnInit {
 
-  public menuList?:Array<Menu>;
+  @Input() menuList?:Array<Menu>;
 
 
-  constructor(private menuService:MenuService, private shopCartService: ShopCartService) { }
+  constructor(private shopCartService: ShopCartService,private restaurantService:RestaurantService) { }
+
+
 
   ngOnInit(): void {
-    this.menuService.getMenus()
-    .subscribe((menus)=>{
-      this.menuList = menus;
-    });
+    
+  }
+
+  
+
+  getMenu(){
+    // TODO A remplacer
+    let id = "abc"
+    this.restaurantService.getRestaurantMenus(id)
   }
 
   addToShopCart(menu : Menu){
