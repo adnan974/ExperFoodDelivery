@@ -38,16 +38,18 @@ export class RestaurantService {
       )
   }
 
-  public getUserRestaurants(userId:number | undefined) :Observable<Array<Restaurant>>{
-
+  public getUserRestaurants(userId:string | undefined) :Observable<Array<Restaurant>>{
     return this.http.get(`${this.BASE_URL}/api/restaurants?owner=${userId}`)
     .pipe(
       map((items: any) => {
         let itemMapped = items.data.map((element: any) => {
+          console.log(element.menus)
           return new Restaurant({
             id: element._id,
             name: element.name,
-            description: element.description
+            description: element.description,
+            menus: element.menus,
+
           })
         })
         return itemMapped;

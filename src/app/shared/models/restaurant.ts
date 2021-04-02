@@ -1,9 +1,12 @@
+import { Menu } from "./menu";
+
 export class Restaurant {
   private _id?: string;
   private _name?: string;
   private _description?: string;
   private _address?: string;
   private _photosUrls?: Array<string>;
+  private _menus?:Array<Menu>;
 
   constructor(
     params: {
@@ -12,6 +15,7 @@ export class Restaurant {
       description?: string;
       address?: string;
       photosUrls?: Array<string>;
+      menus?:Array<Menu>;
     } = {}
   ) {
     this._id = params.id;
@@ -19,9 +23,12 @@ export class Restaurant {
     this._description = params.description;
     this._address = params.address;
     this._photosUrls = params.photosUrls;
+    this._menus = params.menus;
   }
 
   //Todo à compléter...
+
+  
 
   /**
    * Getter id
@@ -101,6 +108,22 @@ export class Restaurant {
    */
   public set photosUrls(value: Array<string> | undefined) {
     this._photosUrls = value;
+  }
+
+  /**
+ * Getter menus
+ * @return {Array<string>}
+ */
+  public get menus(): Array<Menu> | undefined {
+    return this._menus;
+  }
+
+  /**
+   * Setter menus
+   * @param {Array<string>} value
+   */
+  public set menus(value: Array<Menu> | undefined) {
+    this._menus = value;
   }
 
   public addPhotoUrl(photoUrl: string): void {

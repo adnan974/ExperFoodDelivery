@@ -22,13 +22,6 @@ export class MenuListComponent implements OnInit {
     
   }
 
-  
-
-  getMenu(){
-    // TODO A remplacer
-    let id = "abc"
-    this.restaurantService.getRestaurantMenus(id)
-  }
 
   addToShopCart(menu : Menu){
     this.shopCartService.addItem(menu);
