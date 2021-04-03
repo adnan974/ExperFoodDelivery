@@ -1,10 +1,12 @@
-import { Menu } from "./menu";
+import { Menu } from 'src/app/shared/models/menu';
+import { ImageWrapper } from './image-wrapper';
 
 export class Restaurant {
   private _id?: string;
   private _name?: string;
   private _description?: string;
   private _address?: string;
+  private _mainPhotoUrl?: string;
   private _photosUrls?: Array<string>;
   private _menus?:Array<Menu>;
 
@@ -14,6 +16,7 @@ export class Restaurant {
       name?: string;
       description?: string;
       address?: string;
+      mainPhotoUrl?: string;
       photosUrls?: Array<string>;
       menus?:Array<Menu>;
     } = {}
@@ -22,13 +25,14 @@ export class Restaurant {
     this._name = params.name;
     this._description = params.description;
     this._address = params.address;
+    this._mainPhotoUrl = params.mainPhotoUrl;
     this._photosUrls = params.photosUrls;
     this._menus = params.menus;
   }
 
   //Todo à compléter...
 
-  
+
 
   /**
    * Getter id
@@ -95,6 +99,24 @@ export class Restaurant {
   }
 
   /**
+   * Setter mainPhotoUrl
+   * @param {string} value
+   */
+  public set mainPhotoUrl(value: string | undefined) {
+    this._mainPhotoUrl = value;
+  }
+
+  /**
+   * Getter mainPhotoUrl
+   * @return {string}
+   */
+  public get mainPhotoUrl(): string | undefined {
+    return this._mainPhotoUrl;
+  }
+
+
+
+  /**
    * Getter photos_url
    * @return {Array<string>}
    */
@@ -137,3 +159,10 @@ export class Restaurant {
     }
   }
 }
+
+export interface CreateRestaurantWrapperObject {
+  restaurant?: Restaurant;
+  arrayImages?: Array<ImageWrapper>;
+}
+
+

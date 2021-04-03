@@ -14,8 +14,7 @@ export class RestaurantListComponent implements OnInit {
   @Output() showMenus: EventEmitter<string> = new EventEmitter<string>();
   @Input() restaurants?: Array<Restaurant>;
   @Input() loading: boolean = false;
-  loadingArray = new Array(12);
-
+  loadingArray = new Array(6);
 
   constructor(private restaurantService: RestaurantService) { }
 

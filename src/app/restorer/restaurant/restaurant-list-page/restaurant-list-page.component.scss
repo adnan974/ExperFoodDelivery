@@ -2,3 +2,8 @@
   padding-top:10em;
   margin : 0 5em;
 }
+
+.left-section,
+.right-section {
+  width: calc(100% / 2);
+}

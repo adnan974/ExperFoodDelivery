@@ -15,7 +15,8 @@
   background-size: cover;
   background-attachment: fixed;
   filter: grayscale(70%);
-  background-image: url("../../../../assets/images/background.jpg");
+  background-color: #404040;
+  //background-image: url("../../../../assets/images/background.jpg");
   opacity:1;
   transition:opacity 0.5s ease-in;
 }

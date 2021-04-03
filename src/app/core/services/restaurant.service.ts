@@ -2,7 +2,7 @@ import { Restaurant } from './../../shared/models/restaurant';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Menu } from 'src/app/shared/models/menu';
 import { ServerResponse } from 'src/app/shared/models/server-response';
@@ -24,12 +24,18 @@ export class RestaurantService {
 
     return this.http.get(`${this.BASE_URL}/api/restaurants`)
       .pipe(
+        tap((rawData)=>{
+          console.log(rawData);
+        }),
         map((items: any) => {
           let itemMapped = items.data.map((element: any) => {
             return new Restaurant({
               id: element._id,
               name: element.name,
-              description: element.description
+              description: element.description,
+              mainPhotoUrl : element.mainPhotoUrl,              
+              menus: element.menus,
+
             })
           })
           return itemMapped;
@@ -41,6 +47,9 @@ export class RestaurantService {
   public getUserRestaurants(userId:string | undefined) :Observable<Array<Restaurant>>{
     return this.http.get(`${this.BASE_URL}/api/restaurants?owner=${userId}`)
     .pipe(
+      tap((rawData)=>{
+        console.log(rawData);
+      }),
       map((items: any) => {
         let itemMapped = items.data.map((element: any) => {
           console.log(element.menus)
@@ -48,8 +57,12 @@ export class RestaurantService {
             id: element._id,
             name: element.name,
             description: element.description,
+<<<<<<< src/app/core/services/restaurant.service.ts
+            mainPhotoUrl : element.mainPhotoUrl
+=======
             menus: element.menus,
 
+>>>>>>> src/app/core/services/restaurant.service.ts
           })
         })
         return itemMapped;
@@ -80,16 +93,9 @@ export class RestaurantService {
     )
   }
 
-  public createRestaurant(restaurant : Restaurant): Observable<any> {
+  public createRestaurant(restaurantFormData : FormData): Observable<any> {
 
-    const data = {
-      name : restaurant.name,
-      description:restaurant.description,
-      address:restaurant.address,
-      mainPhotoUrl: restaurant.photosUrls ? restaurant.photosUrls[0] : null
-    }
-
-    return this.http.post(`${this.BASE_URL}/api/restaurants`, data);
+    return this.http.post(`${this.BASE_URL}/api/restaurants`, restaurantFormData);
 
   }
 

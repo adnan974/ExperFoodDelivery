@@ -1,7 +1,13 @@
-import { Restaurant } from './../../../shared/models/restaurant';
+import { Restaurant, CreateRestaurantWrapperObject } from './../../../shared/models/restaurant';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ImageWrapper } from 'src/app/shared/models/image-wrapper';
+
+// class ImageWrapper {
+//   image !:File;
+//   imagePath !: string;
+// }
 
 @Component({
   selector: 'efd-restaurant-add-form',
@@ -11,11 +17,13 @@ import { Router } from '@angular/router';
 export class RestaurantAddFormComponent implements OnInit {
 
   createRestaurantForm!: FormGroup;
-  loading : boolean = false;
-  @Output() create : EventEmitter<Restaurant> = new EventEmitter<Restaurant>();
+  loading: boolean = false;
+  imagesList: Array<ImageWrapper> = new Array<ImageWrapper>();
+
+  @Output() create: EventEmitter<CreateRestaurantWrapperObject> = new EventEmitter<CreateRestaurantWrapperObject>();
 
   constructor(private fb: FormBuilder,
-    private router: Router
+              private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,14 +49,45 @@ export class RestaurantAddFormComponent implements OnInit {
   get mainPhotoUrl() { return this.createRestaurantForm.get('mainPhotoUrl') }
 
   submit() {
-    this.create.emit(new Restaurant({
-      name : this.name?.value,
-      description : this.description?.value,
-      address: this.description?.value
-    }))
+    this.create.emit({
+      restaurant : new Restaurant({
+        name : this.name?.value,
+        description : this.description?.value,
+        address: this.description?.value
+      }),
+      arrayImages : this.imagesList
+    })
 
-    //this.router.navigate(['/home']);
    }
+
+   handleImageDrop(images:any){
+    this.prepareFilesList(images);
+
+   }
+
+   onImageDropped(images:any){
+     console.log('image !', images)
+    this.prepareFilesList(images);
+   }
+
+   prepareFilesList(files: Array<any>) {
+    console.log('prepare image !', files)
+    for (const item of files) {
+      let imageW = new ImageWrapper();
+      imageW.image = item;
+
+      let reader = new FileReader();
+      reader.readAsDataURL(item);
+      reader.onloadend = () => {
+        imageW.imagePath = reader.result as string;
+      };
+
+      console.log('imageW !', imageW)
+      this.imagesList.push(imageW);
+      console.log('imageWList Wrapper!', this.imagesList)
+    }
+
+  }
 
 
 
