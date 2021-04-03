@@ -4,11 +4,12 @@ import { RestaurantListComponent } from './components/restaurant-list/restaurant
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DragAndDropDirective } from './directives/drag-and-drop.directive';
 
 
 
 @NgModule({
-  declarations: [RestaurantListComponent, MenuListComponent],
+  declarations: [RestaurantListComponent, MenuListComponent, DragAndDropDirective],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     RestaurantListComponent,
-    MenuListComponent
+    MenuListComponent,
+    DragAndDropDirective
   ]
 })
 export class SharedModule { }

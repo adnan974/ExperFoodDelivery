@@ -15,6 +15,8 @@ import { MatListModule } from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatRadioModule} from '@angular/material/radio';
 
+import { LazyLoadImageModule} from 'ng-lazyload-image';
+
 
 const AngularMaterialModules = [
   MatButtonModule,
@@ -31,7 +33,8 @@ const AngularMaterialModules = [
   MatSidenavModule,
   MatListModule,
   MatBadgeModule,
-  MatRadioModule
+  MatRadioModule,
+  LazyLoadImageModule
 ]
 
 
@@ -43,6 +46,6 @@ const AngularMaterialModules = [
   ],
   exports : [
     ...AngularMaterialModules
-  ]
+  ],
 })
 export class StyleModule { }

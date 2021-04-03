@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StyleModule } from './style/style.module';
-import { AuthService } from './core/services/auth.service';
 
 @NgModule({
   declarations: [

@@ -1,19 +1,17 @@
+<div class="page-container" >
 
-<div class="page-container">
-  <h1>Mes restaurants
+  <section class="top" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="left-section">
+      <span >Mes restaurants</span>
+    </div>
+    <div class="right-section" fxLayout="row" fxLayoutAlign="end center" >
+      <button mat-button (click)="navigateToCreate()">
+        <mat-icon>add</mat-icon> Ajouter un restaurant
+      </button>
+    </div>
+  </section>
 
-    <button mat-icon-button aria-label="Ajouter restaurant" (click)="navigateToCreate()">
-      <mat-icon>add</mat-icon>
-    </button >
-
-  </h1>
-
-
-  <efd-restaurant-list
-    [restaurants]="restaurantList"
-    [loading]="loading"
-    (show)="navigateToShow($event)"
-    (showMenus)="navigateToMenus($event)"
-  >
+  <efd-restaurant-list [restaurants]="restaurantList" [loading]="loading" (show)="navigateToShow($event)"
+    (showMenus)="navigateToMenus($event)">
   </efd-restaurant-list>
 </div>

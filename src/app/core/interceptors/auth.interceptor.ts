@@ -6,13 +6,16 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService : AuthService){}
+  constructor(private authService: AuthService) { }
 
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    request = this.addContentType(request);
-    if (!this.isPublicRequest(request.url)) {
+    if (!this.isMultipartFormData(request.method, request.url)) {
+      request = this.addContentType(request);
+    }
+
+    if (!this.isPublicRequest(request.method, request.url)) {
       request = this.addToken(request, this.authService.getToken());
     }
     return next.handle(request);
@@ -35,10 +38,12 @@ export class AuthInterceptor implements HttpInterceptor {
     });
   }
 
-  private isPublicRequest(url: string): boolean {
-    return (url.includes('login') || url.includes('register'));
+  private isPublicRequest(method: string, url: string): boolean {
+    return (method === 'GET' || url.includes('login') || url.includes('register'));
   }
 
-
+  private isMultipartFormData(method: string, url: string): boolean {
+    return (method === 'POST' && url.includes('restaurant'));
+  }
 
 }

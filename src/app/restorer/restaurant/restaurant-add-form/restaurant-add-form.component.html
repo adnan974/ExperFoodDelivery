@@ -54,6 +54,17 @@
     </mat-form-field>
   </p>
 
+  <div class="dropzone" efdDragAndDrop (fileDropped)="onImageDropped($event)">
+    <input type="file" #imageDrop id="imageDrop" multiple (change)="handleImageDrop($event.target.files)" />
+    <h3>Glisez vos photos ici</h3>
+    <h3>ou</h3>
+    <label for="imageDrop">Cliquez ici</label>
+  </div>
+
+  <div class="gallery">
+    <img *ngFor="let image of imagesList" src="{{image.imagePath}}" alt="image uploadée par l'utilisateur">
+</div>
+
 
   <div class="efd-create-btn-row">
     <button class="efd-login-btn" mat-button color="primary" [disabled]="!createRestaurantForm?.valid || loading">

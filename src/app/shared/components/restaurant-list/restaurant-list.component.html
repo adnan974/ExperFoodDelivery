@@ -1,3 +1,4 @@
+
 <section *ngIf="loading">
   <div fxLayout="row wrap" fxLayoutGap="30px grid">
     <div fxFlex="25%" *ngFor="let i of loadingArray ">
@@ -25,9 +26,25 @@
       <div class="restaurant">
         <mat-card *ngIf="restaurant" class="restaurant-card">
           <mat-card-title>{{restaurant.name}}</mat-card-title>
-          <!-- TODO: remplacer l'url par l'url venant du service Restaurant-->
-          <img mat-card-image
-            src="../../../assets/images/depositphotos_77833254-stock-illustration-restaurant-logo.jpg">
+
+          <div class="outer-wrapper">
+            <div class="frame">
+              <img
+              *ngIf="restaurant.mainPhotoUrl"
+              mat-card-image
+              defaultImage="../../../../assets/images/elipse-loading.svg"
+              [lazyLoad]="restaurant.mainPhotoUrl"
+              >
+
+              <img *ngIf="!restaurant.mainPhotoUrl" mat-card-image
+              src="../../../assets/images/depositphotos_77833254-stock-illustration-restaurant-logo.jpg">
+
+            </div>
+
+          </div>
+
+
+
           <mat-card-content><b>Description: </b>{{restaurant.description}} </mat-card-content>
           <mat-card-actions>
             <button mat-raised-button (click)="onShow(restaurant.id)">Voir détails</button>

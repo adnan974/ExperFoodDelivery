@@ -36,6 +36,10 @@ export class AuthService {
 
     if (this.isLoggedIn()) {
       const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? "");
+
+
+      let test:unknown;
+
       const userConnected : User  = new User({
         id: connexionUserObject._id,
         firstname: connexionUserObject.firstname,
