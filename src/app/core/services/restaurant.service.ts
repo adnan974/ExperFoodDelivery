@@ -33,7 +33,7 @@ export class RestaurantService {
               id: element._id,
               name: element.name,
               description: element.description,
-              mainPhotoUrl : element.mainPhotoUrl,              
+              mainPhotoUrl : element.mainPhotoUrl,
               menus: element.menus,
 
             })
@@ -57,12 +57,9 @@ export class RestaurantService {
             id: element._id,
             name: element.name,
             description: element.description,
-<<<<<<< src/app/core/services/restaurant.service.ts
-            mainPhotoUrl : element.mainPhotoUrl
-=======
+            mainPhotoUrl : element.mainPhotoUrl,
             menus: element.menus,
 
->>>>>>> src/app/core/services/restaurant.service.ts
           })
         })
         return itemMapped;

@@ -55,9 +55,27 @@ export class CustomerService {
     )
   }
 
-  public updateCustomer(id: string): User {
-    const user = this.users.filter((item) => item.id = id);
-    return user[0];
+  public updateCustomer(id: string | undefined, userupdated: User): Observable<User> {
+    return (
+      this.http.patch(this.BASE_URL + '/api/users/' + id, userupdated)
+      .pipe(
+        map((userupdated: any) => {
+          console.log(userupdated);
+          const u = new User({
+            id: userupdated.data.id,
+            lastname: userupdated.data.lastname,
+            firstname: userupdated.data.firstname,
+            email: userupdated.data.email,
+            address: userupdated.data.address,
+            CP: userupdated.data.CP,
+            city: userupdated.data.city,
+            role: userupdated.data.role,
+            phone: userupdated.data.phone,
+          })
+          return u;
+        })
+      )
+      )
   }
 
   public postCustomer(user: User): User {

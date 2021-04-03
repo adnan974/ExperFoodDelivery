@@ -6,12 +6,12 @@
         <div>
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput formControlName="emailCtrl" placeholder="Email" required>
+            <input matInput formControlName="emailCtrl" placeholder="Email" required class="form-control">
           </mat-form-field>
         </div>
         <mat-form-field>
           <mat-label>Mot de passe</mat-label>
-          <input matInput formControlName="passwordCtrl" [type]="hide ? 'password' : 'text'">
+          <input matInput formControlName="passwordCtrl" [type]="hide ? 'password' : 'text'" class="form-control">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -72,4 +72,3 @@
     </mat-step>
   </mat-horizontal-stepper>
 </mat-card>
-
