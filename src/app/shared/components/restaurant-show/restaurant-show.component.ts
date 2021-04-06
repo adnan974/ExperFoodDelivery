@@ -1,3 +1,4 @@
+import { UserRole } from 'src/app/shared/models/user';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Restaurant } from '../../models/restaurant';
@@ -13,6 +14,11 @@ export class RestaurantShowComponent implements OnInit {
   @Output() showMenus: EventEmitter<string> = new EventEmitter<string>();
   @Input() restaurant?:Restaurant;
   @Input() loading: boolean = false;
+  @Input() role?: UserRole;
+
+  get userRole(): typeof UserRole {
+    return UserRole;
+  }
 
   constructor(private router: Router) {}
 

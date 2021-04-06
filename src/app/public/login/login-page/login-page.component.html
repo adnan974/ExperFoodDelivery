@@ -1,26 +1,22 @@
-
 <div class="page-container">
-<div class="login-page-content">
-  <section class="login-page-title">
-    <img src="../../../assets/images/logo_efd_blue.png" />
-    <h1>
-      <span class="brand-exper">Exper</span>
-      <span class="brand-food-delivery"> Food Delivery </span>
-    </h1>
+  <div class="login-page-content">
+    <section class="login-page-title">
+      <img src="../../../assets/images/logo_efd_blue.png" />
+      <h1>
+        <span class="brand-exper">Exper</span>
+        <span class="brand-food-delivery"> Food Delivery </span>
+      </h1>
 
-    <p class="connection-text">
-      Connectez-vous afin de profiter de nos services de livraison de repas à
-      domicile !
-    </p>
-  </section>
+      <p class="connection-text">
+        Connectez-vous afin de profiter de nos services de livraison de repas à
+        domicile !
+      </p>
+    </section>
 
-  <efd-login-form
-  [loading]="loading"
-  [invalidCredentials]="invalidCredentials.asObservable()"
-  (typing)="onTyping()"
-  (connect)="login($event)"> </efd-login-form>
-  <section class="create-account">
-    Pas encore de compte ? <span class="create-account-link" (click)="navigateToRegister()">Créez un compte</span>
-  </section>
-</div>
+    <efd-login-form [loading]="loading" [invalidCredentials]="invalidCredentials.asObservable()" (typing)="onTyping()"
+      (connect)="login($event)"> </efd-login-form>
+    <section class="create-account">
+      Pas encore de compte ? <span class="create-account-link" (click)="navigateToRegister()">Créez un compte</span>
+    </section>
+  </div>
 </div>

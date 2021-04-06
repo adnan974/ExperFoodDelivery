@@ -22,8 +22,8 @@
 <section *ngIf="!loading && restaurant">
 
   <div class="carousel-wrapper">
-    <carousel cellsToShow="1">
-      <!-- [images]="restaurant.photosUrls"> -->
+    <carousel cellsToShow="1" cellWidth="100%" dots="true" autoplay="true" pauseOnHover="true">
+
       <div class="carousel-cell" *ngFor="let image of restaurant.photosUrls ">
         <img defaultImage="../../../../assets/images/elipse-loading.svg" [lazyLoad]="image" />
       </div>

@@ -1,6 +1,6 @@
 import { Restaurant, CreateRestaurantWrapperObject } from '../../../shared/models/restaurant';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ImageWrapper } from 'src/app/shared/models/image-wrapper';
 
@@ -11,10 +11,10 @@ import { ImageWrapper } from 'src/app/shared/models/image-wrapper';
 })
 export class RestaurantCreateFormComponent implements OnInit {
 
-  createRestaurantForm!: FormGroup;
-  loading: boolean = false;
-  imagesList: Array<ImageWrapper> = new Array<ImageWrapper>();
+  public createRestaurantForm!: FormGroup;
+  public imagesList: Array<ImageWrapper> = new Array<ImageWrapper>();
 
+  @Input() loading: boolean = false;
   @Output() create: EventEmitter<CreateRestaurantWrapperObject> = new EventEmitter<CreateRestaurantWrapperObject>();
 
   constructor(private fb: FormBuilder,
@@ -64,20 +64,23 @@ export class RestaurantCreateFormComponent implements OnInit {
     this.prepareFilesList(images);
   }
 
-  prepareFilesList(files: Array<any>): void {
-    for (const item of files) {
-      const reader = new FileReader();
-      let path;
-      reader.readAsDataURL(item);
-      reader.onloadend = () => {
-        path = reader.result as string;
-      };
+  prepareFilesList (files: Array<File>): void {
+    if (this.imagesList.length < 3) {
+      for (const item of files) {
+        const reader = new FileReader();
+        const imageWrap = {
+          image: item,
+          imagePath: '',
+        }
+        reader.readAsDataURL(item);
+        reader.onloadend = () => {
+          imageWrap.imagePath =  reader.result as string;
+        };
 
-      this.imagesList.push({
-        image: item,
-        imagePath: path,
-      });
+        this.imagesList.push(imageWrap);
+      }
     }
+
 
   }
 

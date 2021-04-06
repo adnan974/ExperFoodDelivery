@@ -1,9 +1,20 @@
 .page-container {
-  padding-top:10em;
+  padding:10em 0 5em 0;
   margin : 0 5em;
 }
 
 .left-section,
 .right-section {
   width: calc(100% / 2);
+}
+
+.top {
+  margin: 2em 0;
+}
+
+.title {
+  font-family: 'Fjalla One', sans-serif;
+  font-size : 2em;
+  margin-bottom: 2em;
+  color: #404040;
 }
