@@ -1,3 +1,40 @@
+.efd-create-form-field, .efd-create-btn-row, .efd-create-btn{
+  width: 100%;
+
+}
+
+.efd-create-btn{
+background-color: #0078f5;
+}
+
+.outer-wrapper{
+  display: inline-block;
+  margin: 20px;
+}
+.frame{
+  width: 250px;
+  height: 200px;
+  border: 1px solid black;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+img{
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.loader-wrap {
+  height: 4.1em;
+  text-align: center;
+}
+
+.loader {
+  width: 4em;
+}
+
 .dropzone {
   width: 450px;
   height: 200px;
@@ -16,6 +53,7 @@
   height: 100%;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
 label{
@@ -23,8 +61,10 @@ label{
   width: 183px;
   height: 44px;
   border-radius: 21.5px;
-  background-color: blue;
+  background-color: #0078f5;
   padding: 8px 16px;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 h3 {
@@ -87,21 +127,11 @@ h3 {
 }
 
 .gallery {
-  margin-top: 10px;
-}
-
-.gallery img {
-  width: 150px!important;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
-.gallery>img {
-  width: 150px!important;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  vertical-align: middle;
+  margin: 3em 0;
+  min-height: 10em;
+  width:100%;
+  background-color: rgba($color: #EAEAEA, $alpha: 0.2);
+  text-align: center;
 }
 
 .fileover {

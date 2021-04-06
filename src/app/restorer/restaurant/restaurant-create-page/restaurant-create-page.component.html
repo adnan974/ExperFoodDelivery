@@ -1,8 +1,12 @@
-
-<div class= "page-container">
-  <h2>Création d'un nouveau restaurant</h2>
-
-<efd-restaurant-create-form (create)="create($event)"></efd-restaurant-create-form>
-
+<div class="page-container">
+  <section class="top" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="left-section">
+      <h2 class="title">Création d'un nouveau restaurant</h2>
+    </div>
+    <div class="right-section" fxLayout="row" fxLayoutAlign="end center" >
+    </div>
+  </section>
+  <div class="create-form-content">
+    <efd-restaurant-create-form [loading]="loading" (create)="create($event)"></efd-restaurant-create-form>
+  </div>
 </div>
-

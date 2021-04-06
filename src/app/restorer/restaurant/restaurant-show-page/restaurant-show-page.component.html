@@ -1,7 +1,21 @@
 
 <div class="page-container">
-  <h1>Restaurant : {{restaurant ? restaurant!.name : ""}}</h1>
 
-<efd-restaurant-show [restaurant]="restaurant" [loading]="loading"></efd-restaurant-show>
+  <section class="top" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="left-section">
+      <h2 class="title">Détails restaurant : {{restaurant ? restaurant!.name : "..."}}</h2>
+    </div>
+    <div class="right-section" fxLayout="row" fxLayoutAlign="end center" >
+       <button mat-raised-button ><mat-icon>edit</mat-icon> Modifier</button>
+      <button mat-raised-button color="warn"><mat-icon>delete</mat-icon> Supprimer</button>
+    </div>
+  </section>
+
+  <div class="show-content">
+    <efd-restaurant-show [restaurant]="restaurant" [loading]="loading"></efd-restaurant-show>
+  </div>
+
+
+
 </div>
 

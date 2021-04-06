@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatRippleModule} from '@angular/material/core';
 
 import { LazyLoadImageModule} from 'ng-lazyload-image';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
@@ -35,8 +36,9 @@ const AngularMaterialModules = [
   MatListModule,
   MatBadgeModule,
   MatRadioModule,
+  MatRippleModule,
   LazyLoadImageModule,
-  IvyCarouselModule
+  IvyCarouselModule,
 ]
 
 

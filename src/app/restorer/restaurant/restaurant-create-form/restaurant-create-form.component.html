@@ -2,15 +2,7 @@
   <p>
     <mat-form-field class="efd-create-form-field">
       <mat-label>Nom du restaurant</mat-label>
-      <input
-        matInput
-        id="name"
-        type="text"
-        formControlName="name"
-        placeholder="Nom du restaurant"
-        autocorrect="off"
-        autocomplete="off"
-      />
+      <input matInput id="name" type="text" formControlName="name" placeholder="Nom du restaurant" autocomplete="off" />
       <mat-error *ngIf="createRestaurantForm?.get('name')?.hasError('required')">
         Le nom du restaurant est requis
       </mat-error>
@@ -20,17 +12,10 @@
   <p>
     <mat-form-field class="efd-create-form-field">
       <mat-label>Description du restaurant</mat-label>
-      <input
-        matInput
-        id="description"
-        type="text"
-        formControlName="description"
-        placeholder="Description du restaurant"
-        autocorrect="off"
-        autocomplete="off"
-      />
+      <textarea matInput id="description" type="text" formControlName="description"
+        placeholder="Description du restaurant" autocomplete="off" rows="5"></textarea>
       <mat-error *ngIf="createRestaurantForm?.get('description')?.hasError('required')">
-        La description du restaurant est requis
+        La description du restaurant est requise
       </mat-error>
     </mat-form-field>
   </p>
@@ -39,38 +24,47 @@
   <p>
     <mat-form-field class="efd-create-form-field">
       <mat-label>Adresse du restaurant</mat-label>
-      <input
-        matInput
-        id="address"
-        type="text"
-        formControlName="address"
-        placeholder="Adresse du restaurant"
-        autocorrect="off"
-        autocomplete="off"
-      />
+      <input matInput id="address" type="text" formControlName="address" placeholder="Adresse du restaurant"
+        autocorrect="off" autocomplete="off" />
       <mat-error *ngIf="createRestaurantForm?.get('address')?.hasError('required')">
         L'adresse du restaurant est requise
       </mat-error>
     </mat-form-field>
   </p>
 
-  <div class="dropzone" efdDragAndDrop (fileDropped)="onImageDropped($event)">
-    <input type="file" #imageDrop id="imageDrop" multiple (change)="handleImageDrop($event.target.files)" />
-    <h3>Glisez vos photos ici</h3>
+  <div matRipple class="dropzone" efdDragAndDrop (fileDropped)="onImageDropped($event)">
+    <input type="file" #imageDrop id="imageDrop" multiple accept="image/*"
+      (change)="handleImageDrop($event.target.files)" />
+    <h3>Glissez vos photos ici</h3>
     <h3>ou</h3>
-    <label for="imageDrop">Cliquez ici</label>
+    <label for="imageDrop">Cliquez</label>
   </div>
 
   <div class="gallery">
-    <img *ngFor="let image of imagesList" src="{{image.imagePath}}" alt="image uploadée par l'utilisateur">
-</div>
 
+    <div class="outer-wrapper">
+      <div class="frame">
+        <img *ngIf="imagesList[0]" src="{{imagesList[0]?.imagePath}}" alt="image uploadée par l'utilisateur">
+      </div>
+    </div>
+    <div class="outer-wrapper">
+      <div class="frame">
+        <img *ngIf="imagesList[1]" src="{{imagesList[1]?.imagePath}}" alt="image uploadée par l'utilisateur">
+      </div>
+    </div>
+    <div class="outer-wrapper">
+      <div class="frame">
+        <img *ngIf="imagesList[2]" src="{{imagesList[2]?.imagePath}}" alt="image uploadée par l'utilisateur">
+      </div>
+    </div>
+  </div>
 
   <div class="efd-create-btn-row">
-    <button class="efd-login-btn" mat-button color="primary" [disabled]="!createRestaurantForm?.valid || loading">
+    <button class="efd-create-btn" mat-raised-button mat-button color="primary"
+      [disabled]="!createRestaurantForm?.valid || loading">
       Créer !
     </button>
-    <div class="loader-wrap" >
+    <div class="loader-wrap">
       <img *ngIf="loading" class="loader" src="../../../../assets/images/loading.svg" />
     </div>
   </div>
