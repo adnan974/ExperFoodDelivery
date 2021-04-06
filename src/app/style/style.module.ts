@@ -16,6 +16,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatRadioModule} from '@angular/material/radio';
 
 import { LazyLoadImageModule} from 'ng-lazyload-image';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 
 const AngularMaterialModules = [
@@ -34,7 +35,8 @@ const AngularMaterialModules = [
   MatListModule,
   MatBadgeModule,
   MatRadioModule,
-  LazyLoadImageModule
+  LazyLoadImageModule,
+  IvyCarouselModule
 ]
 
 

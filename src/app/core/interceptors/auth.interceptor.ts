@@ -11,9 +11,9 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (!this.isMultipartFormData(request.method, request.url)) {
-      request = this.addContentType(request);
-    }
+    // if (!this.isMultipartFormData(request.method, request.url)) {
+    //   request = this.addContentType(request);
+    // }
 
     if (!this.isPublicRequest(request.method, request.url)) {
       request = this.addToken(request, this.authService.getToken());
@@ -43,7 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private isMultipartFormData(method: string, url: string): boolean {
-    return (method === 'POST' && url.includes('restaurant'));
+    return (method === 'POST' && (url.includes('restaurants') || url.includes('menus') ));
   }
 
 }

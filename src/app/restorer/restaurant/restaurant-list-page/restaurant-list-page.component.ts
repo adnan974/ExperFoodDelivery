@@ -16,32 +16,33 @@ export class RestaurantListPageComponent implements OnInit {
   loading: boolean = true;
   public restaurantList: Array<Restaurant> = new Array<Restaurant>();
 
-  constructor(private authService : AuthService, private restaurantService : RestaurantService, private router: Router) { }
+  constructor(private authService: AuthService, private restaurantService: RestaurantService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.authService.$userConnected.subscribe((response) => {
-      this.userConnected = response;
-      this.restaurantService.getUserRestaurants(this.userConnected?.id)
+    this.userConnected = this.authService.currentUser;
+
+    if (!!this.userConnected && !!this.userConnected.id){
+      this.restaurantService.getUserRestaurants(this.userConnected.id)
       .subscribe(
         {
-          next: (restaurants)=>this.restaurantList = restaurants,
-          error: (err)=>console.error(err),
-          complete:()=>this.loading = false
+          next: (restaurants) => this.restaurantList = restaurants,
+          error: (err) => console.error(err),
+          complete: () => this.loading = false
         }
       );
-    })
+    }
   }
 
   navigateToShow(id: string): void{
-    this.router.navigate([`/restaurants/${id}`]);
+    this.router.navigate([`/restorer/restaurants/${id}`]);
   }
 
-  navigateToMenus(id: string): void{
-    this.router.navigate([`/restaurants/${id}/menus`]);
+  navigateToMenus(restaurant: Restaurant): void{
+    this.router.navigate([`/restorer/restaurants/${restaurant.id}/menus`], {state: restaurant});
   }
   navigateToCreate(): void{
-    this.router.navigate([`/restorer/restaurants/add`]);
+    this.router.navigate([`/restorer/restaurants/create`]);
   }
 
 }

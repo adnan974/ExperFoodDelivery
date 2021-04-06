@@ -17,26 +17,17 @@ export class CustomerProfilPageComponent implements OnInit {
     this.authService.$userConnected.subscribe((user) => {
 
       if (user) {
-        this.userservice.getCustomer(user.id).toPromise()
+        this.userservice.getCustomer(user.id!).toPromise()
           .then((response) => {
-            this.user.firstname = response.firstname;
-            this.user.lastname = response.lastname;
-            this.user.email = response.email;
-            this.user.address = response.address;
-            this.user.CP = response.CP;
-            this.user.city = response.city;
-            this.user.phone = response.phone;
+            this.user = user;
           })
           .catch((error) => {
             console.error(error);
-            this.commonService.changeSnackBarMessage(`Erreur : ${error.error ? error.error.message : error.message ? error.message : error}`)
+            this.commonService.changeSnackBarMessage(`Erreur : "TODO : message d'erreur"`);
           })
-          .finally(() => {
-
-          })
-
+          .finally(() => {})
       }
-    })
+    });
   }
 
 }

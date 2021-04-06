@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Restaurant } from '../../../shared/models/restaurant';
+import { Restaurant } from '../../models/restaurant';
 
 @Component({
   selector: 'efd-restaurant-show',
@@ -9,9 +9,12 @@ import { Restaurant } from '../../../shared/models/restaurant';
 })
 export class RestaurantShowComponent implements OnInit {
 
+  @Output() show: EventEmitter<string> = new EventEmitter<string>();
+  @Output() showMenus: EventEmitter<string> = new EventEmitter<string>();
   @Input() restaurant?:Restaurant;
+  @Input() loading: boolean = false;
 
-  constructor(private router:Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 

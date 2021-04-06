@@ -1,3 +1,4 @@
+import { MenuService } from 'src/app/core/services/menu.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { RestaurantService } from 'src/app/core/services/restaurant.service';
@@ -11,34 +12,28 @@ import { User } from 'src/app/shared/models/user';
 })
 export class MenuListPageComponent implements OnInit {
 
-  userConnected?: User | null;
-  public menuList:Array<Menu>=[]; 
+  public currentUser?: User | null;
+  public menus: Array<Menu> = [];
+  public loading: boolean = true;
 
 
-  constructor(private restaurantService:RestaurantService, private authService:AuthService) { }
+  constructor(private authService: AuthService, private menuService: MenuService) { }
 
   ngOnInit(): void {
-    this.authService.$userConnected.subscribe((response) => {
-      this.userConnected = response;
-      console.log(this.userConnected?.id)
-      this.getAllRestorerMenus(this.userConnected?.id)
-    })
+
+    this.currentUser = this.authService.currentUser;
+
+    if (this.currentUser) {
+      this.menuService.getRestorerMenus(this.currentUser.id!)
+      .subscribe(
+        {
+          next: (menus: Array<Menu>) => this.menus = menus, // TODO
+          error: (err) => console.error(err), // TODO
+          complete: () => this.loading = false // TODO
+        }
+      );
+    }
 
   }
-
-  getAllRestorerMenus(userId:string | undefined){
-    this.restaurantService.getUserRestaurants(userId)
-    .subscribe((restaurants=>{
-      restaurants.forEach((restaurant:any) => {
-        this.restaurantService.getRestaurantMenus(restaurant.id)
-        .subscribe((menus:any)=>{
-          this.menuList = this.menuList.concat(menus);
-        })
-        
-      });
-    }))
-  }
-
-  
 
 }

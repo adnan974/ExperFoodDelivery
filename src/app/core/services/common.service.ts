@@ -11,7 +11,7 @@ export class CommonService {
 
   constructor() { }
 
-  changeSnackBarMessage(data: string) {
+  changeSnackBarMessage(data: string): void {
     this.snackBarData.next(data);
   }
 

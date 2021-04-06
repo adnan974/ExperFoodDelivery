@@ -9,9 +9,10 @@ import { Menu } from 'src/app/shared/models/menu';
 })
 export class MenuPageComponent implements OnInit {
 
-  public menuList:Array<Menu>=[];
+  public menus: Array<Menu> = new Array<Menu>();
+  public loading: boolean = true;
 
-  constructor(private menuService:MenuService) { }
+  constructor(private menuService: MenuService) { }
 
   ngOnInit(): void {
     this.getMenus();
@@ -19,9 +20,13 @@ export class MenuPageComponent implements OnInit {
 
   getMenus() {
     this.menuService.getAllMenus()
-      .subscribe((menus) => {
-        this.menuList = menus;
-      });
+    .subscribe(
+      {
+        next: (menus: Array<Menu>) => this.menus = menus, // TODO
+        error: (err) => console.error(err), // TODO
+        complete: () => this.loading = false // TODO
+      }
+    );
   }
 
 }

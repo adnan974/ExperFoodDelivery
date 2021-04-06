@@ -18,28 +18,28 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   @Output() typing : EventEmitter<any> = new EventEmitter<any>();
   invaldCredentialsSubscription?: Subscription;
 
-  user : User = new User();
-  loginForm: FormGroup | undefined;
+  public user: User = new User();
+  public loginForm: FormGroup | undefined;
 
-  constructor(private fb : FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
-  get email() { return this.loginForm && this.loginForm.get('email')?.value }
-  get password() { return this.loginForm && this.loginForm.get('password')?.value }
+  get email(): string { return this.loginForm && this.loginForm.get('email')?.value; }
+  get password(): string { return this.loginForm && this.loginForm.get('password')?.value; }
 
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
-      'email' : ['', [Validators.required, Validators.email ]],
-      'password' : ['', [Validators.required]]
+      email : ['', [Validators.required, Validators.email ]],
+      password : ['', [Validators.required]]
     });
     this.invaldCredentialsSubscription = this.invalidCredentials?.pipe(
       debounceTime(300),
       distinctUntilChanged()
     )
     .subscribe((value)=>{
-      if(value===true){
-        this.loginForm?.get('email')?.setErrors({'invalid-credentials':true});
-        this.loginForm?.get('password')?.setErrors({'invalid-credentials':true});
+      if(value === true){
+        this.loginForm?.get('email')?.setErrors({'invalid-credentials': true});
+        this.loginForm?.get('password')?.setErrors({'invalid-credentials': true});
       }else{
         this.loginForm?.get('email')?.updateValueAndValidity();
         this.loginForm?.get('password')?.updateValueAndValidity();

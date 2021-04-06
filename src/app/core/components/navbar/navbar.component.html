@@ -54,7 +54,7 @@
         </mat-menu>
       </section>
 
-      <section class="shop-cart-wrap">
+      <section class="shop-cart-wrap" *ngIf="userConnected?.role != userRole.Restorer && userConnected?.role != userRole.Admin">
         <mat-icon [matMenuTriggerFor]="shopCartMenu" class="shop-cart-icon" [matBadge]="shopCartCount" [matBadgeHidden]="!shopCartCount || shopCartCount == 0" matBadgeColor="warn">shopping_cart</mat-icon>
         <mat-menu #shopCartMenu="matMenu" xPosition="before">
           //TODO : menu panier

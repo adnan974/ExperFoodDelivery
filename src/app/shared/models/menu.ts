@@ -1,3 +1,5 @@
+import { ImageWrapper } from "./image-wrapper";
+
 export class Menu {
   private _id?: number;
   private _name?: string;
@@ -9,7 +11,7 @@ export class Menu {
     params: {
       id?: number;
       name?: string;
-      description?:string;
+      description?: string;
       price?: number;
     } = {}
   ) {
@@ -19,7 +21,7 @@ export class Menu {
     this._price = params.price;
   }
 
-  //TODO : Ingredient
+  // TODO : Ingredient
 
   /**
    * Getter id
@@ -69,19 +71,24 @@ export class Menu {
     this._price = value;
   }
 
-    /**
+  /**
    * Getter description
    * @return {string}
    */
-     public get description(): string | undefined {
-      return this._description;
-    }
+  public get description(): string | undefined {
+    return this._description;
+  }
 
-    /**
-     * Setter description
-     * @param {string} value
-     */
-    public set description(value: string | undefined) {
-      this._description = value;
-    }
+  /**
+   * Setter description
+   * @param {string} value
+   */
+  public set description(value: string | undefined) {
+    this._description = value;
+  }
+}
+
+export interface CreateMenuWrapperObject {
+  menu?: Menu;
+  arrayImages?: Array<ImageWrapper>;
 }

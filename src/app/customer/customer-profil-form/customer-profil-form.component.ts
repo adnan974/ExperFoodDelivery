@@ -55,7 +55,6 @@ export class CustomerProfilFormComponent implements OnInit {
     this.user && this.updateLoginForm &&
     (this.user.email = this.updateLoginForm.value['emailCtrl']) &&
       (this.user.password = this.updateLoginForm.value['passwordCtrl']);
-    console.log(this.user?.email);
   }
 
   updateProfil() {
@@ -65,7 +64,6 @@ export class CustomerProfilFormComponent implements OnInit {
       (this.user.address = this.updateInfoGroup.value['addressCtrl']) &&
       (this.user.city = this.updateInfoGroup.value['cityCtrl']) &&
       (this.user.CP = this.updateInfoGroup.value['cpCtrl']);
-    console.log(this.user);
     this.updateUser.emit(this.user);
   }
 

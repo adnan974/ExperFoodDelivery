@@ -1,4 +1,4 @@
-import { RestaurantShowComponent } from './restaurant-show/restaurant-show.component';
+
 import { RestaurantShowPageComponent } from './restaurant-show-page/restaurant-show-page.component';
 
 import { RestaurantListPageComponent } from './restaurant-list-page/restaurant-list-page.component';
@@ -10,7 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [RestaurantListPageComponent, RestaurantShowPageComponent, RestaurantShowComponent],
+  declarations: [RestaurantListPageComponent, RestaurantShowPageComponent],
   imports: [
     SharedModule,
     StyleModule,

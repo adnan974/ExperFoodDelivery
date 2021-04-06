@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RestaurantListPageComponent implements OnInit {
 
-  public restaurantList: Array<Restaurant> = new Array<Restaurant>();
+  public restaurants: Array<Restaurant> = new Array<Restaurant>();
   loading: boolean = true;
 
 
@@ -20,7 +20,7 @@ export class RestaurantListPageComponent implements OnInit {
     this.restaurantService.getRestaurants()
     .subscribe(
       {
-        next: (restaurants)=>this.restaurantList = restaurants,
+        next: (restaurants)=>this.restaurants = restaurants,
         error: (err)=>console.error(err),
         complete:()=>this.loading = false
       }
@@ -31,8 +31,8 @@ export class RestaurantListPageComponent implements OnInit {
     this.router.navigate([`/restaurants/${id}`]);
   }
 
-  navigateToMenus(id:string){
-    this.router.navigate([`/restaurants/${id}/menus`]);
+  navigateToMenus(restaurant: Restaurant){
+    this.router.navigate([`/restaurants/${restaurant.id}/menus`, {restaurant}]);
   }
 
 }

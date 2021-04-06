@@ -1,0 +1,78 @@
+<form novalidate [formGroup]="createMenuForm" (ngSubmit)="submit()">
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Nom du menu</mat-label>
+      <input
+        matInput
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Nom du menu"
+        autocorrect="off"
+        autocomplete="off"
+      />
+      <mat-error *ngIf="createMenuForm?.get('name')?.hasError('required')">
+        Le nom du menu est requis
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Description du menu</mat-label>
+      <input
+        matInput
+        id="description"
+        type="text"
+        formControlName="description"
+        placeholder="Description du menu"
+        autocorrect="off"
+        autocomplete="off"
+      />
+      <mat-error *ngIf="createMenuForm?.get('description')?.hasError('required')">
+        La description du menu est requise
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Prix du menu</mat-label>
+      <input
+        matInput
+        id="price"
+        type="number"
+        formControlName="price"
+        placeholder="Prix du menu"
+        autocorrect="off"
+        autocomplete="off"
+      />
+      <mat-error *ngIf="createMenuForm?.get('price')?.hasError('required')">
+        Le prix du menu est requis
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <div class="dropzone" efdDragAndDrop (fileDropped)="onImageDropped($event)">
+    <input type="file" #imageDrop id="imageDrop" multiple (change)="handleImageDrop($event.target.files)" />
+    <h3>Glissez vos photos ici</h3>
+    <h3>ou</h3>
+    <label for="imageDrop">Cliquez ici</label>
+  </div>
+
+  <div class="gallery">
+    <img *ngFor="let image of imagesList" src="{{image.imagePath}}" alt="image uploadée par l'utilisateur">
+</div>
+
+
+  <div class="efd-create-btn-row">
+    <button class="efd-login-btn" mat-button color="primary" [disabled]="!createMenuForm?.valid || loading">
+      Créer !
+    </button>
+    <div class="loader-wrap" >
+      <img *ngIf="loading" class="loader" src="../../../../assets/images/loading.svg" />
+    </div>
+  </div>
+
+</form>
