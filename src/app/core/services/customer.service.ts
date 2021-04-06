@@ -18,14 +18,14 @@ export class CustomerService {
   public getCustomers(): Observable<any> {
 
     return (
-      this.http.get(this.BASE_URL + '/api/users')
+      this.http.get(`${this.BASE_URL}/api/users/`)
         .pipe(
-          map((users: any) => {
-            return users.map((user: any) => {
+          map((response: any) => {
+            return response.data.map((user: any) => {
               return new User({
                 id: user._id,
-                lastname: user._name,
-                firstname: user._price
+                lastname: user.name,
+                firstname: user.price
               })
             })
           })
@@ -33,57 +33,40 @@ export class CustomerService {
     )
   }
 
-  public getCustomer(id: string | undefined): Observable<User> {
+  public getCustomer(id: string): Observable<User> {
     return (
-      this.http.get(this.BASE_URL + '/api/users/'+ id)
+      this.http.get(`${this.BASE_URL}/api/users/${id}`)
         .pipe(
-          map((user: any) => {
-              const u = new User({
-                id: user.data._id,
-                lastname: user.data.lastname,
-                firstname: user.data.firstname,
-                email: user.data.email,
-                address: user.data.address,
-                CP: user.data.CP,
-                city: user.data.city,
-                role: user.data.role,
-                phone: user.data.phone,
-              })
-            return u;
+          map((response: any) => {
+            const user = new User({
+              id: response.data._id,
+              lastname: response.data.lastname,
+              firstname: response.data.firstname,
+              email: response.data.email,
+              address: response.data.address,
+              CP: response.data.CP,
+              city: response.data.city,
+              role: response.data.role,
+              phone: response.data.phone,
+            })
+            return user;
           })
         )
     )
   }
 
-  public updateCustomer(id: string | undefined, userupdated: User): Observable<User> {
-    return (
-      this.http.patch(this.BASE_URL + '/api/users/' + id, userupdated)
-      .pipe(
-        map((userupdated: any) => {
-          console.log(userupdated);
-          const u = new User({
-            id: userupdated.data.id,
-            lastname: userupdated.data.lastname,
-            firstname: userupdated.data.firstname,
-            email: userupdated.data.email,
-            address: userupdated.data.address,
-            CP: userupdated.data.CP,
-            city: userupdated.data.city,
-            role: userupdated.data.role,
-            phone: userupdated.data.phone,
-          })
-          return u;
-        })
-      )
-      )
+  public updateCustomer(id: string, userToUpdate: User): Observable<any> {
+
+    const data = {
+      lastname: userToUpdate.lastname,
+      firstname: userToUpdate.firstname,
+      address: userToUpdate.address,
+      CP: userToUpdate.CP,
+      city: userToUpdate.city,
+      phone: userToUpdate.phone
+    }
+    return  this.http.patch(`${this.BASE_URL}/api/users/${id}`, data);
   }
 
-  public postCustomer(user: User): User {
-    this.users.push(user);
-    return user;
-  }
 
-  public deleteCustomer(id: number): boolean {
-    return true;
-  }
 }

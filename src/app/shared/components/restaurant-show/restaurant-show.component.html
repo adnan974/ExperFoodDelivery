@@ -1,0 +1,33 @@
+<section *ngIf="loading">
+  <div fxLayout="row wrap" fxLayoutGap="30px grid">
+    <div fxFlex="25%">
+      <div class="restaurant">
+        <div class="ph-item">
+          <div class="ph-col-12">
+            <div class="ph-picture"></div>
+            <div class="ph-row">
+              <div class="ph-col-8 "></div>
+              <div class="ph-col-4 empty "></div>
+              <div class="ph-col-12 empty"></div>
+              <div class="ph-col-8 big"></div>
+              <div class="ph-col-4 empty big"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="!loading && restaurant">
+
+  <div class="carousel-wrapper">
+    <carousel cellsToShow="1">
+      <!-- [images]="restaurant.photosUrls"> -->
+      <div class="carousel-cell" *ngFor="let image of restaurant.photosUrls ">
+        <img defaultImage="../../../../assets/images/elipse-loading.svg" [lazyLoad]="image" />
+      </div>
+    </carousel>
+  </div>
+
+</section>

@@ -1,20 +1,45 @@
-
-
-<h2>Liste des menus : </h2>
-<div fxLayout="row wrap" fxLayoutGap="30px grid">
-    <div fxFlex="25%" *ngFor="let menu of menuList">
+<section *ngIf="loading">
+  <div fxLayout="row wrap" fxLayoutGap="30px grid">
+    <div fxFlex="25%" *ngFor="let i of loadingArray ">
+      <div class="restaurant">
+        <div class="ph-item">
+          <div class="ph-col-12">
+            <div class="ph-picture"></div>
+            <div class="ph-row">
+              <div class="ph-col-8 "></div>
+              <div class="ph-col-4 empty "></div>
+              <div class="ph-col-12 empty"></div>
+              <div class="ph-col-8 big"></div>
+              <div class="ph-col-4 empty big"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="!loading">
+  <div fxLayout="row wrap" fxLayoutGap="30px grid">
+    <div fxFlex="25%" *ngFor="let menu of menus">
 
       <mat-card *ngIf="menu">
         <mat-card-title>{{menu.name}}</mat-card-title>
         <!-- TODO: remplacer l'url par l'url venant du service Restaurant-->
-        <img mat-card-image src="https://previews.123rf.com/images/goodzone95/goodzone951802/goodzone95180200081/95712967-cuisine-logo-de-la-cuisine-ic%C3%B4ne-et-%C3%A9tiquette-pour-le-restaurant-de-menu-design-ou-un-caf%C3%A9-lettrage-illustr.jpg">
+        <img mat-card-image
+          src="https://previews.123rf.com/images/goodzone95/goodzone951802/goodzone95180200081/95712967-cuisine-logo-de-la-cuisine-ic%C3%B4ne-et-%C3%A9tiquette-pour-le-restaurant-de-menu-design-ou-un-caf%C3%A9-lettrage-illustr.jpg">
 
         <mat-card-content><b>prix: </b>{{menu.price}} €</mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" (click)="addToShopCart(menu)">Commander</button>
+          <button mat-raised-button color="primary" (click)="addToShopCart(menu)" *ngIf="!role || role == userRole.Customer">Commander</button>
+          <button mat-raised-button  *ngIf="role && role == userRole.Restorer">Modifier</button>
+          <button mat-raised-button color="warn" *ngIf="role && role == userRole.Restorer">Supprimer</button>
         </mat-card-actions>
-    </mat-card>
+      </mat-card>
 
-    <div>
-</div>
+      <div>
+      </div>
+    </div>
+  </div>
 
+
+</section>

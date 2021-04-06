@@ -19,33 +19,35 @@ export class AuthService {
   redirectUrl: string = '/home';
   $userConnected = new BehaviorSubject<User | null>(null);
 
+  get currentUser(): User | null {
+    return this.$userConnected.getValue();
+  }
+
   private log(log: string) {
     console.info(log);
   }
 
-  isLoggedIn() : boolean {
+  isLoggedIn(): boolean {
     return !!localStorage.getItem('jwt');
   }
 
-  getToken() : string{
-    return this.isLoggedIn() && JSON.parse(localStorage.getItem('jwt') ?? "");
+  getToken(): string {
+    return this.isLoggedIn() && JSON.parse(localStorage.getItem('jwt') ?? '');
   }
 
 
-  updateUserInfos() {
+  updateUserInfos(): void {
 
     if (this.isLoggedIn()) {
-      const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? "");
 
+      const connexionUserObject = JSON.parse(localStorage.getItem('user') ?? '');
 
-      let test:unknown;
-
-      const userConnected : User  = new User({
+      const userConnected: User = new User({
         id: connexionUserObject._id,
         firstname: connexionUserObject.firstname,
         lastname: connexionUserObject.lastname,
         email: connexionUserObject.email,
-        role : connexionUserObject.role
+        role: connexionUserObject.role
       })
 
       this.$userConnected.next(userConnected);
@@ -58,8 +60,8 @@ export class AuthService {
 
   login(credentials: User): Observable<ServerResponse> {
 
-    let data = {
-      email : credentials.email,
+    const data = {
+      email: credentials.email,
       password: credentials.password
     }
 
@@ -70,8 +72,9 @@ export class AuthService {
           localStorage.setItem('jwt', JSON.stringify(response.data.token));
           localStorage.setItem('user', JSON.stringify(response.data.user));
           this.router.navigate([this.redirectUrl]);
-        }else {
+        } else {
           localStorage.removeItem('jwt');
+          localStorage.removeItem('user');
         }
         this.updateUserInfos();
       })
@@ -81,7 +84,7 @@ export class AuthService {
 
   register(user: User): Observable<ServerResponse> {
 
-    let data = {
+    const data = {
       lastname: user.lastname,
       firstname: user.firstname,
       role: user.role,
@@ -97,7 +100,7 @@ export class AuthService {
       tap(response => {
         this.log(`try to register : ${user}`);
         if (response.success) {
-        }else {
+        } else {
 
         }
       })
@@ -109,8 +112,9 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('jwt');
     localStorage.removeItem('user');
-    this.router.navigate(['login']);
     this.updateUserInfos();
+    this.router.navigate(['login']);
+
   }
 
 

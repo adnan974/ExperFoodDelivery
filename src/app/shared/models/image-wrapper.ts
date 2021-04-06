@@ -1,6 +1,6 @@
 
 
-export class ImageWrapper {
+export interface ImageWrapper {
   image?: File;
   imagePath?: string;
 }

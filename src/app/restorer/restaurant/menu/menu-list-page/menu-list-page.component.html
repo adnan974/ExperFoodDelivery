@@ -1,0 +1,18 @@
+<div class="page-container">
+
+  <section class="top" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="left-section">
+      <span >Liste des menus du restaurant rrr{{restaurant!.name}}</span>
+    </div>
+    <div class="right-section" fxLayout="row" fxLayoutAlign="end center" >
+      <button mat-button (click)="navigateToCreate()">
+        <mat-icon>add</mat-icon> Ajouter un menu
+      </button>
+    </div>
+  </section>
+
+  <efd-menu-list [loading]=loading [menus]="restaurant!.menus" [role]="currentUser?.role"></efd-menu-list>
+
+</div>
+
+

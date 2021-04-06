@@ -11,7 +11,7 @@ import { Restaurant } from '../../models/restaurant';
 export class RestaurantListComponent implements OnInit {
 
   @Output() show: EventEmitter<string> = new EventEmitter<string>();
-  @Output() showMenus: EventEmitter<string> = new EventEmitter<string>();
+  @Output() showMenus: EventEmitter<Restaurant> = new EventEmitter<Restaurant>();
   @Input() restaurants?: Array<Restaurant>;
   @Input() loading: boolean = false;
   loadingArray = new Array(6);
@@ -25,8 +25,8 @@ export class RestaurantListComponent implements OnInit {
     this.show.emit(id);
   }
 
-  onShowMenus(id: string): void{
-    this.showMenus.emit(id);
+  onShowMenus(restaurant: Restaurant): void{
+    this.showMenus.emit(restaurant);
   }
 
 }

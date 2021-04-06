@@ -1,8 +1,8 @@
+import { Menu } from './../../../../shared/models/menu';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuService } from 'src/app/core/services/menu.service';
-import { RestaurantService } from 'src/app/core/services/restaurant.service';
-import { Menu } from 'src/app/shared/models/menu';
+
 
 @Component({
   selector: 'efd-menu-page',
@@ -11,26 +11,24 @@ import { Menu } from 'src/app/shared/models/menu';
 })
 export class MenuPageComponent implements OnInit {
 
-  public menuList:Array<Menu>=[];
+  public menus: Array<Menu> = new Array<Menu>();
+  idRestaurant?: string;
+  loading: boolean = true;
 
-  constructor(private restaurantService: RestaurantService,private route:ActivatedRoute) { }
+  constructor(private menuService: MenuService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.getRestaurantMenus(params.id);
-    });
 
-    
+    this.idRestaurant = this.route.snapshot.params.id;
+
+    this.menuService.getRestaurantMenus(this.idRestaurant!)
+    .subscribe(
+      {
+        next: (menus: Array<Menu>) => this.menus = menus, // TODO
+        error: (err) => console.error(err), // TODO
+        complete: () => this.loading = false // TODO
+      }
+    );
   }
-
-  getRestaurantMenus(id:string){
-    this.restaurantService.getRestaurantMenus(id)
-    .subscribe((menus:any)=>{
-      this.menuList = menus;
-    });
-  }
-
-
-  
 
 }
