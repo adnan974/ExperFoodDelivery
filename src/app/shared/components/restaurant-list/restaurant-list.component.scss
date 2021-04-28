@@ -7,7 +7,23 @@ h2{
 }
 
 .restaurant-card {
-  height: 550px;
+ // height: 600px;
+}
+
+.city {
+  text-align: right;
+}
+
+.city-chips {
+  display: inline-block;
+  padding: 0 20px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color:white;
+  line-height: 40px;
+  border-radius: 25px;
+  background-color: #FFD02D;
 }
 
 .ph-picture{
@@ -36,4 +52,13 @@ img{
   max-height: 100%;
   display: block;
   margin: 0 auto;
+}
+
+.description {
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  display: inline-block;
 }

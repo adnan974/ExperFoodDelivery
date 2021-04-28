@@ -1,7 +1,7 @@
 
 <section *ngIf="loading">
   <div fxLayout="row wrap" fxLayoutGap="30px grid">
-    <div fxFlex="25%" *ngFor="let i of loadingArray ">
+    <div fxFlex="100%" fxFlex.gt-xs="75%" fxFlex.gt-sm="50%" fxFlex.gt-md="33%" fxFlex.gt-lg="25%" *ngFor="let i of loadingArray ">
       <div class="restaurant">
         <div class="ph-item">
           <div class="ph-col-12">
@@ -22,7 +22,7 @@
 
 <section *ngIf="!loading">
   <div fxLayout="row wrap" fxLayoutGap="30px grid">
-    <div fxFlex="25%" *ngFor="let restaurant of restaurants">
+    <div fxFlex="100%" fxFlex.gt-xs="75%" fxFlex.gt-sm="50%" fxFlex.gt-md="33%" fxFlex.gt-lg="25%" *ngFor="let restaurant of restaurants">
       <div class="restaurant">
         <mat-card *ngIf="restaurant" class="restaurant-card">
           <mat-card-title>{{restaurant.name}}</mat-card-title>
@@ -35,17 +35,15 @@
               defaultImage="../../../../assets/images/elipse-loading.svg"
               [lazyLoad]="restaurant.mainPhotoUrl"
               >
-
               <img *ngIf="!restaurant.mainPhotoUrl" mat-card-image
-              src="../../../assets/images/depositphotos_77833254-stock-illustration-restaurant-logo.jpg">
-
+              src="../../../assets/images/restaurant.svg">
             </div>
-
           </div>
 
-
-
-          <mat-card-content><b>Description: </b>{{restaurant.description}} </mat-card-content>
+          <mat-card-content>
+            <div class="description"><b>Description: </b>{{restaurant.description}}</div>
+            <div class="city"><span class="city-chips">{{restaurant.city ? restaurant.city : "Saint-Denis"}}</span></div>
+          </mat-card-content>
           <mat-card-actions>
             <button mat-raised-button (click)="onShow(restaurant.id)">Voir détails</button>
             <button mat-raised-button color="primary" (click)="onShowMenus(restaurant)">Voir Menus</button>

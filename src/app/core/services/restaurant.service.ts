@@ -2,9 +2,8 @@ import { Restaurant } from './../../shared/models/restaurant';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, tap, debounceTime } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Menu } from 'src/app/shared/models/menu';
 import { ServerResponse } from 'src/app/shared/models/server-response';
 
 
@@ -12,7 +11,6 @@ import { ServerResponse } from 'src/app/shared/models/server-response';
   providedIn: 'root'
 })
 export class RestaurantService {
-
 
   private readonly BASE_URL = environment.experFoodDeliveryApi;
 
@@ -29,6 +27,8 @@ export class RestaurantService {
               id: restaurant._id,
               name: restaurant.name,
               description: restaurant.description,
+              city: restaurant.city,
+              cp: restaurant.cp,
               mainPhotoUrl : restaurant.mainPhotoUrl,
               menus: restaurant.menus
             });
@@ -46,6 +46,8 @@ export class RestaurantService {
               id: response.data._id,
               name: response.data.name,
               address: response.data.address,
+              city: response.data.city,
+              cp: response.data.cp,
               description: response.data.description,
               mainPhotoUrl : response.data.mainPhotoUrl,
               photosUrls : response.data.photosUrls,
@@ -65,6 +67,9 @@ export class RestaurantService {
             id: restaurant._id,
             name: restaurant.name,
             description: restaurant.description,
+            address: restaurant.address,
+            city: restaurant.city,
+            cp: restaurant.cp,
             mainPhotoUrl : restaurant.mainPhotoUrl,
             menus: restaurant.menus
           });
@@ -73,8 +78,11 @@ export class RestaurantService {
     );
   }
 
-  public createRestaurant(restaurantFormData : FormData): Observable<any> {
-    return this.http.post(`${this.BASE_URL}/api/restaurants`, restaurantFormData).pipe(debounceTime(300));
+  public createRestaurant(restaurantFormData : FormData): Observable<ServerResponse> {
+    return this.http.post(`${this.BASE_URL}/api/restaurants`, restaurantFormData)
+    .pipe(
+      debounceTime(300)
+      )
   }
 
 }

@@ -6,9 +6,11 @@ export class Restaurant {
   private _name?: string;
   private _description?: string;
   private _address?: string;
+  private _cp?: string;
+  private _city?: string;
   private _mainPhotoUrl?: string;
   private _photosUrls?: Array<string>;
-  private _menus?:Array<Menu>;
+  private _menus?: Array<Menu>;
 
   constructor(
     params: {
@@ -16,22 +18,23 @@ export class Restaurant {
       name?: string;
       description?: string;
       address?: string;
+      cp?: string;
+      city?: string;
       mainPhotoUrl?: string;
       photosUrls?: Array<string>;
-      menus?:Array<Menu>;
+      menus?: Array<Menu>;
     } = {}
   ) {
     this._id = params.id;
     this._name = params.name;
     this._description = params.description;
     this._address = params.address;
+    this._cp = params.cp;
+    this._city = params.city;
     this._mainPhotoUrl = params.mainPhotoUrl;
     this._photosUrls = params.photosUrls;
     this._menus = params.menus;
   }
-
-  //Todo à compléter...
-
 
 
   /**
@@ -99,6 +102,38 @@ export class Restaurant {
   }
 
   /**
+   * Getter city
+   * @return {string}
+   */
+  public get city(): string | undefined {
+    return this._city;
+  }
+
+  /**
+   * Setter city
+   * @param {string} value
+   */
+  public set city(value: string | undefined) {
+    this._city = value;
+  }
+
+  /**
+  * Getter cp
+  * @return {string}
+  */
+  public get cp(): string | undefined {
+    return this._cp;
+  }
+
+  /**
+   * Setter cp
+   * @param {string} value
+   */
+  public set cp(value: string | undefined) {
+    this._cp = value;
+  }
+
+  /**
    * Setter mainPhotoUrl
    * @param {string} value
    */
@@ -113,8 +148,6 @@ export class Restaurant {
   public get mainPhotoUrl(): string | undefined {
     return this._mainPhotoUrl;
   }
-
-
 
   /**
    * Getter photos_url
