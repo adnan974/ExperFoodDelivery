@@ -32,6 +32,31 @@
     </mat-form-field>
   </p>
 
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Ville du restaurant</mat-label>
+      <input matInput id="address" type="text" formControlName="city" placeholder="Ville du restaurant"
+        autocorrect="off" autocomplete="off" />
+      <mat-error *ngIf="createRestaurantForm?.get('city')?.hasError('required')">
+        La ville du restaurant est requise
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field class="efd-create-form-field">
+      <mat-label>Code postal du restaurant</mat-label>
+      <input matInput id="cp" type="number" formControlName="cp" placeholder="Code postal du restaurant"
+        autocorrect="off" autocomplete="off" />
+      <mat-error *ngIf="createRestaurantForm?.get('cp')?.hasError('required')">
+        Le cp du restaurant est requise
+      </mat-error>
+      <mat-error *ngIf="createRestaurantForm?.get('cp')?.hasError('minlength') || createRestaurantForm?.get('cp')?.hasError('maxlength') ">
+        Le cp doit contenir 5 chiffres
+      </mat-error>
+    </mat-form-field>
+  </p>
+
   <div matRipple class="dropzone" efdDragAndDrop (fileDropped)="onImageDropped($event)">
     <input type="file" #imageDrop id="imageDrop" multiple accept="image/*"
       (change)="handleImageDrop($event.target.files)" />

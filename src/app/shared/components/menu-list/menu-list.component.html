@@ -24,9 +24,21 @@
 
       <mat-card *ngIf="menu">
         <mat-card-title>{{menu.name}}</mat-card-title>
-        <!-- TODO: remplacer l'url par l'url venant du service Restaurant-->
-        <img mat-card-image
-          src="https://previews.123rf.com/images/goodzone95/goodzone951802/goodzone95180200081/95712967-cuisine-logo-de-la-cuisine-ic%C3%B4ne-et-%C3%A9tiquette-pour-le-restaurant-de-menu-design-ou-un-caf%C3%A9-lettrage-illustr.jpg">
+
+        <div class="outer-wrapper">
+          <div class="frame">
+            <img
+            *ngIf="menu.mainPhotoUrl"
+            mat-card-image
+            defaultImage="../../../../assets/images/elipse-loading.svg"
+            [lazyLoad]="menu.mainPhotoUrl"
+            >
+            <img *ngIf="!menu.mainPhotoUrl" mat-card-image
+            src="../../../assets/images/meal.svg">
+          </div>
+        </div>
+
+
 
         <mat-card-content><b>prix: </b>{{menu.price}} €</mat-card-content>
         <mat-card-actions>

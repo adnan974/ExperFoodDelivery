@@ -33,6 +33,12 @@ export class RestaurantCreateFormComponent implements OnInit {
       'address': ['', [
         Validators.required,
       ]],
+      'city': ['', [
+        Validators.required,
+      ]],
+      'cp': ['', [
+        Validators.required, Validators.minLength(5), Validators.maxLength(5)
+      ]],
       'mainPhotoUrl': ''
     });
 
@@ -41,6 +47,8 @@ export class RestaurantCreateFormComponent implements OnInit {
   get name() { return this.createRestaurantForm.get('name') }
   get description() { return this.createRestaurantForm.get('description') }
   get address() { return this.createRestaurantForm.get('address') }
+  get city() { return this.createRestaurantForm.get('address') }
+  get cp() { return this.createRestaurantForm.get('cp') }
   get mainPhotoUrl() { return this.createRestaurantForm.get('mainPhotoUrl') }
 
   submit() {
@@ -48,7 +56,9 @@ export class RestaurantCreateFormComponent implements OnInit {
       restaurant: new Restaurant({
         name: this.name?.value,
         description: this.description?.value,
-        address: this.description?.value
+        address: this.description?.value,
+        city: this.city?.value,
+        cp: this.cp?.value
       }),
       arrayImages: this.imagesList
     })

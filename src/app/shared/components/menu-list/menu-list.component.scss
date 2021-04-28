@@ -3,3 +3,24 @@ h2{
     text-align: center;
     font-size: 18pt;
 }
+
+.outer-wrapper{
+  display: inline-block;
+  //margin: 20px;
+  height: 400px;
+}
+.frame{
+   width: 368px;
+   height: 400px;
+  //border: 1px solid black;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+  background-color: rgba($color: #EAEAEA, $alpha: 0.2);
+}
+img{
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}

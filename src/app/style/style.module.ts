@@ -39,6 +39,7 @@ const AngularMaterialModules = [
   MatRippleModule,
   LazyLoadImageModule,
   IvyCarouselModule,
+
 ]
 
 
